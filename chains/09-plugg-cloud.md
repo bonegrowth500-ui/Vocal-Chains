@@ -436,7 +436,7 @@ Globals on both D2s: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan c
 | ± invert (both) | Off | Normal polarity |
 | CROSS | 0 | Normal feedback (no ping-pong) |
 | WIDTH | 70 | Medium width: the echoes stay mostly centred |
-| WET | Ctrl-click to reset, then hover: it should read **0.0 dB** (if not, type 0) | Unity; amount is set by the send instead |
+| WET | Ctrl-click to reset, then hover: it should read **0.0 dB** (if it shows another dB value, type 0) | Unity; amount is set by the send instead |
 | WET pan ring | Centre | Balanced |
 | MIX | 100 | Wet only (this is a send return) |
 | Lock Mix | Off | Not needed |

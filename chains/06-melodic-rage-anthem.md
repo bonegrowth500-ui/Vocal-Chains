@@ -544,7 +544,7 @@ To make the EQ bands: in the Decay Rate EQ, drag the curve at the far left to ma
 | ± invert (both) | Off | Normal polarity |
 | CROSS | 100 | Full cross-feedback (Ping Pong uses cross-feedback only) |
 | WIDTH | 100 | Arena-wide |
-| WET | Ctrl-click to reset, then hover: it should read **0.0 dB** (if not, type 0) | Unity; amount is set by the send instead |
+| WET | Ctrl-click to reset, then hover: it should read **0.0 dB** (if it shows another dB value, type 0) | Unity; amount is set by the send instead |
 | WET pan ring | Centre | Balanced |
 | MIX | 100 | Wet only (this is a send return) |
 | Lock Mix | Off | Not needed |

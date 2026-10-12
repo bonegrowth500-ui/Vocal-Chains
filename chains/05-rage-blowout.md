@@ -507,7 +507,7 @@ To make the Post EQ bands: double-click the far left of the Post EQ display for 
 | ± invert (both) | Off | Normal polarity |
 | CROSS | 0 | Normal feedback (no ping-pong) |
 | WIDTH | 50 | Narrow: keeps the energy central |
-| WET | Ctrl-click to reset, then hover: it should read **0.0 dB** (if not, type 0) | Unity; amount is set by the send instead |
+| WET | Ctrl-click to reset, then hover: it should read **0.0 dB** (if it shows another dB value, type 0) | Unity; amount is set by the send instead |
 | WET pan ring | Centre | Balanced |
 | MIX | 100 | Wet only (this is a send return) |
 | Lock Mix | Off | Not needed |
