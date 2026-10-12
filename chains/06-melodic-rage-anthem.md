@@ -31,7 +31,7 @@
 | Insert | Name | What's on it | Pan | Track delay | Routes to |
 |---|---|---|---|---|---|
 | 1 | BEAT | Optional carve (section 7) | 0% | — | Master |
-| 2 | LEAD | L1–L8 (section 2) | 0% | — | Master + sends to 8 and 9 + sidechain links to 8 and 9 |
+| 2 | LEAD | L1–L8 (section 2) | 0% | — | Master + sends to 8 and 9 (the sends also key the duckers) |
 | 3 | DBL A-L | D1, D2 | −100% | 17 ms | 7 only |
 | 4 | DBL A-R | D1, D2 | +100% | 23 ms | 7 only |
 | 5 | DBL B-L | D1, D2 | −50% | 11 ms | 7 only |
@@ -57,10 +57,12 @@ Every insert's stereo separation knob stays at centre (off). Faders are set in s
 1. **Doubles go to DBL BUS only.** Select insert 3 (DBL A-L). Left-click the send switch (the arrow at the bottom) of insert 7 (DBL BUS). Then left-click the **Master** track's send switch to turn that route off. Repeat for inserts 4, 5, and 6.
 2. **LEAD sends.** Select insert 2 (LEAD) and left-click the send switches of inserts 8 and 9. With LEAD still selected, right-click each new send knob (it sits on the destination's send switch) → "Type in value": insert 8 = **−10.0 dB**, insert 9 = **−11.0 dB**. LEAD keeps its Master route. FL sends are post-fader, so the effects follow your LEAD fader.
 3. **DBL BUS send to the hall.** Select insert 7 (DBL BUS) and left-click insert 8's send switch. Right-click the send knob → "Type in value" → **−14.0 dB**. DBL BUS keeps its Master route. This puts the wall inside the arena too.
-4. **Sidechain links for the ducking.** Select LEAD, then right-click insert 8's send switch → **"Sidechain to this track"**. Do the same on insert 9. These links are silent, and LEAD still goes to Master. Only your lead triggers the ducking.
+4. **The ducking needs no extra link.** In FL, every send also carries a sidechain feed, so the LEAD sends from step 2 already let the duckers on inserts 8 and 9 hear your voice. Don't use "Sidechain to this track" on these sends: that option makes a silent link with the send level at 0, and the effects need to hear the lead.
 5. **Pans and Track delays.** Right-click each pan knob → "Type in value": insert 3 = −100%, insert 4 = +100%, insert 5 = −50%, insert 6 = +50%. On each double's insert, click the clock icon (**Track delay**) → "Set in ms (milliseconds)": insert 3 = **17**, insert 4 = **23**, insert 5 = **11**, insert 6 = **29**.
-6. **Feed the duckers.** When you load Pro-C 3 on inserts 8 and 9 (R8.2, R9.2), open each one's gear icon → **"Plugin Wrapper Settings"** → **"Processing"** → **"Connections"**. Right-click the plugin's sidechain input number and choose insert 2 (LEAD), or click **"Auto map inputs"**. Then, in Pro-C 3, set **Side Chain Input** to **External**.
+6. **Feed the duckers.** When you load Pro-C 3 on inserts 8 and 9 (R8.2, R9.2), open each one's gear icon → **"Plugin Wrapper Settings"** → **"Processing"** → **"Connections"**. Right-click the plugin's sidechain input number and choose insert 2 (LEAD), or click **"Auto map inputs"**. Then, in Pro-C 3, set **Side Chain Input** to **External**. On insert 8, pick LEAD by hand: DBL BUS feeds that return too, and only your lead should trigger the ducking.
 7. Both returns stay routed to Master (the default).
+
+**Soloing for the checks.** A plain solo (right-click a track's mute switch) plays that track alone. Where a check in this file says **Alt-solo**, Alt+left-click the mute switch instead: FL then solos the track together with every track routed to and from it, so a bus or return still hears what feeds it. To undo any solo, Ctrl+right-click any mute switch (this unmutes everything).
 
 ### 1.5 Calibrate your take (find T)
 
@@ -157,19 +159,21 @@ Load **Pro-L 2** temporarily in LEAD's first slot, above everything else, with t
 
 ### L2a · only if room tone is audible
 
-**Test:** Solo LEAD and play a gap between phrases at your normal listening level. If you hear booth hiss, hum, or room tone, do both parts below. If not, skip L2a. Four doubles add up any room tone in your take, so check carefully.
+**Test:** Solo LEAD (right-click its mute switch) and play a gap between phrases at your normal listening level. If you hear booth hiss, hum, or room tone, do both parts below. If not, skip L2a. Four doubles add up any room tone in your take, so check carefully.
 
-**Part 1: Edison (offline, before you copy the doubles).** Open the lead clip in Edison.
-1. Select a few hundred milliseconds where you're not singing. Choose Tools > Spectral > **"Aquire noise profile"** (Alt+U; that's FL's own spelling).
-2. Open **"Clean up (denoise)"** (Ctrl+U).
+**Part 1: Edison (offline, before you copy the doubles).** Open the lead clip's menu (top-left corner of the clip) → **"Edit sample"** (E). Edison opens with your take.
+1. Drag across a few hundred milliseconds where you're not singing (the longest noise-only stretch you can find). Choose Tools > Spectral > **"Aquire noise profile"** (Alt+U; that's FL's own spelling).
+2. Press the **Up arrow** (Select > "Deselect") so nothing is selected. With no selection, the cleanup processes the whole take.
+3. Open **"Clean up (denoise)"** (Ctrl+U) and make sure its **Denoiser** button is on.
 
 | Control | Setting | Why |
 |---|---|---|
-| Threshold | 0 dB | Image-Line's suggested starting point |
-| Amount | 60% (read it on the hint bar) | Removes the hiss without making the voice watery |
+| Threshold (Windows) | 0 dB | Image-Line's suggested default |
+| Smoothing (macOS, in place of Threshold) | As it opens | Only needed to smooth artifacts at high Amount settings |
+| Amount | 10 dB (read it on the hint bar) | Image-Line advises only as much as needed, and less for a mix. Pro-G handles the gaps |
 | Output noise only | Turn on to check, then off | Lets you hear exactly what's being removed. It should be hiss, not words |
 
-3. Click Preview, check, then click **Accept**.
+4. Click **Preview**, check, then click **Accept**.
 
 **Part 2: Pro-G**, placed between L2 and L3.
 
@@ -408,11 +412,16 @@ Every double has its own timing offset, so no two copies line up.
 
 Globals on all four D2s: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Auto Gain off · Gain Scale 100% · Phase Invert off.
 
+**Dial it in (D1 and D2)**
+1. Alt-solo each double in turn (it plays through DBL BUS). It should follow your melody, tuned to the same notes as the lead.
+2. Compare them. All four should sound like slightly different singers (THROAT), each a few cents off the lead (DETUNE). Pair B should sound a little lighter and quieter than Pair A.
+3. Check each D1's DETUNE readout against the table (+8 c, −9 c, +5 c, −4 c).
+
 ### 3.5 DBL BUS (insert 7)
 
 | Order | Slot | Plugin | Settings |
 |---|---|---|---|
-| 1 | B1 | Pro-Q 4 trim | As L1, but Output Gain = **T − 3.0 dB**. Cancels the extra level of four doubles summing, so B4 sees the same level as L5 |
+| 1 | B1 | Pro-Q 4 trim | As L1, but Output Gain = **T − 3.0 dB**. Cancels the extra level of four doubles summing, so B4 sees the same level as L5. It's a starting point: Dial it in step 1 checks it |
 | 2 | B2 | Pro-Q 4 cleanup | L2's bands 2 and 3 only (Bell 320 Hz −2.5 dB Q 1.2; dynamic Bell 4.2 kHz, Range −4.0 dB, Threshold A, A/R 50%), with L2's globals. No Low Cut: each D2 already cuts higher |
 | (only if L2a used) | B2a | Pro-G | Identical to L2a's Pro-G |
 | 3 | B3 | Pro-DS | Identical to L3 |
@@ -453,9 +462,10 @@ Globals: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Aut
 **DBL BUS send:** → FX HALL **−14.0 dB** (set in 1.4).
 
 **Dial it in (DBL BUS)**
-1. Solo DBL BUS. You should hear a wide, smooth wall of four voices, slightly darker than the lead.
-2. B4's gain-reduction meter should show **3–5 dB** on loud lines.
-3. The DBL BUS fader is set in section 6.
+1. **Check the bus level.** Put the Pro-L 2 meter (settings from 1.5) right after B1 and play the whole take. Integrated should read **−20.0 LUFS (±0.5)**, the same level LEAD has after L1. If it doesn't, change B1's Output Gain by the difference. Then remove the meter.
+2. Alt-solo DBL BUS. You should hear a wide, smooth wall of four voices, slightly darker than the lead, plus their hall (DBL BUS feeds FX HALL).
+3. B4's gain-reduction meter should show **5–7 dB** on loud lines: a little more than L5, because B4's threshold is 2 dB lower.
+4. The DBL BUS fader is set in section 6.
 
 ---
 
@@ -470,7 +480,7 @@ Globals: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Aut
 | Style | Modern | FabFilter's style for natural, realistic spaces: a believable arena without vintage shimmer |
 | SPACE | **3.4 s** (yellow readout) | Arena-sized tail |
 | Decay Rate | 100 (SPACE then shows a single time) | Uses SPACE's decay as is |
-| PREDELAY | Sync **16th Note**, Offset 100 (type the number) | A clear gap before the hall: the words land first. It follows your tempo |
+| PREDELAY | Sync **16th Note** (click the small sync icon above PREDELAY), Offset 100 (type the number) | A clear gap before the hall: the words land first. It follows your tempo |
 | CHARACTER | 40 | A little life in the tail, below the 50% point where modulation starts |
 | THICKNESS | 0% (typed travel) | Minimum: no added density or saturation in the reverb |
 | DISTANCE | 55 | Longer build-up and a more diffuse tail: big-room feel |
@@ -514,7 +524,7 @@ To make the EQ bands: in the Decay Rate EQ, drag the curve at the far left to ma
 | Mix | 100 | Full effect |
 
 **Dial it in (FX HALL)**
-1. Solo FX HALL. You should hear a big, bright, long arena tail.
+1. Alt-solo FX HALL and play. Along with your lead you should hear a big, bright, long arena tail.
 2. Unsolo it. R8.2 should show about **10 dB** of reduction while you sing. When you stop, the hall should bloom up.
 
 ### 4.2 FX DELAY (insert 9)
@@ -541,21 +551,21 @@ To make the EQ bands: in the Decay Rate EQ, drag the curve at the far left to ma
 | Filter 1 | Low cut (high-pass), style **Clean**, 300 Hz, Q 0.7, 12 dB/oct, pan centre | Keeps the echoes out of the lows |
 | Filter 2 | High cut (low-pass), style **Clean**, 7.0 kHz, Q 0.7, 12 dB/oct, pan centre | Bright but not brittle |
 | Filter Routing | Serial | Both filters shape every repeat |
-| DRIVE / LO-FI | 0 / 0 | Clean echoes; the warmth is on the voice |
-| DIFFUSE | 20 | Softens the repeats so they blend into the arena |
-| DYNAMICS | Centre: Ctrl-click to reset, pointer at 12 o'clock | Neutral |
+| DRIVE / LO-FI | Off / Off (amounts 0 / 0) | Clean echoes; the warmth is on the voice |
+| DIFFUSE | **On**, 20 | Softens the repeats so they blend into the arena |
+| DYNAMICS | Off (amount at centre: Ctrl-click to reset, pointer at 12 o'clock) | Neutral |
 | PITCH | Off | No pitch shifting |
 | Input / Output | 0.0 dB / 0.0 dB, centre | Unity |
 | Channel Mode | Left/Right | Normal stereo |
 | Auto Mute Self-Osc (bottom bar) | On | Silences any filter ringing once the input goes quiet. The Clean filters here shouldn't ring, so it's only a safety net |
 | Modulation | None | Steady repeats |
 
-To make the filters: double-click the far left of the filter display for the low cut and the far right for the high cut. Then double-click each dot to type Frequency and Q, and choose the **Clean** style in its value display.
+To make the filters: double-click the far left of the filter display for the low cut and the far right for the high cut. Then double-click each dot to type Frequency and Q, and choose the **Clean** style in its value display. The five effect knobs (DRIVE, LO-FI, DIFFUSE, DYNAMICS, PITCH) switch on or off when you click once at the knob's centre; dragging sets the amount.
 
 **R9.2 · Pro-C 3 · ducker:** same as R8.2, except RANGE **12 dB** · ATTACK **5 ms** · RELEASE **250 ms** · HOLD **40 ms**. The echoes duck a little deeper than the hall and come back a little faster.
 
 **Dial it in (FX DELAY)**
-1. Solo FX DELAY while LEAD plays. You should hear wide, soft ¼-note ping-pong repeats.
+1. Alt-solo FX DELAY and play. Behind your lead you should hear wide, soft ¼-note ping-pong repeats.
 2. Check the L and R readouts under DELAY against section 5 for your BPM. If they don't match, turn Delay Sync off and type the ms value from section 5.
 3. Unsolo it. R9.2 should show about **12 dB** of reduction while you sing, with the echoes blooming in the gaps.
 
@@ -585,8 +595,8 @@ For tempos between rows: ¼ = 60000 ÷ BPM; 1/16 = 15000 ÷ BPM.
 
 ### 6.1 Place the lead (target: 1.5 LU under the beat)
 
-1. Load the **Pro-L 2 meter** (settings from 1.5, but time scale **Short Term**) as the last slot on BEAT and as the last slot on LEAD.
-2. Play the loudest 8 bars. Read **Beat ST** and **Lead ST**. These readings are pre-fader.
+1. Load the **Pro-L 2 meter** (settings from 1.5) as the last slot on BEAT and as the last slot on LEAD. On each, set the max readout above the loudness meter to **Max S** (Max Short Term), then click the loudness reset button.
+2. Play the loudest 8 bars once. Read **Max S** on each meter: that's **Beat ST** on BEAT and **Lead ST** on LEAD. These readings are pre-fader.
 3. Set the **LEAD fader = (Beat ST + BEAT fader − 1.5) − Lead ST**.
    - Example: Beat ST −9.0, BEAT fader −6.0 dB, Lead ST −18.0 → (−9.0 − 6.0 − 1.5) − (−18.0) = **+1.5 dB**.
 4. Remove both Pro-L 2 meters.
