@@ -447,6 +447,7 @@ Globals on all three D2s: Zero Latency · Clean · Output Gain 0.0 dB · Output 
 | PITCH | Off | No pitch shifting in the delay |
 | Input / Output | 0.0 dB / 0.0 dB, centre | Unity |
 | Channel Mode | Left/Right | Normal stereo |
+| Auto Mute Self-Osc (bottom bar) | On | Silences any filter ringing once the input goes quiet. The Clean filters here shouldn't ring, so it's only a safety net |
 | Modulation | None | Steady repeats |
 
 To make the filters: double-click the far left of the filter display for the low cut and the far right for the high cut. Then double-click each dot to type Frequency and Q, and choose the **Clean** style in its value display.

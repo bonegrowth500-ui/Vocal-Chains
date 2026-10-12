@@ -1,6 +1,6 @@
 # Build Plan: The 4 Vocal Chain Files
 
-> **Status:** Steps 1–3 done: boundaries locked (Appendices A–D), toolkit verified (Appendix E), and all four chains designed (Appendix F), with judgement calls J23–J56. **Waiting for your cue to run Step 4.** Nothing in `chains/` has been written yet.
+> **Status:** Steps 1–4 done: boundaries locked (Appendices A–D), toolkit verified (Appendix E), all four chains designed (Appendix F), and all four chain files written in `chains/`, with judgement calls J23–J58. **Waiting for your cue to run Step 5.**
 > **Governing document:** `SPEC.md` (frozen). This plan only decides *how* the spec gets delivered, never *what* the spec is.
 > **Last updated:** 2026-10-12
 
@@ -182,6 +182,8 @@
 
 **Exit gate:** four complete files in `chains/`, each passing the per-file checks.
 
+**Result:** ✅ Met on 2026-10-12. Four files in `chains/`, written in order 04 → 05 → 06 → 09, each committed and pushed as a checkpoint. Every file passes the automated per-file checks (the automated parts of 5.1–5.7): the identity line, all eight sections, no blocked tools or out-of-scope terms, no saturation in #4 and #9, complete tables with a Why on every setting, a Dial it in for every slot and return, a recomputed delay table, value ranges, every Appendix F value present, the right number of doubles, and 8–12 troubleshooting entries. Calls J57–J58. Step 5 runs the full QA, including the manual audits, the cross-file audit, and the cold read.
+
 ---
 
 ## Step 5: Verify everything (QA gates)
@@ -250,8 +252,8 @@
 | 1. Lock boundaries and pre-resolve ambiguities | ✅ Done: Appendices A–D, J23–J30 |
 | 2. Verify the toolkit | ✅ Done: Appendix E, J31–J42 |
 | 3. Design blueprints | ✅ Done: Appendix F, J43–J56 |
-| 4. Write the files | ⏸ Waiting for cue |
-| 5. QA gates | ⏸ |
+| 4. Write the files | ✅ Done: `chains/` (4 files), J57–J58 |
+| 5. QA gates | ⏸ Waiting for cue |
 | 6. Deliver | ⏸ |
 
 ---
@@ -1133,3 +1135,5 @@ New delivery calls made during creation are added here, starting at J23.
 | J54 | 04, 09 | Where the chorus sits (C3) | On the Doubles bus. FL's pan collapses a per-double chorus's stereo spread on panned doubles, while a bus chorus keeps L and R moving differently | Delivers the §7 width / chorus rows |
 | J55 | 04 | The Alien layer's band-pass tool (C3) | Pro-Q 4 cuts (500 Hz–5 kHz) in the double's own EQ slot; Volcano 3 isn't needed | J8; fewer plugins, all clean |
 | J56 | All | Auto-Tune Artist's Throat range is unpublished | Values stay between 94 and 111 (Antares' screenshots show 100 and 111): small variations around 100 for the doubles, 111 for the alien layer's bigger shift | J33; §6.4; §7 #4 |
+| J57 | All | J43's typed-percentage entry is ambiguous on knobs whose own unit is %: typing "38%" could mean the value 38% or 38% of the knob's travel | Knobs with a % unit get a bare number, which sets the value in the knob's own unit (FEEDBACK 38, Delay Offset 75, CHARACTER 40). "NN%" typed travel is kept only for knobs with unpublished units (Pro-R 2 BRIGHTNESS, THICKNESS, DUCKING; Pro-C 3 DRY; Saturn 2 DRIVE, MIX, FEEDBACK). Bipolar knobs with unpublished units (Timeless 3 and Saturn 2 DYNAMICS, Saturn 2 TONE) are reset with Ctrl-click and checked at 12 o'clock, and Timeless 3 WET is reset with Ctrl-click and read back as 0.0 dB. This refines J43 and Appendix F's "50% typed" base rows | Same values as Appendix F, entered in a way that can't land on the wrong one (§4) |
+| J58 | All | The final listen needs a check that the doubles and returns do their job, but hearing the whole mix in mono needs a control or plugin on the Master | Section 6.3 uses mute checks instead: mute DBL BUS, then the returns, and listen for the described change. No file touches the Master | N05; §3 Out (no master chain) |

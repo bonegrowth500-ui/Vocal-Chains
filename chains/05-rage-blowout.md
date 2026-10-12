@@ -293,7 +293,7 @@ There's no second de-esser in this chain. L7 cuts the top instead of boosting it
 | LEVEL pan ring | Centre | Balanced |
 | Band power | On | The band is active |
 | Input / Output (global) | 0.0 dB / 0.0 dB | Unity |
-| Mix (global) | 100% (typed travel) | Full effect |
+| Mix (global) | 100% (type 100) | Full effect |
 | High Quality | Good | Oversampled distortion: less harsh aliasing |
 | Linear Phase | Off | One band, so no crossovers to correct |
 | Channel Mode | Stereo | Normal |
@@ -510,6 +510,7 @@ To make the Post EQ bands: double-click the far left of the Post EQ display for 
 | PITCH | Off | No pitch shifting |
 | Input / Output | 0.0 dB / 0.0 dB, centre | Unity |
 | Channel Mode | Left/Right | Normal stereo |
+| Auto Mute Self-Osc (bottom bar) | On | Silences any filter ringing once the input goes quiet. The Clean filters here shouldn't ring, so it's only a safety net |
 | Modulation | None | Steady repeats |
 
 To make the filters: double-click the far left of the filter display for the low cut and the far right for the high cut. Then double-click each dot to type Frequency and Q, and choose the **Clean** style in its value display.
