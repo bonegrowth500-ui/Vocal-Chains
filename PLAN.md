@@ -1,6 +1,6 @@
 # Build Plan: The 4 Vocal Chain Files
 
-> **Status:** Step 1 done: boundaries locked (Appendices A–D, judgement calls J23–J30). **Waiting for your cue to run Step 2.** Nothing in `chains/` has been written yet.
+> **Status:** Steps 1–2 done: boundaries locked (Appendices A–D) and toolkit verified (Appendix E), with judgement calls J23–J42. **Waiting for your cue to run Step 3.** Nothing in `chains/` has been written yet.
 > **Governing document:** `SPEC.md` (frozen). This plan only decides *how* the spec gets delivered, never *what* the spec is.
 > **Last updated:** 2026-10-12
 
@@ -81,7 +81,7 @@
   - **FabFilter:** Pro-Q 4, Pro-C 3, Pro-DS, Pro-G, Pro-MB, Saturn 2, Timeless 3, Pro-R 2, Volcano 3, and Pro-L 2 (as a meter only, if chosen in 2.6)
   - **Antares:** the Auto-Tune Artist manual
   - **Image-Line:** the FL manual page for every native plugin used, all from the closed allow-list (J23), e.g., Fruity Chorus, Fruity Phaser, Fruity Delay 3, Fruity Stereo Shaper, Edison. Plus the mixer, playlist, and plugin wrapper pages
-- **2.2 Build a parameter reference sheet per plugin** (in the session scratchpad, not a deliverable). Each sheet lists exact control names as printed in the UI, units, ranges, defaults, modes, and styles. Only names on these sheets may appear in the files.
+- **2.2 Build a parameter reference sheet per plugin** (in the session scratchpad, not a deliverable). Each sheet lists exact control names as printed in the UI, units, ranges, defaults, modes, and styles. Only names on these sheets may appear in the files. A condensed digest of the sheets is kept in Appendix E (J31).
 - **2.3 Verify the Auto-Tune Artist behaviors the spec relies on:**
   - Detune: units and range
   - Throat: range, and whether it depends on Formant being on
@@ -107,6 +107,7 @@
 - **2.9 Handle gaps.** If a needed control doesn't exist, use the spec §5 replacement or an equivalent owned tool, following the J8 rules, and log it.
 
 **Exit gate:** every control and menu path planned for the files is on a verified reference sheet, and the delay table is computed.
+**Result:** ✅ Met on 2026-10-12. 8 reference sheets (2,700+ lines) built from official manuals, help pages, screenshots, and changelogs; digest in Appendix E; gaps handled in E9 with calls J31–J42.
 
 ---
 
@@ -246,8 +247,8 @@
 | Step | Status |
 |---|---|
 | 1. Lock boundaries and pre-resolve ambiguities | ✅ Done: Appendices A–D, J23–J30 |
-| 2. Verify the toolkit | ⏸ Waiting for cue |
-| 3. Design blueprints | ⏸ |
+| 2. Verify the toolkit | ✅ Done: Appendix E, J31–J42 |
+| 3. Design blueprints | ⏸ Waiting for cue |
 | 4. Write the files | ⏸ |
 | 5. QA gates | ⏸ |
 | 6. Deliver | ⏸ |
@@ -404,7 +405,7 @@ Each item is ticked per file during Step 5.1. ☐ = not checked yet. — = doesn
 | FabFilter (12) | Pro-Q 4, Pro-C 3, Pro-DS, Pro-G, Pro-MB, Pro-L 2, Pro-R 2, Saturn 2, Timeless 3, Volcano 3, Simplon, Micro |
 | Antares (1) | Auto-Tune Artist: Key/Scale, Retune Speed, Humanize, Flex-Tune, vibrato controls, Classic Mode, Formant correction, Throat modeling, Transpose, Detune |
 | FL Studio Producer Edition natives (25) | Fruity Parametric EQ 2, Fruity Limiter, Fruity Delay 3, Fruity Delay Bank, Multiband Delay, Fruity Reeverb 2, Fruity Convolver, Fruity Chorus, Fruity Flanger, Fruity Phaser, Fruity Stereo Shaper, Fruity Stereo Enhancer, Fruity Love Philter, Fruity Soft Clipper, Fruity Fast Dist, Fruity Blood Overdrive, Fruity WaveShaper, Fruity Squeeze, Frequency Splitter, Frequency Shifter, Maximus, Vocodex, Effector, Patcher, Edison |
-| FL Studio built-ins (not plugins) | Mixer faders, pan, stereo separation, sends, sidechain routing, mixer meters, playlist clip editing, channel settings |
+| FL Studio built-ins (not plugins) | Mixer faders, pan, stereo separation, sends, sidechain routing, mixer Track delay (added in Step 2, J34), mixer meters, playlist clip editing, channel settings |
 
 Being on the allow-list means a plugin *may* be used, not that it will be. J26 still decides whether a processor belongs in a chain.
 
@@ -569,6 +570,241 @@ This lists every place the spec leaves a value or method open, the rule that set
 
 ---
 
+## Appendix E: Verified toolkit digest (Step 2)
+
+This is condensed from 8 reference sheets (2,700+ lines, kept in the session scratchpad). They were built from official manuals, help pages, UI screenshots, release notes, and changelogs. The **Source** column says where each fact comes from: **Text** = official manual/help text; **Shot** = official UI screenshot; **Notes** = official release notes; **Staff** = FabFilter staff forum post; **2nd** = corroborated non-official source, used only for option labels, never for ranges. "Unpublished" = no official value exists; J33 governs those.
+
+### E1. Versions documented
+
+| Tool | Current version | Documentation used |
+|---|---|---|
+| FL Studio (Producer Edition) | The online manual now covers FL Studio 2026 (26.1.7, 2026-09-28). The changelog shows no parameter changes to the natives used here since FL 2024, except Parametric EQ 2's HQ+ | Image-Line online manual + changelog |
+| Auto-Tune Artist | 9.6.0 (discontinued, still downloadable for owners) | Antares User Guide (documents the 9.0 UI; the 9.5/9.6 notes list no control changes) |
+| Pro-Q 4 / Pro-C 3 / Pro-DS / Pro-G / Pro-L 2 | 4.13 / 3.02 / 1.32 / 1.42 / 2.26 | FabFilter online help + PDF manuals (Apr 2026) |
+| Pro-R 2 / Timeless 3 / Saturn 2 / Volcano 3 / Simplon | 2.06 / 3.10 / 2.13 / 3.09 / 1.42 | FabFilter online help + PDF manuals (Apr 2026) |
+| Lewitt LCT 440 PURE | — | Official product page + manual Figure 9.1 |
+
+### E2. Auto-Tune Artist
+
+| Control (UI label) | Range / options | Source |
+|---|---|---|
+| INPUT TYPE | Soprano, Alto/Tenor, Low Male, Instrument, Bass Instrument | Text p.9 |
+| KEY / SCALE | 28 scales, including CHROMATIC | Text p.10, p.31–33 |
+| CLASSIC | On/off. "Auto-Tune 5 sound"; disables Formant, Throat, Transpose, and Flex-Tune | Text p.10 |
+| FORMANT | On/off. Corrects formants after pitch shifts (prevents the "chipmunk" effect) | Text p.10–11 |
+| THROAT | 100 = neutral; only active with FORMANT on; full range unpublished | Text p.11; Shot p.13 |
+| TRANSPOSE | −12 to +12 semitones | Text p.11 |
+| DETUNE | −100 to +100 cents (shown in cents or Hz); 0 c = A440. Shifts the target pitches themselves | Text p.11, p.28 |
+| TRACKING | Default 50 | Text p.12 |
+| RETUNE SPEED | ms. 0 = the hard "Auto-Tune Effect"; 10–50 is typical for natural correction | Text p.13–14 |
+| FLEX-TUNE | 0 = always pulls to the note; higher values let more expression through; 0–100 scale | Text p.14; Shot |
+| HUMANIZE | Slows retuning on sustained notes only; 0–100 scale (50 sits at 12 o'clock) | Text p.14; Shot p.14 |
+| NATURAL VIBRATO | 0.0 at 12 o'clock (bipolar) | Shot p.13 |
+| Advanced view | Vibrato SHAPE (No Vibrato / Sine Wave / Square / Sawtooth), RATE (Hz), ONSET DELAY (ms), ONSET RATE (ms), VARIATION, PITCH.AMT. (cents), AMPLITUDE AMT., FORMANT AMT.; TARGETING IGNORES VIBRATO. Ranges unpublished | Text p.20–22 |
+| Settings | "Use Low Latency" (off = highest-quality processing) | Text p.29 |
+| Not present | No Mix knob documented; no plug-in bypass (use FL's) | Text |
+
+### E3. FabFilter
+
+**Pro-Q 4**
+
+| Control | Range / options | Source |
+|---|---|---|
+| Band shape | Bell, Low Shelf, Low Cut, High Shelf, High Cut, Notch, Band Pass, Tilt Shelf, Flat Tilt, All Pass | Text |
+| Slope | 0–96 dB/oct in fractional steps, plus Brickwall on cuts. Minimums: Bell/Notch 12; cuts/Band Pass 0; others 6 | Text |
+| FREQ / GAIN / Q | 10 Hz–30 kHz / −30 to +30 dB / Q default 1 (range unpublished) | Text |
+| Stereo placement | Left, Right, Stereo, Mid, Side | Text |
+| Dynamics | Range ring −30 to +30 dB (0 = static); Threshold slider with A (auto); "expand >>"; External side chain button per band; A / R knobs (50% = auto); Triggering Band / Free | Text |
+| Spectral | Per band; always linear phase, about 100 ms latency | Text; Staff |
+| Processing Mode | Zero Latency / Natural Phase / Linear Phase (default unpublished) | Text |
+| Character | Clean (default) / Subtle (transformer) / Warm (tube). Subtle and Warm add saturation | Text |
+| Global | Output Gain −∞ to +36 dB; Auto Gain; Gain Scale (%); Phase Invert (Ø); Output Pan in L/R or M/S mode | Text |
+| Meter | Output level meter with peak readout | Product page |
+
+**Pro-DS**
+
+| Control | Range / options | Source |
+|---|---|---|
+| MODE | SINGLE VOCAL / ALLROUND | Shot |
+| WIDE BAND / SPLIT BAND | Split Band is linear-phase and adds latency | Shot; Text |
+| THRESHOLD / RANGE | −∞ to 0 dB / 0–24 dB | Shot |
+| HP / LP trigger filters | 2–20 kHz | Text |
+| LOOKAHEAD | 0–15 ms + on/off; help suggests about 10 ms for vocals | Shot; Text |
+| STEREO LINK | 0–100%, then Mid- or Side-only | Text |
+| Also | SIDE CHAIN In / Ext; Audition Triggering; Audition; Oversampling: Off / 2x / 4x; In: / Out: level and pan (ranges unpublished) | Shot; Text |
+| Meters | Output and gain-reduction meters with max-level dB readouts (click to reset) | Text |
+
+**Pro-G**
+
+| Control | Range / options | Source |
+|---|---|---|
+| Style | Classic, Clean, Vocal, Guitar, Upward, Ducking | Text |
+| Core | THRESHOLD −60 to 0 dB; RATIO 1:1 to ∞:1 (help: 2:1–5:1 for natural expansion); RANGE 0–100 dB; ATTACK 0 ms–1 s; RELEASE 0 ms–5 s; HOLD 0–250 ms; KNEE 0–30 dB; LOOKAHEAD 0–10 ms + on/off | Shot; Text |
+| Expert | WET / DRY (OFF to +36 dB, with pan); SIDE CHAIN In / Ext; side-chain HP/LP 48 dB/oct; Audition; side-chain gain ±36 dB | Text |
+| Also | Oversampling: Off / 2x / 4x; In: / Out: (ranges unpublished) | Shot |
+
+**Pro-C 3**
+
+| Control | Range / options | Source |
+|---|---|---|
+| Style (14) | Modern: Clean, Versatile, Smooth, Punch, Upward, TTM. Classic: Op-El, Vari-Mu, Classic, Opto. Utility: Vocal, Mastering, Bus, Pumping. Opto-type = Opto, Op-El. Vocal sets knee and ratio automatically | Text |
+| THRESHOLD (AUTO, lock) / RANGE | dB; ranges unpublished | Shot |
+| RATIO / KNEE | 1:1 to ∞ / 0–72 dB | Text |
+| ATTACK / RELEASE (AUTO) | 0.005–250 ms / range unpublished | Text |
+| LOOKAHEAD / HOLD | Up to 20 ms (global maximum Off–20 ms) / up to 500 ms | Text |
+| GAIN (AUTO) / DRY | dB; ranges unpublished | Shot |
+| Bottom bar | Input / Output / Mix (Mix 0–200%); Oversampling: Off, 2x, 4x, 8x, 16x, 32x | Text |
+| Character | Off / Tube / Diode / Bright, plus Drive (range unpublished) and Pre/Post (Post default) | Text |
+| SIDE CHAIN | Side Chain Input: Internal (default) / External / Host Sync / MIDI; LEVEL; STEREO LINK (0–100%, then Mid / Side / M>S / S>M); side-chain EQ up to 6 bands; Audition | Text |
+| Meters | Gain reduction + output (+ input via Help > Show Input Level); numeric highest-peak readouts; EBU Momentary loudness on top | Text |
+
+**Pro-L 2** (meter only, per J35)
+
+| Item | Detail | Source |
+|---|---|---|
+| Loudness meter | Meter Scale → Loudness: Momentary, Short Term, Integrated (LUFS, BS.1770-4, gated); LRA; TP metering | Text |
+| Transparent setup | True Peak Limiting off, Oversampling off, Gain 0 dB, Output Level 0 dB; Dither, DC, Unity Gain, Audition Limiting off. With these, no limiting happens while the input stays below 0 dB | Text; Staff |
+
+**Saturn 2**
+
+| Control | Range / options | Source |
+|---|---|---|
+| Per band | Style button; DRIVE (with pan ring; unit unpublished); MIX; FEEDBACK; FREQ; DYNAMICS; TONE (4 sliders: bass / mid / treble / presence); LEVEL −∞ to +36 dB (with pan ring); band power button (bypass); solo/mute with 2+ bands | Text |
+| Bands | Up to 6; add with "+"; drag a crossover or double-click it to type Hz; slopes 6/12/24/48 dB/oct; Linear Phase button | Text |
+| Global | Input / Output −36 to +36 dB; Mix %; High Quality: Good (8×) / Superb (32×); Channel Mode Stereo / Mid-Side; FB (unrestricted feedback) off by default | Text |
+| Style names | Official: Warm Tape, Smudge, Breakdown, Foldback, Rectify, Destroy. Release notes: Subtle Tube / Tape / Saturation; British Rock / Pop; American Tweed / Plexi; Subtle / Gentle / Warm Transformer. Corroborated: Clean Tube, Warm Tube, Broken Tube, Clean Tape, Old Tape, Smooth Amp, Crunchy Amp, Lead Amp, Screaming Amp, Power Amp, Gentle Saturation, Heavy Saturation. Menu sections: Tube, Tape, Amp, Saturation, Transformer, FX | Text; Shot; Notes; 2nd |
+| Behavior | Some input color remains even with a band's MIX fully dry; an always-on output soft clipper (higher ceiling for Subtle / Transformer styles) | Staff |
+
+**Timeless 3**
+
+| Control | Range / options | Source |
+|---|---|---|
+| DELAY | 5 ms–5 s; L / R time readouts under the knob; Delay Time Pan (up to 400%) | Text; Shot |
+| Delay Sync (icon) | Mode list unpublished. When on, DELAY becomes Delay Offset, 50–200% (typing "d" / "t" gives dotted / triplet) | Text |
+| Delay Read Mode | Tape / Stretch | Text |
+| FEEDBACK / CROSS | 0–200% (above 100% drives the internal saturation) / 0–100%; Feedback Pan; ± invert | Text |
+| Ping Pong (icon) | Starts from L or R; feeds one channel, cross-feedback only | Text |
+| Output side | WIDTH (MONO…STEREO); WET (pan ring); MIX 0–100% (100% = wet only); Lock Mix | Text; Shot |
+| Filters | Up to 6, in the feedback loop. LP / HP / BP are analog-style with styles, including Clean ("no saturation"). Bell / Shelf / Notch are clean. Freq / Gain / Q / Pan per filter; routing Serial / Parallel / Per-channel | Text |
+| Color stages | DRIVE, LO-FI, DIFFUSE 0–100%; DYNAMICS gate↔compression; PITCH −12 to +12 (minimum delay becomes 45 ms when on) | Text; Shot |
+| Modulation | "+" → New XLFO (0.02–500 Hz, or synced 16 to 1/64 bars) → drag onto the target → slot Level = depth | Text |
+| Also | Input / Output gain −36 to +36 dB; Channel Mode Left/Right (default) or Mid/Side; zero latency; no built-in ducking control | Text; Staff |
+
+**Pro-R 2**
+
+| Control | Range / options | Source |
+|---|---|---|
+| Style | Modern / Vintage / Plate | Text |
+| SPACE + Decay Rate | Decay readout in seconds, 0.2–10 s; Decay Rate (% knob) 25–400% (final decay = Space × rate) | Text; Shot |
+| PREDELAY | 0–500 ms; sync Off (default) / Quarter Note / 8th Note / 16th Note / 32th Note [sic]; Predelay Offset 50–200% | Text |
+| CHARACTER | 0–100% (0% transparent; modulation rises from 50%) | Text |
+| THICKNESS / BRIGHTNESS / DUCKING | Density + saturation / high-frequency absorption / built-in ducking range. All three ranges unpublished | Text |
+| DISTANCE / WIDTH | From 0% / 0% mono, 100% independent channels, above 100% boosts the side signal | Text |
+| Also | MIX % (100% on sends); Lock Mix; Auto Gate; Freeze | Text |
+| EQs | Decay Rate EQ: 6 bands (Bell, Low Shelf, High Shelf, Notch). Post EQ: 6 bands (Bell, Low Shelf, High Shelf, Low Cut, High Cut; cuts up to 96 dB/oct) | Text |
+
+**Volcano 3 and Simplon** (band-pass candidates)
+
+| Plugin | Facts | Source |
+|---|---|---|
+| Volcano 3 | 4 filters; shapes low/high pass, band pass, bell, low/high shelf, notch, all pass; slopes 6/12/24/48 dB/oct; 11 styles, including Clean ("linear behavior with no drive or clipping at all"); DRIVE, FREQUENCY, PEAK, SLOPE, DELAY (≤ 50 ms), LEVEL | Text |
+| Simplon | Low / High / Band Pass; characteristics FabFilter One / Gentle / Raw. **Every characteristic includes overdrive** (none is linear), so it can't be a clean band-pass | Text |
+
+### E4. FL Studio native plugins
+
+| Plugin | Controls (panel labels) and what's documented | Source |
+|---|---|---|
+| Fruity Chorus | DELAY 0–30 ms; DEPTH (ms; screenshot 2.25); STEREO 0–360°; LFO 1/2/3 FREQ. (Hz; screenshot 0.45 / 1.25 / 2.45); LFO 1/2/3 WAVE ("sin" shown, "Multi-sine" named); CROSS TYPE ("Process HF" on the panel; the text says Process HP / LP); CROSS CUTOFF (Hz; screenshot 320); WET ONLY (no/yes). No mix or output knob | Text; Shot |
+| Fruity Phaser | SWEEP FREQ. (0–2 Hz in small range, 0–10 Hz in large); MIN DEPTH / MAX DEPTH (screenshot 0.10 / 0.80); FREQ. RANGE (small / large); STEREO (0–360°; readout says "phase"); NR. STAGES (up to 23; "stompboxes usually have 4 or 6"); FEEDBACK (screenshot 0.40); DRY-WET (% wet); OUT GAIN (dB) | Text; Shot |
+| Not usable / not preferred | Fruity Delay 3: its feedback-distortion stage has no Off, so a clean copy can't be guaranteed. Fruity Stereo Shaper: delays only one channel. Parametric EQ 2 main level: range unpublished. Blood Overdrive / Fast Dist / Soft Clipper / WaveShaper: no ranges or defaults published (still allowed, J33) | Text |
+| Typing values | Right-click → "Type in value". Context-aware units are confirmed for Parametric EQ 2, Blood Overdrive, Fast Dist, WaveShaper, Soft Clipper, and Stereo Shaper, but **not** for Chorus, Phaser, or Delay 3: set those by dragging while reading the hint bar. Ctrl-drag = fine adjust; Alt-click = reset | Text |
+
+### E5. FL Studio procedures (FL 2026 wording; all present since FL 2024)
+
+| Task | Exact steps | Source |
+|---|---|---|
+| Send, keeping Master | Select the source → left-click the destination's send switch. The level knob sits on the destination; right-click → "Type in value" (the hint shows dB) | Text |
+| Route only to a bus | Select the source → left-click the bus's send switch → left-click Master's send switch off. Or Track routing → "Route selected to this track only" | Text |
+| Sidechain feed | Select the source → right-click the target's send switch → "Sidechain to this track". This is a send at 0, so it's silent; the source keeps its Master route | Text |
+| Feed a VST3 sidechain | Plugin window gear → "Plugin Wrapper Settings" → "Processing" → "Connections": right-click the sidechain input number and pick the source (or "Auto map inputs"). Then enable the plugin's own external side chain | Text |
+| Delay compensation | Mixer menu → "Plugin delay compensation" → "Automatic" (the default). Covers sends and sidechains | Text |
+| Send position | Post-fader, after the insert effects | Text |
+| Track delay | Clock icon on the mixer track → "Set in ms (milliseconds)". Not cancelled by PDC; sign convention unpublished | Text |
+| Doubles on own inserts | Shift-drag a copy to a new playlist track → clip menu "Make unique" (not "Make unique as sample") → channel settings TRACK = the double's insert | Text |
+| Rename / color | Right-click the track → "Rename, color & icon..." (F2) | Text |
+| Pan / separation | Pan in %; Circular pan law (−3 dB center) by default. Stereo separation: center = off, right = narrower toward mono, left = wider | Text |
+| Mixer meters | Peak only, no numeric readout (hover → hint bar) | Text |
+| Edison denoise | Select a noise-only part → Tools > Spectral > "Aquire noise profile" [sic] (Alt+U) → "Clean up (denoise)" (Ctrl+U) → Preview, set Threshold first, then Amount ("Output noise only" to check) → Accept | Text |
+
+### E6. Meters chosen (sub-step 2.6, J35)
+
+| Job | Meter | How it's used |
+|---|---|---|
+| Calibration (J2) | Pro-L 2, transparent setup, **Integrated** loudness | Temporarily first on the Lead insert; play the whole raw take; trim = target − reading; then remove it |
+| Placement (J6) | Pro-L 2, **Short Term** loudness | Temporarily on the beat insert and last on the Lead insert; read both on the loudest section; set the Lead fader to the target gap; then remove it |
+| Gain-reduction readings (J18) | Each dynamics plugin's own meter | Pro-C 3 and Pro-DS have numeric max readouts |
+| Beat headroom (J7) | FL Master peak meter (hint bar) | Read while the beat plays alone |
+
+### E7. Mic facts (sub-step 2.7)
+
+From Lewitt's official Figure 9.1 (read to about ±0.5 dB):
+- **Lows and mids:** flat. −1.5 dB at 20 Hz, 0 dB from 150 Hz to 1 kHz.
+- **Gentle rise:** +1 dB at 2 kHz, **+3.5 dB presence bump near 4 kHz**, +2.5 dB at 6–7 kHz.
+- **Air:** **+5 dB peak near 12–13 kHz**, back to 0 dB at 20 kHz.
+
+So the spec's "leans bright" is confirmed. Harshness control centers on 3.5–5 kHz, de-essing on the band above it, and air boosts can be smaller than usual. The boxiness comes from the booth, not the mic. Lewitt calls the mic "neutral", "never straining or harsh".
+
+### E8. Delay and pre-delay master table (sub-step 2.8)
+
+Computed by script with exact rational math, rounded half-up to 0.1 ms, and self-checked (e.g., 150 BPM dotted ⅛ = 300.0 ms). Each file copies only the columns it uses.
+
+| BPM | 1/2 | 1/4. | 1/4 | 1/8. | 1/8 | 1/8T | 1/16 | 1/32 | 1/64 |
+|---|---|---|---|---|---|---|---|---|---|
+| 130 | 923.1 | 692.3 | 461.5 | 346.2 | 230.8 | 153.8 | 115.4 | 57.7 | 28.8 |
+| 135 | 888.9 | 666.7 | 444.4 | 333.3 | 222.2 | 148.1 | 111.1 | 55.6 | 27.8 |
+| 140 | 857.1 | 642.9 | 428.6 | 321.4 | 214.3 | 142.9 | 107.1 | 53.6 | 26.8 |
+| 145 | 827.6 | 620.7 | 413.8 | 310.3 | 206.9 | 137.9 | 103.4 | 51.7 | 25.9 |
+| 150 | 800.0 | 600.0 | 400.0 | 300.0 | 200.0 | 133.3 | 100.0 | 50.0 | 25.0 |
+| 155 | 774.2 | 580.6 | 387.1 | 290.3 | 193.5 | 129.0 | 96.8 | 48.4 | 24.2 |
+| 160 | 750.0 | 562.5 | 375.0 | 281.3 | 187.5 | 125.0 | 93.8 | 46.9 | 23.4 |
+| 165 | 727.3 | 545.5 | 363.6 | 272.7 | 181.8 | 121.2 | 90.9 | 45.5 | 22.7 |
+| 170 | 705.9 | 529.4 | 352.9 | 264.7 | 176.5 | 117.6 | 88.2 | 44.1 | 22.1 |
+
+### E9. Gaps found and how they're handled (sub-step 2.9)
+
+| Gap | Handling | Call |
+|---|---|---|
+| Vendors publish almost no defaults | Every row states the value to set; no row relies on "default" | J32 |
+| Some ranges are unpublished (Pro-C 3 Threshold / Range / Release / Gain / Dry; Pro-R 2 Thickness / Brightness / Ducking; Timeless 3 filter ranges; Fruity Chorus / Phaser) | Value-selection rule, plus typed entry or readback | J33, J40 |
+| Auto-Tune Artist maximums and Throat range unpublished | Read from the official screenshots | J39 |
+| No clean FL plugin for double time offsets | Mixer Track delay | J34 |
+| FL meters show no numbers | Pro-L 2 as a meter only | J35 |
+| The trim must sit before the dynamic band | Trim-only Pro-Q 4 | J36 |
+| Timeless 3 sync labels unpublished | Quarter-note entry + Delay Offset | J37 |
+| The FL manual now documents FL 2026 | 2026 wording, FL 2024 feature floor | J38 |
+| Pro-Q 4 spectral mode adds about 100 ms latency | Standard dynamic bands, Zero Latency mode | J41 |
+| Built-in ducking and saturation in other plugins | Neutralized where the spec doesn't call for them | J42 |
+| Some Saturn 2 style names are unofficial | J33's option-label clause (name + menu section) | J33 |
+| Simplon always overdrives | Out for the Alien layer's clean band-pass (J9) | — |
+
+### E10. Effect on Step 1's lists
+
+C1 now lists the mixer Track delay among FL built-ins. The C3 "open for Step 3" list after Step 2:
+
+| Job | Status |
+|---|---|
+| Input trim / calibration | **Resolved:** trim-only Pro-Q 4 (J36) |
+| Double time offsets | **Resolved:** FL mixer Track delay (J34) |
+| Placement and calibration meters | **Resolved:** Pro-L 2 as a meter (J35) |
+| Alien layer band-pass | Pro-Q 4 Band Pass, or Volcano 3 in Clean style. Simplon is out (always overdrives) |
+| #5 in-line crunch | Saturn 2 (fully mapped structure) or Pro-C 3 Character. FL distortion natives allowed but unpublished ranges |
+| #5 parallel crunch, mids only | Saturn 2 multiband (band power / mute), or a Pro-Q 4 band-limit around Saturn 2 |
+| #5 doubles' extra dirt + band-limit | Saturn 2 + Pro-Q 4 |
+| #6 light warmth | Saturn 2 (e.g., Warm Tape, an official name), Pro-C 3 Character, or Pro-Q 4 Character |
+| Where the chorus sits (#4, #9) | Unchanged: Fruity Chorus on each double or on the Doubles bus |
+
+---
+
 ## Judgement log
 
 New delivery calls made during creation are added here, starting at J23.
@@ -583,3 +819,15 @@ New delivery calls made during creation are added here, starting at J23.
 | J28 | 09 | Plugg's delay "sitting behind the beat" could mean depth in the mix or late timing | Depth: darker and lower than the beat. The ¼-note stays tempo-synced | §6.6 requires tempo-synced note values, and §7 #9 describes the delay's tone ("highs rolled off") |
 | J29 | All | §6.5 "ducked by the dry lead" could be read as the raw, unprocessed take | The ducking key is the Lead insert's output (§6.1): the processed lead without its returns | §6.1 names the Lead insert as the sidechain source |
 | J30 | 04 | §7 lists the alien layer in the Doubles row, but its own row only mentions throat shift, band-pass, and level | The alien layer is a double, so it gets the full §6.4 recipe (offset, Detune, throat, EQ, pan) on top of its bigger formant shift | §7 #4 places it in the Doubles row, and §6.4 applies to every double |
+| J31 | All | The plan keeps the reference sheets in the scratchpad, which is lost if the session goes idle | The full sheets stay in the scratchpad; Appendix E holds a condensed digest of every verified fact later steps need, so the build can continue from PLAN.md alone | Process record only; no spec content changes |
+| J32 | All | Vendors publish almost no defaults, so J1's "write the actual default value" can't be met | Every table row states the exact value to set, including neutral ones (e.g., DRIVE 0%, Character Off). No row relies on "default" | Strengthens §4 "exact value for every parameter" |
+| J33 | All | Some ranges and a few option labels are unpublished | Values only within (1) published ranges, (2) ranges shown in official screenshots, or (3) where neither exists, the conventional working range for that control type. Every value is entered by typing (FabFilter double-click, FL "Type in value") or set while reading FL's hint bar, and "Dial it in" confirms it on the plugin's readout. Option labels come from official text or screenshots; where only corroborated secondary names exist (some Saturn 2 styles), the file also names the menu section | Keeps every value exact and checkable (§4) |
+| J34 | All | §6.4 needs a time offset per double. Fruity Delay 3 can't guarantee a clean copy, Stereo Shaper delays one channel only, and clips have no ms field | Offsets use each double's mixer Track delay ("Set in ms"), an FL built-in that PDC doesn't cancel. Its sign convention is unpublished; that doesn't matter for doubling, because only the gap from the lead counts. C1 built-ins now include Track delay | Carries out §6.4 with the cleanest owned tool |
+| J35 | All | FL's mixer meters show no numbers, but J2 and J6 need measurable targets | Pro-L 2, in FabFilter's documented transparent setup, is used only as a meter and then removed: Integrated loudness of the raw take for calibration, Short Term loudness of lead vs beat for placement. Gain-reduction readings come from each dynamics plugin's own meter; beat headroom from FL's peak meter hint | Measurement only; nothing is processed (§3 Out, J26) |
+| J36 | All | The trim must come before the dynamic harshness band so that band's threshold is exact. FL clip gain needs FL 2025.1+, and EQ 2's main level range is unpublished | Slot 1 is a trim-only Pro-Q 4 (no bands; Output Gain −∞ to +36 dB) | §6.2 order + J2 |
+| J37 | All | Timeless 3's sync menu entry labels are unpublished | Use the quarter-note sync entry and the documented Delay Offset: ¼ = 100%, dotted ⅛ = 75%, ⅛ = 50%. Confirm against the ms table using the time readouts under DELAY | Keeps §6.6's tempo-synced note values |
+| J38 | All | Image-Line's manual now documents FL Studio 2026, while §9 says FL 2024+ | FL 2026 wording is used, but only features present since FL 2024 (no Clip Properties, Deverb, or other 2025+ features) | §9 assumption |
+| J39 | All | Auto-Tune Artist's maximums and Throat range are unpublished, and Input Type isn't mapped to voice ranges | From the official screenshots: Humanize and Flex-Tune on a 0–100 scale; Throat 100 = neutral. Input Type = Alto/Tenor for your mid-range voice. CLASSIC stays off wherever Formant, Throat, Transpose, or Flex-Tune is needed, because Classic disables them | §2 voice row, §6.4, §7 |
+| J40 | 04, 09 | Fruity Chorus and Fruity Phaser (named by the spec) have mostly unpublished ranges, and typed units aren't confirmed for them | Values are anchored to the documented ranges and the manual's own screenshot readouts, set by dragging while reading FL's hint bar. Labels are as printed on the current panel (e.g., NR. STAGES, CROSS TYPE "Process HF") | §5 names these plugins; §4 exact values |
+| J41 | All | Pro-Q 4's spectral dynamics add about 100 ms of linear-phase latency, and its processing-mode default is unpublished | Harshness bands use standard (non-spectral) dynamics, and every Pro-Q 4 is set to Zero Latency explicitly | Delivers §6.2's dynamic band without extra latency |
+| J42 | All | Several plugins have built-in ducking or saturation the spec doesn't call for (Pro-R 2 DUCKING and THICKNESS; Timeless 3 DRIVE, FEEDBACK above 100%, non-Clean filter styles; Saturn 2's inherent input color) | Built-in ducking is set to zero everywhere (Pro-C 3 does the ducking, J19). Where no saturation is allowed (#4, #9): Timeless 3 DRIVE 0%, FEEDBACK ≤ 100%, filters in Clean style; Pro-R 2 THICKNESS at minimum; Saturn 2 not used | §6.1, J9, J19 |
