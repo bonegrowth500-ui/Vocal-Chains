@@ -1,6 +1,6 @@
 # Build Plan: The 4 Vocal Chain Files
 
-> **Status:** Steps 1–4 done: boundaries locked (Appendices A–D), toolkit verified (Appendix E), all four chains designed (Appendix F), and all four chain files written in `chains/`, with judgement calls J23–J58. **Waiting for your cue to run Step 5.**
+> **Status:** Steps 1–5 done: boundaries locked (Appendices A–D), toolkit verified (Appendix E), all four chains designed (Appendix F), all four chain files written in `chains/`, and every QA gate passed (Appendix G), with judgement calls J23–J70. **Waiting for your cue to run Step 6.**
 > **Governing document:** `SPEC.md` (frozen). This plan only decides *how* the spec gets delivered, never *what* the spec is.
 > **Last updated:** 2026-10-12
 
@@ -213,6 +213,8 @@
 
 **Exit gate:** all gates pass on all four files.
 
+**Result:** ✅ Met on 2026-10-12. All ten gates pass on all four files (Appendix G). The audits and cold reads found three blockers (an effect send that could go silent, an Edison cleanup that missed the take, and no step setting the project tempo) plus a set of majors. All were fixed in ten batches, with the gates re-run after each. Cold reads: round 1 found 3 blockers and 14 majors, round 2 found 4 majors, and the final full round found 3 majors (06 and 09 passed clean). All were fixed, and focused re-checks of the room-tone, Edison, and solo flow then passed on every path. Calls J59–J70; Appendix B is ticked.
+
 ---
 
 ## Step 6: Deliver
@@ -253,8 +255,8 @@
 | 2. Verify the toolkit | ✅ Done: Appendix E, J31–J42 |
 | 3. Design blueprints | ✅ Done: Appendix F, J43–J56 |
 | 4. Write the files | ✅ Done: `chains/` (4 files), J57–J58 |
-| 5. QA gates | ⏸ Waiting for cue |
-| 6. Deliver | ⏸ |
+| 5. QA gates | ✅ Done: Appendix G, J59–J70 |
+| 6. Deliver | ⏸ Waiting for cue |
 
 ---
 
@@ -273,36 +275,36 @@ Step 5 recomputes the SHA-256, and any mismatch fails QA.
 
 ## Appendix B: Boundary checklist (Step 1.2)
 
-Each item is ticked per file during Step 5.1. ☐ = not checked yet. — = doesn't apply to that file.
+Each item was ticked per file in Step 5.1 (2026-10-12, after the Step 5 fixes). ✅ = checked and passing. — = doesn't apply to that file.
 
 ### B1. Required in every file
 
 | ID | Requirement | Spec | 04 | 05 | 06 | 09 |
 |---|---|---|---|---|---|---|
-| R01 | Saved at its exact §1 path, titled with the style name and its §1 identity line | §1 | ☐ | ☐ | ☐ | ☐ |
-| R02 | A full lead vocal chain | §1, §3 In | ☐ | ☐ | ☐ | ☐ |
-| R03 | Doubles processing, with the doubles playing the whole song | §3 In, §7 | ☐ | ☐ | ☐ | ☐ |
-| R04 | Exactly the FX returns this style's §7 rows call for (listed in B2) | §3 In, §7 | ☐ | ☐ | ☐ | ☐ |
-| R05 | An FL routing walkthrough | §3 In, §4 | ☐ | ☐ | ☐ | ☐ |
-| R06 | A troubleshooting section ("if it sounds X → do Y") | §3 In, §4 | ☐ | ☐ | ☐ | ☐ |
-| R07 | An optional beat carve, labeled optional: Pro-Q 4 on the 2-track, dynamic dips in the vocal's presence range, sidechained from the Lead | §3 In, §6.7 | ☐ | ☐ | ☐ | ☐ |
-| R08 | Every plugin slot has a settings table with an exact value and a one-line why for every parameter, then a "Dial it in" step list | §4 | ☐ | ☐ | ☐ | ☐ |
-| R09 | Intermediate level: no basic definitions, but FL-specific clicks spelled out | §4 | ☐ | ☐ | ☐ | ☐ |
-| R10 | Delay times as tempo-synced note values + an ms table for 130–170 BPM | §4, §6.6 | ☐ | ☐ | ☐ | ☐ |
-| R11 | Mixer layout: Lead on its own insert; each double on its own insert → Doubles bus; each reverb, delay, or parallel effect on its own FX return insert, fed by sends (never on the Lead insert) | §6.1, §9 | ☐ | ☐ | ☐ | ☐ |
-| R12 | All ducking is done by Pro-C 3 on the FX return, sidechained from the Lead insert | §6.1 | ☐ | ☐ | ☐ | ☐ |
-| R13 | Cleanup comes first, in this order: trim gain → high-pass → boxiness dip → Pro-Q 4 dynamic harshness band → Pro-DS | §6.2, §2 | ☐ | ☐ | ☐ | ☐ |
-| R14 | Edison denoise and Pro-G expansion are offered only as "if room tone is audible" steps | §6.2 | ☐ | ☐ | ☐ | ☐ |
-| R15 | Chain skeleton: cleanup → Auto-Tune Artist → compression → tone shaping → style processing → sends, with every deviation explained | §6.3 | ☐ | ☐ | ☐ | ☐ |
-| R16 | Every double has its own time offset, its own Auto-Tune Artist Detune, a throat/formant variation, and its own EQ and pan | §6.4, §2 | ☐ | ☐ | ☐ | ☐ |
-| R17 | Delays are always on and ducked by the dry lead, with no automation needed | §6.5 | ☐ | ☐ | ☐ | ☐ |
-| R18 | EQ and de-ess frequencies are set for a mid-range voice | §2 | ☐ | ☐ | ☐ | ☐ |
-| R19 | Oversampling is on where it helps | §2, J27 | ☐ | ☐ | ☐ | ☐ |
-| R20 | Only a light trim at the input (raw peaks are −12 to −6 dBFS) | §2 | ☐ | ☐ | ☐ | ☐ |
-| R21 | The vocal wins its space through its own EQ and level | §2 | ☐ | ☐ | ☐ | ☐ |
-| R22 | Auto-Tune Artist runs in Auto mode, with Key/Scale set per song and Chromatic as the fallback | §9 | ☐ | ☐ | ☐ | ☐ |
-| R23 | Written for FL Studio 2024+ and Pro-C 3 | §9 | ☐ | ☐ | ☐ | ☐ |
-| R24 | Any octave or pitch trick uses Auto-Tune Artist Transpose | §5, §9 | ☐ | ☐ | ☐ | ☐ |
+| R01 | Saved at its exact §1 path, titled with the style name and its §1 identity line | §1 | ✅ | ✅ | ✅ | ✅ |
+| R02 | A full lead vocal chain | §1, §3 In | ✅ | ✅ | ✅ | ✅ |
+| R03 | Doubles processing, with the doubles playing the whole song | §3 In, §7 | ✅ | ✅ | ✅ | ✅ |
+| R04 | Exactly the FX returns this style's §7 rows call for (listed in B2) | §3 In, §7 | ✅ | ✅ | ✅ | ✅ |
+| R05 | An FL routing walkthrough | §3 In, §4 | ✅ | ✅ | ✅ | ✅ |
+| R06 | A troubleshooting section ("if it sounds X → do Y") | §3 In, §4 | ✅ | ✅ | ✅ | ✅ |
+| R07 | An optional beat carve, labeled optional: Pro-Q 4 on the 2-track, dynamic dips in the vocal's presence range, sidechained from the Lead | §3 In, §6.7 | ✅ | ✅ | ✅ | ✅ |
+| R08 | Every plugin slot has a settings table with an exact value and a one-line why for every parameter, then a "Dial it in" step list | §4 | ✅ | ✅ | ✅ | ✅ |
+| R09 | Intermediate level: no basic definitions, but FL-specific clicks spelled out | §4 | ✅ | ✅ | ✅ | ✅ |
+| R10 | Delay times as tempo-synced note values + an ms table for 130–170 BPM | §4, §6.6 | ✅ | ✅ | ✅ | ✅ |
+| R11 | Mixer layout: Lead on its own insert; each double on its own insert → Doubles bus; each reverb, delay, or parallel effect on its own FX return insert, fed by sends (never on the Lead insert) | §6.1, §9 | ✅ | ✅ | ✅ | ✅ |
+| R12 | All ducking is done by Pro-C 3 on the FX return, sidechained from the Lead insert | §6.1 | ✅ | ✅ | ✅ | ✅ |
+| R13 | Cleanup comes first, in this order: trim gain → high-pass → boxiness dip → Pro-Q 4 dynamic harshness band → Pro-DS | §6.2, §2 | ✅ | ✅ | ✅ | ✅ |
+| R14 | Edison denoise and Pro-G expansion are offered only as "if room tone is audible" steps | §6.2 | ✅ | ✅ | ✅ | ✅ |
+| R15 | Chain skeleton: cleanup → Auto-Tune Artist → compression → tone shaping → style processing → sends, with every deviation explained | §6.3 | ✅ | ✅ | ✅ | ✅ |
+| R16 | Every double has its own time offset, its own Auto-Tune Artist Detune, a throat/formant variation, and its own EQ and pan | §6.4, §2 | ✅ | ✅ | ✅ | ✅ |
+| R17 | Delays are always on and ducked by the dry lead, with no automation needed | §6.5 | ✅ | ✅ | ✅ | ✅ |
+| R18 | EQ and de-ess frequencies are set for a mid-range voice | §2 | ✅ | ✅ | ✅ | ✅ |
+| R19 | Oversampling is on where it helps | §2, J27 | ✅ | ✅ | ✅ | ✅ |
+| R20 | Only a light trim at the input (raw peaks are −12 to −6 dBFS) | §2 | ✅ | ✅ | ✅ | ✅ |
+| R21 | The vocal wins its space through its own EQ and level | §2 | ✅ | ✅ | ✅ | ✅ |
+| R22 | Auto-Tune Artist runs in Auto mode, with Key/Scale set per song and Chromatic as the fallback | §9 | ✅ | ✅ | ✅ | ✅ |
+| R23 | Written for FL Studio 2024+ and Pro-C 3 | §9 | ✅ | ✅ | ✅ | ✅ |
+| R24 | Any octave or pitch trick uses Auto-Tune Artist Transpose | §5, §9 | ✅ | ✅ | ✅ | ✅ |
 
 ### B2. Required per file (spec §7)
 
@@ -310,83 +312,83 @@ Each item is ticked per file during Step 5.1. ☐ = not checked yet. — = doesn
 
 | ID | Requirement | Check |
 |---|---|---|
-| AT00 | Returns: exactly two. Delay (Timeless 3 → Fruity Phaser) and Shimmer (Auto-Tune Artist → Pro-R 2). Doubles: 3 inserts (Dbl L, Dbl R, Alien layer) | ☐ |
-| AT01 | FX constant but tasteful: always present, words always clear | ☐ |
-| AT02 | Lead on top and clear; the FX surround it rather than cover it | ☐ |
-| AT03 | Tone bright and crisp, glossy top, harshness controlled | ☐ |
-| AT04 | Tuning hard but smooth: fast retune, light Humanize | ☐ |
-| AT05 | Chorus/detune on the doubles for constant width | ☐ |
-| AT06 | Slow phaser on the delay return | ☐ |
-| AT07 | Main space: dotted-⅛ ping-pong on Timeless 3, always on, ducked by the lead | ☐ |
-| AT08 | Secondary space: quiet octave-up shimmer, Auto-Tune Artist Transpose +12 on a send → Pro-R 2 | ☐ |
-| AT09 | Alien layer: formant-shifted double via Auto-Tune Artist throat modeling, band-passed, blended low | ☐ |
-| AT10 | Doubles: chorused wide L/R pair + the alien layer, whole song | ☐ |
+| AT00 | Returns: exactly two. Delay (Timeless 3 → Fruity Phaser) and Shimmer (Auto-Tune Artist → Pro-R 2). Doubles: 3 inserts (Dbl L, Dbl R, Alien layer) | ✅ |
+| AT01 | FX constant but tasteful: always present, words always clear | ✅ |
+| AT02 | Lead on top and clear; the FX surround it rather than cover it | ✅ |
+| AT03 | Tone bright and crisp, glossy top, harshness controlled | ✅ |
+| AT04 | Tuning hard but smooth: fast retune, light Humanize | ✅ |
+| AT05 | Chorus/detune on the doubles for constant width | ✅ |
+| AT06 | Slow phaser on the delay return | ✅ |
+| AT07 | Main space: dotted-⅛ ping-pong on Timeless 3, always on, ducked by the lead | ✅ |
+| AT08 | Secondary space: quiet octave-up shimmer, Auto-Tune Artist Transpose +12 on a send → Pro-R 2 | ✅ |
+| AT09 | Alien layer: formant-shifted double via Auto-Tune Artist throat modeling, band-passed, blended low | ✅ |
+| AT10 | Doubles: chorused wide L/R pair + the alien layer, whole song | ✅ |
 
 **#5 Rage Blowout** (`chains/05-rage-blowout.md`)
 
 | ID | Requirement | Check |
 |---|---|---|
-| RB00 | Returns: exactly three. Parallel crunch bus, Room, Delay. Doubles: 2 inserts (Dbl L, Dbl R) | ☐ |
-| RB01 | Crunchy: obvious distortion, still controlled | ☐ |
-| RB02 | Built for a mix of melodic and yelled delivery | ☐ |
-| RB03 | Light crunch on the lead itself | ☐ |
-| RB04 | A heavier parallel crunch bus that only distorts the mids (lows stay tight, highs don't fizz) | ☐ |
-| RB05 | Fast compression before the distortion | ☐ |
-| RB06 | On top and cutting: the most forward of the 4 | ☐ |
-| RB07 | Mid-forward and aggressive, top end controlled (no airy shine) | ☐ |
-| RB08 | Tuning hard (fast retune), with Flex-Tune nudged so yells and unpitched shouts don't warble | ☐ |
-| RB09 | A short dark room | ☐ |
-| RB10 | A ducked delay that blooms on line endings | ☐ |
-| RB11 | Doubles: a tight L/R pair at one exact pan inside ±40–50%, dirtier and more band-limited than the lead ("dirty halo"), whole song | ☐ |
+| RB00 | Returns: exactly three. Parallel crunch bus, Room, Delay. Doubles: 2 inserts (Dbl L, Dbl R) | ✅ |
+| RB01 | Crunchy: obvious distortion, still controlled | ✅ |
+| RB02 | Built for a mix of melodic and yelled delivery | ✅ |
+| RB03 | Light crunch on the lead itself | ✅ |
+| RB04 | A heavier parallel crunch bus that only distorts the mids (lows stay tight, highs don't fizz) | ✅ |
+| RB05 | Fast compression before the distortion | ✅ |
+| RB06 | On top and cutting: the most forward of the 4 | ✅ |
+| RB07 | Mid-forward and aggressive, top end controlled (no airy shine) | ✅ |
+| RB08 | Tuning hard (fast retune), with Flex-Tune nudged so yells and unpitched shouts don't warble | ✅ |
+| RB09 | A short dark room | ✅ |
+| RB10 | A ducked delay that blooms on line endings | ✅ |
+| RB11 | Doubles: a tight L/R pair at one exact pan inside ±40–50%, dirtier and more band-limited than the lead ("dirty halo"), whole song | ✅ |
 
 **#6 Melodic Rage Anthem** (`chains/06-melodic-rage-anthem.md`)
 
 | ID | Requirement | Check |
 |---|---|---|
-| MA00 | Returns: exactly two. Hall (Pro-R 2) and Delay (Timeless 3), both ducked. Doubles: 4 inserts (Pair A L/R, Pair B L/R) | ☐ |
-| MA01 | Light warmth: subtle saturation for thickness | ☐ |
-| MA02 | On top and clear: the melody rides over the chaos | ☐ |
-| MA03 | Bright and airy (arena shine), harshness controlled | ☐ |
-| MA04 | Tuning hard but smooth | ☐ |
-| MA05 | An arena-sized hall on Pro-R 2 | ☐ |
-| MA06 | A ¼-note ping-pong delay on Timeless 3 | ☐ |
-| MA07 | Ducked wet behavior: dry and clear while singing, with the space blooming in the gaps | ☐ |
-| MA08 | 4-double wall: Pair A at ±100% + Pair B at one exact pan near ±50% | ☐ |
-| MA09 | Every double distinct (detune, offset, throat, EQ), all tucked low so verses stay clear, whole song | ☐ |
+| MA00 | Returns: exactly two. Hall (Pro-R 2) and Delay (Timeless 3), both ducked. Doubles: 4 inserts (Pair A L/R, Pair B L/R) | ✅ |
+| MA01 | Light warmth: subtle saturation for thickness | ✅ |
+| MA02 | On top and clear: the melody rides over the chaos | ✅ |
+| MA03 | Bright and airy (arena shine), harshness controlled | ✅ |
+| MA04 | Tuning hard but smooth | ✅ |
+| MA05 | An arena-sized hall on Pro-R 2 | ✅ |
+| MA06 | A ¼-note ping-pong delay on Timeless 3 | ✅ |
+| MA07 | Ducked wet behavior: dry and clear while singing, with the space blooming in the gaps | ✅ |
+| MA08 | 4-double wall: Pair A at ±100% + Pair B at one exact pan near ±50% | ✅ |
+| MA09 | Every double distinct (detune, offset, throat, EQ), all tucked low so verses stay clear, whole song | ✅ |
 
 **#9 Plugg Cloud** (`chains/09-plugg-cloud.md`)
 
 | ID | Requirement | Check |
 |---|---|---|
-| PC00 | Returns: exactly two. Delay (Timeless 3) and Plate (Pro-R 2). Doubles: 2 inserts (Dbl L, Dbl R) | ☐ |
-| PC01 | Melted in: even with the beat, not on top | ☐ |
-| PC02 | Soft and airy: warm, buttery body with a breathy, de-essed shimmer on top | ☐ |
-| PC03 | Smooth hard tune: fast retune with Humanize | ☐ |
-| PC04 | Gentle, smooth, opto-style compression | ☐ |
-| PC05 | Delay: long ¼-note echoes, highs rolled off, a slight tape-style wobble (Timeless 3), sitting behind the beat | ☐ |
-| PC06 | Reverb: a medium soft plate, darkened, about 2 s, supporting the delays | ☐ |
-| PC07 | Width: mostly centered lead, chorused L/R doubles | ☐ |
-| PC08 | Doubles: a chorused L/R pair, tucked low, whole song | ☐ |
+| PC00 | Returns: exactly two. Delay (Timeless 3) and Plate (Pro-R 2). Doubles: 2 inserts (Dbl L, Dbl R) | ✅ |
+| PC01 | Melted in: even with the beat, not on top | ✅ |
+| PC02 | Soft and airy: warm, buttery body with a breathy, de-essed shimmer on top | ✅ |
+| PC03 | Smooth hard tune: fast retune with Humanize | ✅ |
+| PC04 | Gentle, smooth, opto-style compression | ✅ |
+| PC05 | Delay: long ¼-note echoes, highs rolled off, a slight tape-style wobble (Timeless 3), sitting behind the beat | ✅ |
+| PC06 | Reverb: a medium soft plate, darkened, about 2 s, supporting the delays | ✅ |
+| PC07 | Width: mostly centered lead, chorused L/R doubles | ✅ |
+| PC08 | Doubles: a chorused L/R pair, tucked low, whole song | ✅ |
 
 ### B3. Must not appear in any file
 
 | ID | Must not appear | Source | 04 | 05 | 06 | 09 |
 |---|---|---|---|---|---|---|
-| N01 | Ad-lib processing or advice | §3 Out | ☐ | ☐ | ☐ | ☐ |
-| N02 | Harmonies or background vocals | §3 Out | ☐ | ☐ | ☐ | ☐ |
-| N03 | An overall vocal bus (the Lead routed through a shared vocal group) | §3 Out, J24 | ☐ | ☐ | ☐ | ☐ |
-| N04 | Tracking or monitoring chains, or low-latency recording setups | §3 Out | ☐ | ☐ | ☐ | ☐ |
-| N05 | A master chain or mastering: any processing on the Master, or on the beat beyond the optional carve | §3 Out, J7 | ☐ | ☐ | ☐ | ☐ |
-| N06 | A section automation map, or any step that needs automation | §3 Out, §6.5, J25 | ☐ | ☐ | ☐ | ☐ |
-| N07 | A signal-flow diagram | §3 Out, J17 | ☐ | ☐ | ☐ | ☐ |
-| N08 | Any plugin outside the allow-list (C1), including everything on the block-list (C2) | §2, §5, J23 | ☐ | ☐ | ☐ | ☐ |
-| N09 | Saturation of any kind: Saturn 2, FL distortion plugins, Pro-C 3 Character, Pro-Q 4 character modes | J9 | ☐ | — | — | ☐ |
-| N10 | Pro-C 2 instructions or fallbacks, or pre-2024 FL menu paths | §9, J13 | ☐ | ☐ | ☐ | ☐ |
-| N11 | Ducking done any way other than Pro-C 3 on the return keyed from the Lead | §6.1, J19 | ☐ | ☐ | ☐ | ☐ |
-| N12 | Doubles detuned any way other than Auto-Tune Artist's Detune (e.g., clip pitch) | §6.4 | ☐ | ☐ | ☐ | ☐ |
-| N13 | Processors beyond their stage's job (limiters, clippers, exciters, wideners, transient shapers, multiband, extra parallel buses) unless a §6/§7 item calls for that effect | J26 | ☐ | ☐ | ☐ | ☐ |
-| N14 | Troubleshooting outside this chain (mastering, ad-libs, re-recording advice) | J15 | ☐ | ☐ | ☐ | ☐ |
-| N15 | Relying on another file (another chain, SPEC, or PLAN) for a required step | J20 | ☐ | ☐ | ☐ | ☐ |
+| N01 | Ad-lib processing or advice | §3 Out | ✅ | ✅ | ✅ | ✅ |
+| N02 | Harmonies or background vocals | §3 Out | ✅ | ✅ | ✅ | ✅ |
+| N03 | An overall vocal bus (the Lead routed through a shared vocal group) | §3 Out, J24 | ✅ | ✅ | ✅ | ✅ |
+| N04 | Tracking or monitoring chains, or low-latency recording setups | §3 Out | ✅ | ✅ | ✅ | ✅ |
+| N05 | A master chain or mastering: any processing on the Master, or on the beat beyond the optional carve | §3 Out, J7 | ✅ | ✅ | ✅ | ✅ |
+| N06 | A section automation map, or any step that needs automation | §3 Out, §6.5, J25 | ✅ | ✅ | ✅ | ✅ |
+| N07 | A signal-flow diagram | §3 Out, J17 | ✅ | ✅ | ✅ | ✅ |
+| N08 | Any plugin outside the allow-list (C1), including everything on the block-list (C2) | §2, §5, J23 | ✅ | ✅ | ✅ | ✅ |
+| N09 | Saturation of any kind: Saturn 2, FL distortion plugins, Pro-C 3 Character, Pro-Q 4 character modes | J9 | ✅ | — | — | ✅ |
+| N10 | Pro-C 2 instructions or fallbacks, or pre-2024 FL menu paths | §9, J13 | ✅ | ✅ | ✅ | ✅ |
+| N11 | Ducking done any way other than Pro-C 3 on the return keyed from the Lead | §6.1, J19 | ✅ | ✅ | ✅ | ✅ |
+| N12 | Doubles detuned any way other than Auto-Tune Artist's Detune (e.g., clip pitch) | §6.4 | ✅ | ✅ | ✅ | ✅ |
+| N13 | Processors beyond their stage's job (limiters, clippers, exciters, wideners, transient shapers, multiband, extra parallel buses) unless a §6/§7 item calls for that effect | J26 | ✅ | ✅ | ✅ | ✅ |
+| N14 | Troubleshooting outside this chain (mastering, ad-libs, re-recording advice) | J15 | ✅ | ✅ | ✅ | ✅ |
+| N15 | Relying on another file (another chain, SPEC, or PLAN) for a required step | J20 | ✅ | ✅ | ✅ | ✅ |
 
 ### B4. Process boundaries (how the build runs)
 
@@ -1095,6 +1097,96 @@ Every §7 difference shows up as a different value; every §6 convention is iden
 
 ---
 
+## Appendix G: QA results (Step 5)
+
+Run on 2026-10-12 against the four files in `chains/`. The automated checks are `check_chain.py` (per file, extended during this step so every fix stays fixed) and `check_plan.py` (this plan). The manual audits were done by reading every file in full. The cold read used independent reviewers who had only the one file and the persona from 5.9.
+
+### G1. Gate results
+
+| Gate | Result | Found and fixed | Calls |
+|---|---|---|---|
+| 5.1 Spec compliance | ✅ Pass | Every B1–B3 row holds in all four files (Appendix B is ticked). Gap fixed: the doubles' D1 and D2 slots had no Dial it in | J65 |
+| 5.2 Toolkit | ✅ Pass | Allow and block lists are clean. Every control name in a settings table appears on the Step 2 reference sheets, and every value is in range. Fixed: Edison's Amount unit (dB, not %); explicit on/off states for Timeless 3's effects | J62, J63 |
+| 5.3 Routing | ✅ Pass | The map, walkthrough, sends, and sidechain references agree. There are no loops, and every sidechain source exists. Fixed (blocker): "Sidechain to this track" on LEAD sends that already fed the returns | J59 |
+| 5.4 Gain staging | ✅ Pass | Lead slots match the −20 LUFS calibration. Fixed: the DBL BUS level is now measured; B4's expected readings follow from its threshold; Rage R8.2's reading wording | J61 |
+| 5.5 Doubles | ✅ Pass | Every double has its own pan, Track delay, Detune, Throat, and EQ. Counts are 3 / 2 / 4 / 2, and all play the whole song | — |
+| 5.6 Math | ✅ Pass | All 63 delay-table cells match `delay_table.py`, whose self-checks pass. Every worked example (T, placement, DBL BUS fader) adds up; these are now checked automatically | — |
+| 5.7 Format | ✅ Pass | Every plugin slot has a table with a Why on every row, plus a Dial it in. Each file has 12 troubleshooting rows and a routing walkthrough, and every table renders | J65 |
+| 5.8 Cross-file | ✅ Pass | Shared blocks have identical settings. Files differ only in insert counts, worked examples, style-specific Why text, and the values §7 sets per style | — |
+| 5.9 Cold read | ✅ Pass (after round 3 and the focused re-checks) | Cold reads: round 1 found 3 blockers and 14 majors, round 2 found 4 majors, and the final full round found 3 majors (06 and 09 passed clean). All were fixed, and focused re-checks of the room-tone, Edison, and solo flow then passed on every path. | J59–J70 |
+| 5.10 Fix and re-run | ✅ Done | Ten fix batches, each followed by a full re-run of the automated gates. `check_chain.py` now also guards every fix | — |
+
+### G2. Cold-read findings (round 1) and what happened to them
+
+| Finding | Raised by | Outcome |
+|---|---|---|
+| "Sidechain to this track" on an existing send could leave the effects silent (blocker) | 04, 05 (06, 09 on first pass) | Fixed (J59). This matched the 5.3 finding |
+| Edison cleaned only the selected gap (blocker when L2a is needed) | 04, 05, 06, 09 | Fixed: deselect first, open with "Edit sample", check the take came back, with the documented Send sample to Playlist remedy (J63) |
+| The project tempo was never set (blocker for every synced time) | 04, 05, 09 | Fixed (J66) |
+| A plain solo can silence a bus's inputs; a return heard with the dry lead | 05, 09 | Fixed: Alt-solo (J60). Rage FX CRUNCH is checked with LEAD's Master route off |
+| Placement read a moving value; the loudest bars may have no vocal; the fader may not reach | 04, 05, 06, 09 | Fixed (J64, J68) |
+| "Toggle bypass, within 1 dB" named no meter | 04, 05, 06, 09 | Fixed (J67) |
+| Beat headroom read from the meter's hover hint; unit of "Type in value" | 05 (others as doubts) | Fixed (J70) |
+| The room-tone decision came too late, or was made twice | 04, 05, 06, 09 | Fixed: 1.3 runs the Test; L2a keeps that answer; doubles made too early get rebuilt |
+| Ducker mapping step easy to miss; no recovery; no re-check after the LEAD fader | 04, 05, 09 | Fixed: pointers in every ducker row and check, a recovery line, and 6.1 step 6 with a target and an action |
+| The DBL BUS check came after B2–B5, and the correction had no sign | 09 | Fixed: check right after B1, and add (−20.0 − reading) |
+| Ping-pong start side names no control | 04, 06 | Handled (J69): the setting is undocumented, so the file says how to confirm it and gives a fallback |
+| Wording and clarity | various | Fixed: fader notes; section 7's link in the map; "Written for" line; Mac shortcuts; L2 steps (double-click, "A" meaning, expand >>, cut-band Q); Pro-DS "In (not Ext)"; meter resets; Pro-R 2 curve colours, typing, and sync wording; Timeless sync and filter-style wording; "typed travel" in troubleshooting; troubleshooting convention; chorus pattern wording; off-grid copies; standalone wording in #5; the 6.1 example's BEAT value; "For any other tempo" |
+| FL's fader maximum (+5.6 dB?) isn't stated | 06, 09 | Not changed: Image-Line's manual doesn't give it, and the J68 rule works without the number |
+| Pro-Q 4 uses "click" for bells but "double-click" for cuts | 04, 09 | Not changed: both are correct per FabFilter |
+| Whether DELAY's readouts show ms while synced; Chorus STEREO units; the PDC menu path | 04, 06 (doubts) | Not changed: the official Timeless screenshot shows ms readouts; Fruity Chorus STEREO is documented in degrees; the PDC path was verified in Step 2 (E5) |
+
+### G2b. Cold-read round 2 (on the fixed files) and what happened
+
+| Finding | Raised by | Outcome |
+|---|---|---|
+| The DBL BUS level check came after B2–B6 were loaded, and a solo left on from the doubles check would make it read about 3 dB low | 05 | Fixed: the B1 row says to check right after loading B1; the check runs with nothing soloed; every Alt-solo check now ends with an unsolo (guarded in `check_chain.py`) |
+| A reader who already did Edison in 1.3 was sent back into Part 1, which would re-denoise the take and delete the doubles | 04, 05 | Fixed: Part 1 is skipped if done in 1.3, the Test says so, and 3.1 skips only if the copies still exist |
+| In Pro-Q 4, a single click only deselects while a band is selected, so "click the display" wouldn't add the bells | 04, 06 | Fixed (FabFilter help): L2 double-clicks the background, and 1.1 explains how to add bands |
+| Pro-Q 4's auto threshold is the slider's top value, not a button | 06 | Fixed (FabFilter help): the dynamics panel stays closed, which is auto mode and matches the table |
+| The doubles might not carry the Edison cleanup, because FL's "Make unique" re-uses the original audio file | 06 | Fixed: 3.1 checks a gap on one double and reruns Part 1 on the doubles if the hiss is back (J63) |
+| Template leftovers: "a ducker" in single-ducker files, a "synced pre-delay" in Rage (whose room pre-delay is a fixed 8 ms), and "the same 8 bars" with no bars named | 09, 05, 06 | Fixed |
+
+### G2c. Cold-read round 3 (final) and the focused re-check
+
+| Finding | Raised by | Outcome |
+|---|---|---|
+| After the room-tone test, LEAD stayed soloed, so the 3.1 check of a double's gap would run with the doubles muted | 04 | Fixed: the test ends with an unsolo, and the double check spells out Alt+left-click and its unsolo (guarded in `check_chain.py`) |
+| Edison's own hiss check then ran unsoloed, with the beat masking the hiss; and 3.1's "run Part 1 on each double" clashed with Part 1's "skip if done in 1.3" | 05 | Fixed: every hiss check solos the cleaned track, every unsolo is Ctrl+right-click, and Part 1 says how to run it on a double's clip and channel |
+| 1.3's "so every copy is clean" overpromised (Make unique may reload the original file) | 09 (aside) | Fixed: it now points to the 3.1 check |
+| Files 06 and 09 | 06, 09 | PASS: no blockers, majors, or regressions |
+
+**Focused re-checks of the room-tone, Edison, doubles and solo flow** (05, walked along three paths: noisy booth found in 1.3, quiet booth, noise found late):
+
+| Finding | Outcome |
+|---|---|
+| The Send sample to Playlist fallback was re-checked after the unsolo, so the beat masked the hiss | Fixed: the re-check happens before the unsolo |
+| When the noise is found late (after routing), Alt-soloing LEAD also played its still-empty returns, raising the hiss | Fixed: a plain solo for LEAD, Alt-solo only for a double (which needs DBL BUS) |
+| The Test's "keep your 1.3 answer" came after the instruction to re-test, and read wrongly on the first run | Fixed: the Test opens with the 1.3 rule |
+| 3.1's "copies from 1.3" let a reader make the doubles twice | Fixed: skip whenever the copies already exist |
+| The D1/D2 check compared DETUNE against a muted lead | Fixed: DETUNE is checked on the readout |
+
+The second focused re-check passed the noisy-booth path (found in 1.3) and the quiet-booth path. On the late-discovery path, "delete the doubles and remake them" left orphan Audio Clip channels and didn't help, because Make unique re-uses the noisy file. Fixed: keep the doubles and run Part 1 on the lead, then on each double. A third check of that path then passed: every clip and channel is cleaned, there are no orphans or duplicates, and nothing is left soloed.
+
+### G3. Facts verified during Step 5
+
+- **Image-Line (FL Studio manual):**
+  - Alt+left-click solos a track with everything routed to and from it; Ctrl+right-click unmutes all.
+  - "Sidechain to this track" is a macro that makes a send at level 0, and any send above 0 carries both audio and a sidechain path.
+  - "Type in value" offers context-aware and normalized units.
+  - Hovering a mixer meter shows the scale value.
+  - Edison: Select > Deselect is the Up arrow; with no selection, Clean up processes the whole sample; Amount is in dB; Threshold is Windows-only, with Smoothing on macOS; right-clicking Send sample to Playlist replaces the selected Audio Clip.
+- **FabFilter:**
+  - Timeless 3's effect knobs have centre power icons and Auto Mute Self-Osc sits in the bottom bar (official screenshot). The ping-pong start side can be left or right, but how to choose it is undocumented.
+  - Pro-C 3: Show Input Level is in the Help menu, and its meters show Momentary loudness indicators.
+  - Pro-L 2 shows Max S with the Integrated time scale, and the max true peak with TP on.
+  - Pro-R 2: the Decay Rate EQ is the blue curve and the Post EQ the yellow one; double-click a dot to type values; double-click at the edges for cuts, drag at the edges for shelves.
+  - Pro-Q 4: double-clicking the background creates a band, while a single click only deselects when a band is selected; the dynamics panel opens with "expand >>", and closing it reverts the band to auto mode (threshold at its top value "A", attack and release at 50%).
+  - FL: "Make unique" re-uses the original audio file in the new Audio Clip channel.
+- **Not documented, so the files work around them:** FL's fader maximum (J68); whether Edison's "Edit sample" updates the clip automatically (J63 adds a check and a remedy); the ping-pong start-side control (J69); Timeless 3's WET unit (the fallback applies only to a dB readout).
+
+---
+
 ## Judgement log
 
 New delivery calls made during creation are added here, starting at J23.
@@ -1137,3 +1229,15 @@ New delivery calls made during creation are added here, starting at J23.
 | J56 | All | Auto-Tune Artist's Throat range is unpublished | Values stay between 94 and 111 (Antares' screenshots show 100 and 111): small variations around 100 for the doubles, 111 for the alien layer's bigger shift | J33; §6.4; §7 #4 |
 | J57 | All | J43's typed-percentage entry is ambiguous on knobs whose own unit is %: typing "38%" could mean the value 38% or 38% of the knob's travel | Knobs with a % unit get a bare number, which sets the value in the knob's own unit (FEEDBACK 38, Delay Offset 75, CHARACTER 40). "NN%" typed travel is kept only for knobs with unpublished units (Pro-R 2 BRIGHTNESS, THICKNESS, DUCKING; Pro-C 3 DRY; Saturn 2 DRIVE, MIX, FEEDBACK). Bipolar knobs with unpublished units (Timeless 3 and Saturn 2 DYNAMICS, Saturn 2 TONE) are reset with Ctrl-click and checked at 12 o'clock, and Timeless 3 WET is reset with Ctrl-click and read back as 0.0 dB. This refines J43 and Appendix F's "50% typed" base rows | Same values as Appendix F, entered in a way that can't land on the wrong one (§4) |
 | J58 | All | The final listen needs a check that the doubles and returns do their job, but hearing the whole mix in mono needs a control or plugin on the Master | Section 6.3 uses mute checks instead: mute DBL BUS, then the returns, and listen for the described change. No file touches the Master | N05; §3 Out (no master chain) |
+| J59 | All | The walkthrough added "Sidechain to this track" on top of LEAD sends that already feed the returns. FL's manual calls that option "a macro to create a send link with the send volume set to 0", and states that any send above 0% carries "BOTH an audio and sidechain send" | The extra step is gone. Each ducked return keys from the LEAD send that already feeds it, and the files warn against the macro there. The beat carve keeps it, because LEAD has no other link to BEAT | §6.1 ducking (Pro-C 3 on the return, keyed from the Lead) is delivered as before, without risking a silent send |
+| J60 | All | Checks said "Solo" a bus, a return, or a double. FL documents only Alt+left-click as soloing "track AND all tracks routed TO and FROM it", so a plain solo may cut off what feeds the track | Those checks use **Alt-solo**, defined once in 1.4, together with the undo (Ctrl+right-click = unmute all). The L2a test keeps a plain right-click solo on LEAD, which has no inputs. Every solo is undone the same way, and every hiss check solos the track it checks | How to verify (§4 FL clicks spelled out) |
+| J61 | All | Gain staging (5.4): the DBL BUS trim offsets were estimates, and B4's expected readings (3–5 dB) did not follow from its threshold, which is 2 dB below L5's. Rage's delay-ducker reading assumed rapping, while §7 says melodic + yelled | Dial it in (DBL BUS) now starts by measuring B1's output with the Pro-L 2 meter: −20.0 LUFS Integrated, the same as LEAD after L1. B1's offset becomes the starting point. B4's expected readings now follow from the threshold: 5–7 dB (#4, #6), 4–5 dB (#9), same as L5 (#5). Rage R8.2 reads about 13–18 dB "while you sing or yell" | Same settings and sound; the checks now match the level that actually arrives (J2, J18) |
+| J62 | All | Timeless 3's five effects (DRIVE, LO-FI, DIFFUSE, DYNAMICS, PITCH) switch on and off by clicking the knob's centre, and their default state is unpublished | Every effect gets an explicit state: DIFFUSE **On** where it has an amount (#4, #6, #9), Off in #5 (amount 0); DRIVE, LO-FI, DYNAMICS, and PITCH Off. The file explains the click | J1 (every audio-affecting control gets a value); J42 (no Timeless drive in #4, #9) |
+| J63 | All | Edison: Image-Line gives Amount's unit as decibels (Appendix F said "60%"); a noise selection left active means only that selection is processed; Threshold exists on Windows only (macOS has Smoothing) | Amount 10 dB, following Image-Line's "only as much suppression as needed… less in a mix", with Pro-G handling the gaps. Step 2 deselects (Up arrow) so the whole take is processed. Threshold 0 dB is marked Windows; Smoothing (macOS) stays as it opens. The clip opens with the clip menu's "Edit sample". The return to the playlist is checked, with the documented Send sample to Playlist remedy. FL's "Make unique" re-uses the original audio file, so 3.1 checks that the doubles carry the cleanup and reruns Part 1 on them if not. If the noise is found only after the doubles exist, Part 1 runs on the lead and then on each existing double (no delete-and-remake, which would leave orphan channels) | §6.2 "Edison denoise only if room tone is audible", delivered with the documented unit and workflow |
+| J64 | All | Placement read a live Short Term number, which keeps moving | Pro-L 2 shows Max S (the highest Short Term reading) when the time scale is Integrated: reset, play the loudest 8 bars once, read Max S on BEAT and LEAD | Same quantity as J49/F1 (Short Term), read as a stable value (J6) |
+| J65 | All | D1 and D2 had settings tables but no "Dial it in" (R08) | One combined Dial it in after 3.4: Alt-solo each double, compare, and check each DETUNE readout | §4 layout rule (table, then Dial it in) for every plugin slot |
+| J66 | All | Every tempo-synced value (delays, pre-delays, section 5's check) assumed FL's project tempo matched the beat, but no step set it | 1.3 step 2 now sets FL's project tempo to the beat's BPM, and the readout checks say "for your project tempo" | Delivers §6.6 tempo-synced values correctly |
+| J67 | All | Two kinds of level checks ("toggle bypass, within about 1 dB") named no meter | Pro-C 3 checks use its own input/output loudness marks (Help menu → Show Input Level). Saturn 2 checks use the Pro-L 2 meter: an Integrated A/B over the same 8 bars | J18: every dynamics or drive slot is confirmed on a readout |
+| J68 | All | The placement formula can ask for more than the LEAD fader can reach, and the loudest 8 bars may have no vocal | Read bars where you sing all the way through (a hook, for example). If LEAD can't reach the result, lower BEAT another 3.0 dB and redo the formula | Same targets (J6, J49); just measurable in every case |
+| J69 | 04, 06 | Timeless 3 documents a left or right start for ping-pong but not how to choose it | Each file states the start side, says to confirm it from the icon's hover hint, and says to just switch ping-pong on if no start choice is offered | J33: unpublished UI is confirmed on the plugin's own readout |
+| J70 | All | FL's own readouts: Image-Line's manual says hovering a mixer meter shows the scale value, not the signal; "Type in value" offers context-aware or normalized units, and the default isn't documented | Beat headroom is read from Pro-L 2's max true peak (BEAT fader = −6.0 dB minus the reading). Every typed FL value uses the context-aware unit (dB for faders and sends, % for pan), stated in 1.1 | J7 (beat headroom) and §4 (exact values), with readouts that actually exist |
