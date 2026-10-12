@@ -139,8 +139,8 @@ There's no second de-esser in this chain. L7 cuts the top instead of boosting it
 | Band 3 dynamics | Setting | Why |
 |---|---|---|
 | Threshold | **A** (auto) | Follows your level, so it only reacts to harsh peaks |
-| A (attack) | 50% (type 50) | 50% = automatic attack |
-| R (release) | 50% (type 50) | 50% = automatic release |
+| A (attack) | 50% (auto, panel closed) | 50% = automatic attack |
+| R (release) | 50% (auto, panel closed) | 50% = automatic release |
 | Triggering | Band | Reacts to the 4.2 kHz region itself |
 | External side chain | Off | Triggered by the vocal itself |
 | Spectral | Off | Spectral mode adds about 100 ms of latency; not needed |
@@ -158,7 +158,7 @@ There's no second de-esser in this chain. L7 cuts the top instead of boosting it
 **Dial it in**
 1. Double-click the far left of the display to create a Low Cut. Double-click its dot, type 85, Tab to Q and type 1, then set the slope to 18 dB/oct (Alt+Shift-click the dot to step through slopes).
 2. Double-click the display background around 300 Hz to add a bell. Double-click its dot and type 320, Tab, −2.5, Tab, 1.2.
-3. Double-click the display background around 4 kHz to add another bell. Double-click its dot and type 4.2k, Tab, 0, Tab, 2. Drag the dynamic range ring around its GAIN knob down to **−4.0 dB**. Click **expand >>** to open the band's dynamics panel. Click the threshold's **A** (auto) button, then type 50 into the attack (A) and release (R) fields (50% = automatic).
+3. Double-click the display background around 4 kHz to add another bell. Double-click its dot and type 4.2k, Tab, 0, Tab, 2. Drag the dynamic range ring around its GAIN knob down to **−4.0 dB**. Leave the band's dynamics panel (**expand >>**) closed: closed, its threshold, attack, and release run in auto mode, which is exactly the table's A / 50% / 50%.
 4. Play the loudest, brightest lines. Band 3 should dip **0–3 dB on harsh notes only** and stay still on soft lines.
 
 ### L2a · only if room tone is audible
@@ -310,7 +310,7 @@ There's no second de-esser in this chain. L7 cuts the top instead of boosting it
 
 **Dial it in**
 1. The lead should sound clearly driven, but every word should stay readable.
-2. Check the level with the Pro-L 2 meter (settings from 1.5) right after L6: reset it and play the same loud 8 bars with L6 on, then reset and play them again with L6 bypassed. The two Integrated readings should be within about **1 dB**. If not, adjust LEVEL in 0.5 dB steps. Remove the meter.
+2. Check the level with the Pro-L 2 meter (settings from 1.5) right after L6: reset it and play 8 loud bars with L6 on, then reset and play the same 8 bars with L6 bypassed. The two Integrated readings should be within about **1 dB**. If not, adjust LEVEL in 0.5 dB steps. Remove the meter.
 
 ### L7 · Pro-Q 4 · tone (after the dirt)
 
@@ -338,6 +338,7 @@ If the copies from 1.3 still exist, skip to 3.2.
 3. In the new channel's settings, set **TRACK** to the double's insert (3 or 4).
 4. Repeat until you have two copies: DBL L (3) and DBL R (4).
 5. Zoom in on the starts: all three clips (lead + 2 doubles) must begin at the same point. If one doesn't, turn snapping off (the magnet icon in the playlist toolbar) and drag it into line.
+6. If you did L2a Part 1, play a gap in one double: it should be as clean as the lead. If the hiss is back, run L2a Part 1 on each double's clip too.
 
 ### 3.2 Mixer settings
 
