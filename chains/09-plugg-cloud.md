@@ -51,7 +51,7 @@ Every insert's stereo separation knob stays at centre (off). Faders: BEAT is set
 2. Put the beat on its own playlist track. In its channel settings, set **TRACK** to **1**. Put your lead take on another playlist track, with TRACK set to **2**. Then set FL's project tempo to the beat's BPM: every synced delay and pre-delay in this file follows it.
 3. Name inserts 1–7 as in the map. Right-click each insert → "Rename, color & icon..." (F2).
 4. **Beat headroom.** Load Pro-L 2 in BEAT's first slot with the meter settings from 1.5 (TP metering on), and play the beat's loudest part. Read the maximum true peak shown above its output meter. Set the BEAT fader to **−6.0 dB minus that reading** (a peak of −0.4 dB gives −5.6 dB), so the beat peaks at about −6.0 dBFS. Then remove the meter.
-5. Run the L2a **Test** now. If you hear room tone, do L2a Part 1 (Edison) now, **before** you make the doubles, so every copy is clean. Part 2 (Pro-G) goes in later with the lead chain.
+5. Run the L2a **Test** now. If you hear room tone, do L2a Part 1 (Edison) now, **before** you make the doubles, so the copies start from the cleaned take (3.1 step 6 checks this). Part 2 (Pro-G) goes in later with the lead chain.
 6. Make the doubles (section 3.1).
 7. Do the routing in 1.4, then calibrate in 1.5.
 
