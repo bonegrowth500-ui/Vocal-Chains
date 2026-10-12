@@ -1,0 +1,632 @@
+# Rage Blowout (#5): Lead + Doubles Vocal Chain
+
+> *Grimy, blown-out vocal that sounds like it's screaming through the synth lead.*
+
+**What this chain does**
+- Makes your lead crunchy: obvious distortion that stays controlled. It's built for a mix of melodic and yelled delivery.
+- Clamps your level with fast compression **before** the distortion, so yells don't explode and sung parts still get crunch.
+- Blends clean and dirty: a light crunch on the lead itself, plus a heavier parallel crunch bus that only distorts the mids. The lows stay tight and the highs don't fizz.
+- Sits on top and cutting, the most forward of the four chains. It's mid-forward and aggressive, with the top end controlled (no airy shine).
+- Tunes hard, with Flex-Tune nudged so yells and unpitched shouts don't warble.
+- Adds a short dark room plus a ducked delay that blooms on line endings, and a tight, dirty pair of doubles that forms a "halo" around the lead for the whole song.
+
+**You'll use:** FL Studio 2024 or newer (Producer Edition) · Auto-Tune Artist · FabFilter Pro-Q 4, Pro-C 3, Pro-DS, Saturn 2, Pro-R 2, Timeless 3, and Pro-L 2 (as a meter only). Only if your booth is noisy: Edison and FabFilter Pro-G.
+
+**Contents:** 1. Session setup and routing · 2. Lead chain · 3. Doubles · 4. FX returns · 5. Delay and pre-delay times · 6. Final balance · 7. Optional: carve the beat · 8. Troubleshooting
+
+---
+
+## 1. Session setup and routing
+
+### 1.1 How to enter exact values
+
+| Where | How |
+|---|---|
+| FabFilter knobs | Double-click the knob, type the number, press Enter. A plain number sets the value in the knob's own unit: "30" on a % knob is 30%, "-24" on a dB knob is −24 dB. "1k" = 1000 Hz. Ctrl-click resets a knob. |
+| FabFilter knobs with no published unit | Type a percentage with the % sign, like "22%". That puts the knob exactly 22% of the way through its travel. This file only does this where it says "typed travel". |
+| FabFilter EQ bands and filters | Double-click the band's dot, then type Frequency, press Tab, type Gain, press Tab, type Q. Ctrl+Alt-click a dot to change its shape. Alt+Shift-click a dot to change its slope. |
+| Auto-Tune Artist | Drag each control until its readout shows the value. |
+| FL mixer (fader, pan, send level) | Right-click → "Type in value". |
+
+### 1.2 Mixer map
+
+| Insert | Name | What's on it | Pan | Track delay | Routes to |
+|---|---|---|---|---|---|
+| 1 | BEAT | Optional carve (section 7) | 0% | — | Master |
+| 2 | LEAD | L1–L7 (section 2) | 0% | — | Master + sends to 6, 7, and 8 + sidechain link to 8 |
+| 3 | DBL L | D1, D2 | −45% | 12 ms | 5 only |
+| 4 | DBL R | D1, D2 | +45% | 19 ms | 5 only |
+| 5 | DBL BUS | B1–B6 | 0% | — | Master |
+| 6 | FX CRUNCH | R6.1–R6.3 | 0% | — | Master |
+| 7 | FX ROOM | R7.1 | 0% | — | Master |
+| 8 | FX DELAY | R8.1–R8.2 | 0% | — | Master |
+
+Every insert's stereo separation knob stays at centre (off). Faders are set in section 6.
+
+### 1.3 Build the session
+
+1. Open the Mixer menu → "Plugin delay compensation" → make sure **"Automatic"** is ticked. It keeps every insert in time, including sends and sidechains.
+2. Put the beat on its own playlist track. In its channel settings, set **TRACK** to **1**. Put your lead take on another playlist track, with TRACK set to **2**.
+3. Name inserts 1–8 as in the map. Right-click each insert → "Rename, color & icon..." (F2).
+4. **Beat headroom.** Play only the beat's loudest part. Hover over the Master meter and read the hint bar. Pull the BEAT fader down until the beat peaks at **−6.0 dBFS**. Right-click the fader → "Type in value" to fine-tune it.
+5. If your booth is noisy, do the Edison step in L2a now, **before** you make the doubles. That way every copy is clean.
+6. Make the doubles (section 3.1).
+7. Do the routing in 1.4, then calibrate in 1.5.
+
+### 1.4 Routing walkthrough
+
+1. **Doubles go to DBL BUS only.** Select insert 3 (DBL L). Left-click the send switch (the arrow at the bottom) of insert 5 (DBL BUS). Then left-click the **Master** track's send switch to turn that route off. Repeat for insert 4.
+2. **LEAD sends.** Select insert 2 (LEAD) and left-click the send switches of inserts 6, 7, and 8. With LEAD still selected, right-click each new send knob (it sits on the destination's send switch) → "Type in value": insert 6 = **0.0 dB**, insert 7 = **−13.0 dB**, insert 8 = **−12.0 dB**. LEAD keeps its Master route. FL sends are post-fader, so the effects follow your LEAD fader.
+3. **Sidechain link for the delay ducking.** With LEAD selected, right-click insert 8's send switch → **"Sidechain to this track"**. The link is silent, and LEAD still goes to Master. The crunch bus and the room are **not** ducked.
+4. **Pans and Track delays.** Right-click each pan knob → "Type in value": insert 3 = −45%, insert 4 = +45%. On each double's insert, click the clock icon (**Track delay**) → "Set in ms (milliseconds)": insert 3 = **12**, insert 4 = **19**.
+5. **Feed the ducker.** When you load Pro-C 3 on insert 8 (R8.2), open its gear icon → **"Plugin Wrapper Settings"** → **"Processing"** → **"Connections"**. Right-click the plugin's sidechain input number and choose insert 2 (LEAD), or click **"Auto map inputs"**. Then, in Pro-C 3, set **Side Chain Input** to **External**.
+6. DBL BUS and all three returns stay routed to Master (the default).
+
+### 1.5 Calibrate your take (find T)
+
+Load **Pro-L 2** temporarily in LEAD's first slot, above everything else, with these settings. It only measures; nothing gets limited.
+
+| Parameter | Setting | Why |
+|---|---|---|
+| Gain | 0.0 dB | No level change |
+| Output Level | 0.0 dB | With True Peak Limiting off, nothing below 0 dBFS gets limited |
+| True Peak Limiting | off | Keeps Pro-L 2 transparent (FabFilter's meter-only setup) |
+| Oversampling | Off | Transparent setup |
+| Dither | Off | No added noise |
+| DC (DC offset filter) | off | Leaves the signal untouched |
+| Unity Gain (1:1) | off | Not needed with Gain at 0 dB |
+| Audition Limiting | off | You want to hear the vocal, not the difference signal |
+| Style | Transparent | Not used here; nothing is being limited |
+| Lookahead / Attack / Release / Channel Linking | Minimum / minimum / minimum / 100% | Not used here; nothing is being limited |
+| Meter Scale | Loudness | Shows the LUFS readouts |
+| Loudness time scale | Integrated | Measures the whole take |
+| TP metering | on | Display only |
+
+**Dial it in**
+1. Play your whole lead take from start to finish (a full-song take, not one phrase).
+2. Read the **Integrated** loudness, for example −23.0 LUFS.
+3. Work out **T = −20.0 − reading**. For example, −20.0 − (−23.0) = **+3.0 dB**. You'll type T into L1 and use it again on DBL BUS.
+4. Remove Pro-L 2 from LEAD. Keep these settings handy; you'll use the same meter again in section 6.
+
+---
+
+## 2. Lead chain (insert 2)
+
+| Order | Slot | Plugin | Job |
+|---|---|---|---|
+| 1 | L1 | Pro-Q 4 | Trim to the calibrated level |
+| 2 | L2 | Pro-Q 4 | Cleanup: rumble, booth boxiness, harshness |
+| (only if needed) | L2a | Edison (offline) + Pro-G | Room-tone cleanup |
+| 3 | L3 | Pro-DS | De-ess |
+| 4 | L4 | Auto-Tune Artist | Tune: hard, without warbling on yells |
+| 5 | L5 | Pro-C 3 | Fast level control **before** the distortion |
+| 6 | L6 | Saturn 2 | Light crunch on the lead itself |
+| 7 | L7 | Pro-Q 4 | Tone, placed **after** the distortion so it can also tame the fizz the crunch creates |
+
+There's no second de-esser in this chain. L7 cuts the top instead of boosting it.
+
+### L1 · Pro-Q 4 · trim
+
+| Parameter | Setting | Why |
+|---|---|---|
+| Bands | None | This instance only sets level |
+| Output Gain | **T** (from 1.5), e.g. +3.0 dB | Puts every take at −20 LUFS so every threshold and drive below works as written |
+| Processing Mode | Zero Latency | No bands to process, so no latency needed |
+| Character | Clean | Grit comes from Saturn 2, where you can control it |
+| Output Pan | Centre (L/R mode) | Keeps the mono vocal centred |
+| Auto Gain | Off | It would fight the trim |
+| Gain Scale | 100% (type 100) | Neutral |
+| Phase Invert (Ø) | Off | Keeps polarity |
+
+**Dial it in**
+1. Load Pro-Q 4 in LEAD's first slot.
+2. Double-click Output Gain and type your T.
+3. Optional check: put the Pro-L 2 meter right after L1 and replay the take. Integrated should read **−20.0 LUFS (±0.5)**. Then remove the meter.
+
+### L2 · Pro-Q 4 · cleanup
+
+| Band | Shape | Frequency | Gain | Q | Slope | Placement | Dynamic | Why |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Low Cut | 85 Hz | — | 1.0 | 18 dB/oct | Stereo | Off (static) | Removes rumble and handling noise below a mid-range voice. The LCT 440 PURE has no low-cut of its own |
+| 2 | Bell | 320 Hz | −2.5 dB | 1.2 | 12 dB/oct | Stereo | Off (static) | Takes out the boxy sound a makeshift booth adds |
+| 3 | Bell | 4.2 kHz | 0.0 dB | 2.0 | 12 dB/oct | Stereo | **Range −4.0 dB** | Dips only when that note gets harsh. Your mic has a +3.5 dB presence bump near 4 kHz |
+
+| Band 3 dynamics | Setting | Why |
+|---|---|---|
+| Threshold | **A** (auto) | Follows your level, so it only reacts to harsh peaks |
+| A (attack) | 50% (type 50) | 50% = automatic attack |
+| R (release) | 50% (type 50) | 50% = automatic release |
+| Triggering | Band | Reacts to the 4.2 kHz region itself |
+| External side chain | Off | Triggered by the vocal itself |
+| Spectral | Off | Spectral mode adds about 100 ms of latency; not needed |
+
+| Globals | Setting | Why |
+|---|---|---|
+| Processing Mode | Zero Latency | No added latency |
+| Character | Clean | Grit is controlled in Saturn 2 |
+| Output Gain | 0.0 dB | Level is already set by L1 |
+| Output Pan | Centre (L/R mode) | Mono vocal stays centred |
+| Auto Gain | Off | Keeps levels predictable |
+| Gain Scale | 100% (type 100) | Bands at their stated gain |
+| Phase Invert (Ø) | Off | Keeps polarity |
+
+**Dial it in**
+1. Double-click the far left of the display to create a Low Cut. Double-click its dot and type 85, then set the slope to 18 dB/oct (Alt+Shift-click the dot to step through slopes).
+2. Click the display around 300 Hz to add a bell. Double-click its dot and type 320, Tab, −2.5, Tab, 1.2.
+3. Click the display around 4 kHz to add another bell. Type 4.2k, Tab, 0, Tab, 2. Drag the dynamic range ring around its GAIN knob down to **−4.0 dB**. Click **A** on the threshold, and type 50 into both A and R.
+4. Play the loudest, brightest lines. Band 3 should dip **0–3 dB on harsh notes only** and stay still on soft lines.
+
+### L2a · only if room tone is audible
+
+**Test:** Solo LEAD and play a gap between phrases at your normal listening level. If you hear booth hiss, hum, or room tone, do both parts below. If not, skip L2a. Distortion brings up quiet noise, so take this test seriously in this chain.
+
+**Part 1: Edison (offline, before you copy the doubles).** Open the lead clip in Edison.
+1. Select a few hundred milliseconds where you're not singing. Choose Tools > Spectral > **"Aquire noise profile"** (Alt+U; that's FL's own spelling).
+2. Open **"Clean up (denoise)"** (Ctrl+U).
+
+| Control | Setting | Why |
+|---|---|---|
+| Threshold | 0 dB | Image-Line's suggested starting point |
+| Amount | 60% (read it on the hint bar) | Removes the hiss without making the voice watery |
+| Output noise only | Turn on to check, then off | Lets you hear exactly what's being removed. It should be hiss, not words |
+
+3. Click Preview, check, then click **Accept**.
+
+**Part 2: Pro-G**, placed between L2 and L3.
+
+| Parameter | Setting | Why |
+|---|---|---|
+| Style | Vocal | Gating behaviour made for vocals |
+| THRESHOLD | −50 dB | Above the room tone, well below your softest syllables at the calibrated level |
+| RATIO | 2.0:1 | Gentle downward expansion, not a hard gate |
+| RANGE | 10 dB | Lowers the gaps by at most 10 dB, so it never sounds chopped |
+| ATTACK | 1 ms | Opens instantly when you start a word |
+| HOLD | 60 ms | Stays open through short pauses between words |
+| RELEASE | 180 ms | Closes smoothly after phrase endings |
+| KNEE | 6 dB | Soft transition |
+| LOOKAHEAD | On, 2 ms | Catches word onsets so first consonants aren't clipped |
+| Expert | Off | 100% wet, internal side chain, no side-chain filtering, which is what you want here |
+| Oversampling | 2x | Cleaner gain changes |
+| In: / Out: | 0.0 dB / 0.0 dB, pan centre | Unity |
+
+**Dial it in:** Play a gap. The gain-reduction meter should show up to **10 dB** in the gaps and **0 dB** while you sing. If you use L2a, also add the identical Pro-G on DBL BUS (B2a, section 3.5).
+
+### L3 · Pro-DS · de-ess
+
+| Parameter | Setting | Why |
+|---|---|---|
+| MODE | Single Vocal | Built for a solo vocal |
+| WIDE BAND / SPLIT BAND | WIDE BAND | Gentler on a lead. Split Band is linear-phase and adds latency |
+| THRESHOLD | −26.0 dB | Triggers on esses at the calibrated level |
+| RANGE | 6.0 dB | Never removes more than 6 dB, so esses stay natural |
+| HP (trigger filter) | 5.5 kHz | Listens above your mic's 4 kHz bump |
+| LP (trigger filter) | 11.0 kHz | Stops below the mic's 12–13 kHz air peak, so air isn't mistaken for esses |
+| LOOKAHEAD | On, 10 ms | FabFilter's suggestion for vocals: catches the start of each ess |
+| STEREO LINK | 100% (the "100%" mark at the top of the scale) | Fully linked; the vocal is mono anyway |
+| SIDE CHAIN | In | Triggered by the vocal itself |
+| Audition Triggering / Audition | Off / Off | Monitoring only |
+| Oversampling | 2x | Cleaner gain changes |
+| In: / Out: | 0.0 dB / 0.0 dB, pan centre | Unity |
+
+**Dial it in:** Loop a line with lots of s/sh/t. The gain-reduction readout should show **3–6 dB on esses** and about **0 dB** elsewhere. De-essing before the crunch matters here: distortion makes esses spit.
+
+### L4 · Auto-Tune Artist · tune
+
+| Parameter | Setting | Why |
+|---|---|---|
+| INPUT TYPE | Alto/Tenor | Matches your mid-range voice |
+| KEY / SCALE | Your song's key and scale (Chromatic if you don't know it) | Gives Auto-Tune the right target notes |
+| CLASSIC | Off | Classic would switch off Flex-Tune, which this chain needs |
+| FORMANT | Off | No pitch shift on the lead, so no formant correction needed |
+| THROAT | 100 (inactive while FORMANT is off) | Neutral |
+| TRANSPOSE | 0 | No pitch shift |
+| DETUNE | 0 c | Standard A = 440 Hz tuning |
+| TRACKING | 50 | Manual's standard pitch-detection setting |
+| RETUNE SPEED | **2 ms** | Hard: sung notes snap to pitch |
+| FLEX-TUNE | **15** | Only corrects as you approach a note, so yells and unpitched shouts pass through without warbling |
+| HUMANIZE | **0** | Hard tune: no softening of held notes |
+| NATURAL VIBRATO | 0.0 | Leaves your natural vibrato as it is |
+| Advanced view: SHAPE | No Vibrato | No artificial vibrato |
+| RATE / ONSET DELAY / ONSET RATE / VARIATION | 5.0 Hz / 0 ms / 0 ms / 0 | Inactive with No Vibrato |
+| PITCH.AMT. / AMPLITUDE AMT. / FORMANT AMT. | 0 / 0 / 0 | Nothing changes even if SHAPE is touched by mistake |
+| TARGETING IGNORES VIBRATO | Off | Plain target detection |
+| Keyboard | No notes removed or bypassed | All scale notes stay available |
+| MIDI: TARGET NOTES / LEARN SCALE | Off / Off | Not used |
+| Settings (gear): Use Low Latency | Off | Highest-quality processing for mixing |
+| Settings: Enable Auto-Key Detection | Off | Not used: KEY and SCALE are set by hand |
+| Settings: Detune Display | Cents | Matches the values in this file |
+| Settings: Select Pitch Reference | Either channel | Your vocal is mono, so both channels are identical |
+
+**Dial it in**
+1. Set KEY and SCALE to the beat's key.
+2. Play a sung part: notes should snap hard to pitch. Play a yelled part: it should come through raw, without a robotic warble.
+3. If a note jumps to the wrong pitch, your key or scale is off. Fix that first.
+
+### L5 · Pro-C 3 · fast level control before the dirt
+
+| Parameter | Setting | Why |
+|---|---|---|
+| Style | **Punch** | Traditional, analog-like compression: aggressive and in your face |
+| THRESHOLD | −24 dB | Sung lines get 3–6 dB of reduction; yells get much more |
+| AUTO (threshold) | Off | A fixed threshold makes the readings predictable |
+| Audition Triggering | Off | Monitoring only |
+| RATIO | **6.0:1** | Clamps yells hard, so they don't explode into the distortion |
+| KNEE | 6 dB | Firm onset |
+| RANGE | 30 dB | Room for big yells |
+| Character | Off | Grit comes from Saturn 2 next |
+| DRIVE / POST | Inactive (Character Off) / Post | Character is off |
+| ATTACK | **1.0 ms** | Fast enough to catch the front of a yell |
+| RELEASE | **60 ms** | Recovers quickly, so sung parts stay up and keep their crunch |
+| AUTO (release) | Off | Fixed, predictable release |
+| LOOKAHEAD | 0 ms (bottom-bar Lookahead: Off) | The 1 ms attack does the job |
+| HOLD | 0 ms | No hold needed |
+| GAIN | **+5.0 dB** | Makes up the reduction and drives L6 consistently |
+| AUTO (gain) / GAIN pan ring | Off / centre | Manual, predictable makeup |
+| DRY | 0% (typed travel, fully off) | No parallel blend here (that's FX CRUNCH's job) |
+| Side Chain Input | Internal | Triggered by the vocal itself |
+| LEVEL (side chain) / Audition | 0.0 dB / Off | Unity trigger level |
+| STEREO LINK | 100% (scale mark) | Fully linked |
+| Side-chain EQ | No active bands (Alt-click any band to bypass it) | Full-range detection |
+| Oversampling | 2x | Cleaner gain changes |
+| Input / Output | 0.0 dB / 0.0 dB, centre | Unity |
+| Mix | 100% (type 100) | Full effect |
+
+**Dial it in**
+1. Play a sung section. The gain-reduction meter should show **3–6 dB**.
+2. Play a yelled section. It should show **8–14 dB**, and the yells should come out only a little louder than the singing.
+3. If the yells still jump out, see Troubleshooting.
+
+### L6 · Saturn 2 · light crunch
+
+| Parameter | Setting | Why |
+|---|---|---|
+| Bands | 1 (no crossovers) | The whole lead gets the same light crunch |
+| Style | **British Rock** (in the **Amp** section of the Style menu) | A light amp crunch rather than warm tape |
+| DRIVE | **22%** (typed travel) | Obvious grit that stays controlled |
+| DRIVE pan ring | Centre | Even on both channels |
+| MIX (band) | 100% (typed travel) | The full crunch on the lead; the heavy parallel crunch is FX CRUNCH |
+| FEEDBACK | 0% (typed travel) | No feedback colouring |
+| FREQ | 1k (inactive at FEEDBACK 0%) | Feedback is off |
+| DYNAMICS | Centre: Ctrl-click to reset, pointer at 12 o'clock | Neutral (no extra pumping) |
+| TONE (four sliders: bass, mid, treble, presence) | Centre: Ctrl-click each to reset | Flat. The tone is shaped in L7 instead |
+| LEVEL | **−3.0 dB** | Offsets the loudness the drive adds, so bypass sounds the same level |
+| LEVEL pan ring | Centre | Balanced |
+| Band power | On | The band is active |
+| Input / Output (global) | 0.0 dB / 0.0 dB | Unity |
+| Mix (global) | 100% (typed travel) | Full effect |
+| High Quality | Good | Oversampled distortion: less harsh aliasing |
+| Linear Phase | Off | One band, so no crossovers to correct |
+| Channel Mode | Stereo | Normal |
+| FB (unrestricted feedback) | Off | Safe |
+| Modulation | None (no sources added) | Steady crunch |
+
+**Dial it in**
+1. The lead should sound clearly driven, but every word should stay readable.
+2. Toggle bypass. The loudness should stay within about **1 dB**. If not, adjust LEVEL in 0.5 dB steps.
+
+### L7 · Pro-Q 4 · tone (after the dirt)
+
+| Band | Shape | Frequency | Gain | Q | Slope | Placement | Why |
+|---|---|---|---|---|---|---|---|
+| 1 | Bell | 180 Hz | −1.5 dB | 0.9 | 12 dB/oct | Stereo | Tightens the low-mids the crunch thickens |
+| 2 | Bell | 1.3 kHz | **+2.5 dB** | 0.8 | 12 dB/oct | Stereo | Mid-forward bite: the "screaming through the synth" zone |
+| 3 | High Shelf | 9.0 kHz | **−2.5 dB** | 1.0 | 12 dB/oct | Stereo | No airy shine. Counters your mic's +5 dB air peak and the crunch's top end |
+| 4 | High Cut | 16 kHz | — | 1.0 | 12 dB/oct | Stereo | Removes distortion fizz above the useful range |
+
+All four bands are static. Globals as in L2: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Auto Gain off · Gain Scale 100% · Phase Invert off.
+
+**Dial it in:** A/B with bypass. With the EQ on, the lead should sound more aggressive and forward, and less fizzy and shiny.
+
+---
+
+## 3. Doubles (inserts 3–5)
+
+### 3.1 Make the copies
+
+1. Hold Shift and drag the lead clip straight down onto an empty playlist track. Drop it at exactly the same start position. The playlist snaps to the grid, so drop it in the same grid spot. All timing offsets come from Track delay, never from clip position.
+2. Open the copy's clip menu (top-left corner of the clip) → **"Make unique"**. Don't use "Make unique as sample".
+3. In the new channel's settings, set **TRACK** to the double's insert (3 or 4).
+4. Repeat until you have two copies: DBL L (3) and DBL R (4).
+5. Zoom in on the starts: all three clips (lead + 2 doubles) must begin at the same point.
+
+### 3.2 Mixer settings
+
+| Insert | Pan | Fader | Track delay | Route | Why |
+|---|---|---|---|---|---|
+| 3 DBL L | −45% | 0.0 dB | 12 ms | DBL BUS only | Tight left side of the halo; its own offset makes it sound like a separate take |
+| 4 DBL R | +45% | 0.0 dB | 19 ms | DBL BUS only | Tight right side; a different offset from DBL L |
+
+### 3.3 D1 · Auto-Tune Artist on each double
+
+| Parameter | DBL L | DBL R | Why |
+|---|---|---|---|
+| INPUT TYPE | Alto/Tenor | Alto/Tenor | Mid-range voice |
+| KEY / SCALE | Same as L4 | Same as L4 | Same target notes as the lead |
+| CLASSIC | Off | Off | Classic would disable Formant, Throat, and Flex-Tune |
+| FORMANT | **On** | **On** | Needed for THROAT to work |
+| THROAT | **103** | **97** | Small throat variations make the copies sound like different takes |
+| TRANSPOSE | 0 | 0 | Same pitch as the lead |
+| DETUNE | **+6 c** | **−7 c** | Each copy sits slightly off the lead's pitch. That's what makes copies sound like real doubles |
+| TRACKING | 50 | 50 | Standard |
+| RETUNE SPEED | 4 ms | 6 ms | Hard, but a little different from the lead (2 ms) |
+| FLEX-TUNE | 15 | 15 | Same yell handling as the lead |
+| HUMANIZE | 0 | 5 | Different holds per copy |
+| NATURAL VIBRATO | 0.0 | 0.0 | Untouched |
+| Vibrato (Advanced view) | As L4 (No Vibrato, amounts 0) | As L4 | No artificial vibrato |
+| TARGETING IGNORES VIBRATO / keyboard / MIDI | As L4 | As L4 | Same as the lead |
+| Settings | As L4 (Use Low Latency off, Detune Display Cents) | As L4 | Highest quality |
+
+### 3.4 D2 · Pro-Q 4 on each double
+
+**DBL L**
+
+| Band | Shape | Frequency | Gain | Q | Slope | Placement | Why |
+|---|---|---|---|---|---|---|---|
+| 1 | Low Cut | 220 Hz | — | 1.0 | 24 dB/oct | Stereo | Band-limited: keeps the halo out of the lead's low end |
+| 2 | High Cut | 6.0 kHz | — | 1.0 | 24 dB/oct | Stereo | Band-limited: no fizz on the doubles |
+| 3 | Bell | 1.1 kHz | +1.5 dB | 1.0 | 12 dB/oct | Stereo | Mid-forward colour for this side |
+
+**DBL R**
+
+| Band | Shape | Frequency | Gain | Q | Slope | Placement | Why |
+|---|---|---|---|---|---|---|---|
+| 1 | Low Cut | 250 Hz | — | 1.0 | 24 dB/oct | Stereo | A different low corner from DBL L |
+| 2 | High Cut | 5.5 kHz | — | 1.0 | 24 dB/oct | Stereo | A different high corner from DBL L |
+| 3 | Bell | 1.6 kHz | +1.5 dB | 1.0 | 12 dB/oct | Stereo | A different mid colour from DBL L |
+
+Globals on both D2s: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Auto Gain off · Gain Scale 100% · Phase Invert off.
+
+### 3.5 DBL BUS (insert 5)
+
+| Order | Slot | Plugin | Settings |
+|---|---|---|---|
+| 1 | B1 | Pro-Q 4 trim | As L1, but Output Gain = **T − 1.5 dB**. Cancels the extra level of the two doubles summing, so B4 and B5 see the same level as L5 and L6 |
+| 2 | B2 | Pro-Q 4 cleanup | L2's bands 2 and 3 only (Bell 320 Hz −2.5 dB Q 1.2; dynamic Bell 4.2 kHz, Range −4.0 dB, Threshold A, A/R 50%), with L2's globals. No Low Cut: each D2 already cuts higher |
+| (only if L2a used) | B2a | Pro-G | Identical to L2a's Pro-G |
+| 3 | B3 | Pro-DS | Identical to L3 |
+| 4 | B4 | Pro-C 3 | Identical to L5 (Punch, −24 dB, 6.0:1, 1.0 ms / 60 ms, GAIN +5.0 dB). Clamps the doubles' yells before their dirt |
+| 5 | B5 | Saturn 2 | Table below |
+| 6 | B6 | Pro-Q 4 | Table below |
+
+**B5 · Saturn 2** (same as L6 except where marked)
+
+| Parameter | Setting | Why |
+|---|---|---|
+| Style | **Crunchy Amp** (in the **Amp** section of the Style menu) | Dirtier than the lead's British Rock: the "dirty halo" |
+| DRIVE | **45%** (typed travel) | Clearly dirtier than the lead (22%) |
+| LEVEL | **−5.0 dB** | Offsets the louder drive |
+| All other parameters | As L6 (1 band, MIX 100%, FEEDBACK 0%, FREQ 1k, DYNAMICS centre, TONE flat, pans centre, High Quality Good, Linear Phase off, Stereo, FB off, no modulation) | Same clean setup around a dirtier style |
+
+**B6 · Pro-Q 4 · band-limit after the dirt**
+
+| Band | Shape | Frequency | Gain | Q | Slope | Placement | Why |
+|---|---|---|---|---|---|---|---|
+| 1 | Low Cut | 250 Hz | — | 1.0 | 12 dB/oct | Stereo | Keeps the distorted doubles out of the low end |
+| 2 | High Cut | 5.0 kHz | — | 1.0 | 24 dB/oct | Stereo | Removes the fizz the crunch adds; more band-limited than the lead |
+
+Globals: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Auto Gain off · Gain Scale 100% · Phase Invert off.
+
+**Dial it in (DBL BUS)**
+1. Solo DBL BUS. You should hear two gritty, narrowed copies, darker and dirtier than the lead.
+2. B4 should show the same readings as L5 (**3–6 dB** sung, **8–14 dB** yelled).
+3. The DBL BUS fader is set in section 6.
+
+---
+
+## 4. FX returns
+
+### 4.1 FX CRUNCH (insert 6), the parallel crunch bus
+
+This return is **never ducked**: it's part of the lead's sound, not a space effect.
+
+**R6.1 · Pro-Q 4 · only the mids go in**
+
+| Band | Shape | Frequency | Gain | Q | Slope | Placement | Why |
+|---|---|---|---|---|---|---|---|
+| 1 | Low Cut | 300 Hz | — | 1.0 | 24 dB/oct | Stereo | No lows reach the distortion, so the lows stay tight |
+| 2 | High Cut | 4.0 kHz | — | 1.0 | 24 dB/oct | Stereo | No highs reach the distortion, so the highs don't fizz |
+
+Globals: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Auto Gain off · Gain Scale 100% · Phase Invert off.
+
+**R6.2 · Saturn 2 · heavy crunch** (same as L6 except where marked)
+
+| Parameter | Setting | Why |
+|---|---|---|
+| Style | **Crunchy Amp** (in the **Amp** section of the Style menu) | Heavy, aggressive amp crunch |
+| DRIVE | **60%** (typed travel) | The heavier crunch the spec asks for |
+| LEVEL | **−6.0 dB** | Offsets the loudness the heavy drive adds |
+| All other parameters | As L6 (1 band, MIX 100%, FEEDBACK 0%, FREQ 1k, DYNAMICS centre, TONE flat, pans centre, High Quality Good, Linear Phase off, Stereo, FB off, no modulation) | Same setup, heavier style and drive |
+
+**R6.3 · Pro-Q 4 · clean up the crunch's edges**
+
+| Band | Shape | Frequency | Gain | Q | Slope | Placement | Why |
+|---|---|---|---|---|---|---|---|
+| 1 | Low Cut | 250 Hz | — | 1.0 | 12 dB/oct | Stereo | Removes low growl the distortion creates |
+| 2 | High Cut | 5.0 kHz | — | 1.0 | 24 dB/oct | Stereo | Removes the fizz the distortion creates above the mids |
+
+Globals: as R6.1.
+
+**FX CRUNCH fader:** **−3.0 dB**.
+
+**Dial it in (FX CRUNCH)**
+1. Solo FX CRUNCH. It should sound like a distorted telephone: all mids, no lows, no fizz.
+2. Unsolo it. The lead should sound clearly dirtier and more aggressive, with lows still tight.
+3. Mute FX CRUNCH for a moment. The lead should sound cleaner and smaller. Unmute.
+
+### 4.2 FX ROOM (insert 7)
+
+**R7.1 · Pro-R 2** (not ducked)
+
+| Parameter | Setting | Why |
+|---|---|---|
+| Style | Modern | A natural, realistic small space |
+| SPACE | **0.6 s** (yellow readout) | Short room |
+| Decay Rate | 100 (SPACE then shows a single time) | Uses SPACE's decay as is |
+| PREDELAY | **8 ms** (sync Off) | Almost no gap: the room is glued to the voice |
+| CHARACTER | 0 | Transparent: no modulation in a tight room |
+| THICKNESS | 0% (typed travel) | Minimum. The grit comes from the crunch, not the room |
+| DISTANCE | 15 | Close, in-your-face space |
+| BRIGHTNESS | **25%** (typed travel) | Dark room |
+| WIDTH | 80 | A bit narrower than full, keeping the energy central |
+| DUCKING | 0% (typed travel) | This room isn't ducked |
+| MIX | 100 | Wet only (this is a send return) |
+| Lock Mix / Auto Gate / Freeze | Off / Off / Off | Normal reverb |
+| Decay Rate EQ | No bands | Flat decay |
+| Post EQ band 1 | Low Cut 250 Hz, Q 1.0, 24 dB/oct, Stereo | No low mud in the room |
+| Post EQ band 2 | High Cut 5.0 kHz, Q 1.0, 12 dB/oct, Stereo | Dark: keeps the room behind the crunch |
+| Input / Output | 0.0 dB / 0.0 dB, centre | Unity |
+
+To make the Post EQ bands: double-click the far left of the Post EQ display for the low cut, and the far right for the high cut.
+
+**Dial it in:** Solo FX ROOM. It should sound like a small, dark, gritty space. Unsoloed, it's felt rather than heard.
+
+### 4.3 FX DELAY (insert 8)
+
+**R8.1 · Timeless 3**
+
+| Parameter | Setting | Why |
+|---|---|---|
+| Delay Sync | On, **quarter-note entry** (click the sync icon at the top-right of DELAY) | Locks the echoes to your tempo |
+| DELAY (Delay Offset while synced) | **100** (type the number) | Exactly a **¼ note** |
+| Delay Time Pan | Centre (the L and R readouts under DELAY show the same time) | Equal times |
+| Delay Read Mode (tape-reel icon) | Stretch | Clean, steady echoes |
+| Freeze (snowflake icon) | Off | Normal delay |
+| Ping Pong (icon below Freeze) | Off | Echoes stay central behind the aggressive lead |
+| FEEDBACK | 30 | A couple of repeats at line endings |
+| Feedback Pan | Centre (Ctrl-click) | Even repeats |
+| ± invert (both) | Off | Normal polarity |
+| CROSS | 0 | Normal feedback (no ping-pong) |
+| WIDTH | 50 | Narrow: keeps the energy central |
+| WET | Ctrl-click to reset, then hover: it should read **0.0 dB** (if not, type 0) | Unity; amount is set by the send instead |
+| WET pan ring | Centre | Balanced |
+| MIX | 100 | Wet only (this is a send return) |
+| Lock Mix | Off | Not needed |
+| Filter 1 | Low cut (high-pass), style **Clean**, 400 Hz, Q 0.7, 12 dB/oct, pan centre | Thin, dark echoes that don't clutter the low end |
+| Filter 2 | High cut (low-pass), style **Clean**, 3.5 kHz, Q 0.7, 12 dB/oct, pan centre | Dark echoes, out of the way of the bite |
+| Filter Routing | Serial | Both filters shape every repeat |
+| DRIVE / LO-FI | 0 / 0 | The echoes inherit the lead's crunch; no extra dirt needed |
+| DIFFUSE | 0 | Clear, defined repeats |
+| DYNAMICS | Centre: Ctrl-click to reset, pointer at 12 o'clock | Neutral |
+| PITCH | Off | No pitch shifting |
+| Input / Output | 0.0 dB / 0.0 dB, centre | Unity |
+| Channel Mode | Left/Right | Normal stereo |
+| Modulation | None | Steady repeats |
+
+To make the filters: double-click the far left of the filter display for the low cut and the far right for the high cut. Then double-click each dot to type Frequency and Q, and choose the **Clean** style in its value display.
+
+**R8.2 · Pro-C 3 · ducker**
+
+| Parameter | Setting | Why |
+|---|---|---|
+| Style | Clean | Precise, transparent ducking |
+| THRESHOLD | **−32 dB** | Every word triggers it, sung or yelled |
+| AUTO (threshold) / Audition Triggering | Off / Off | Predictable |
+| RATIO | **8.0:1** | Reaches the full range fast |
+| KNEE | 6 dB | Smooth onset |
+| RANGE | **18 dB** | Echoes almost vanish while you rap or yell, then bloom on line endings |
+| Character / DRIVE / POST | Off / inactive / Post | No saturation on the ducker |
+| ATTACK | 2 ms | Ducks instantly |
+| RELEASE | 180 ms | The echo blooms right after each line |
+| AUTO (release) | Off | Predictable |
+| LOOKAHEAD | 0 ms (bottom-bar Lookahead: Off) | Not needed |
+| HOLD | 30 ms | No flutter between syllables |
+| GAIN / AUTO (gain) / pan ring | 0.0 dB / Off / centre | No makeup on a ducker |
+| DRY | 0% (typed travel, fully off) | Ducked signal only |
+| Side Chain Input | **External** (fed from LEAD, see 1.4) | Ducks to your voice |
+| LEVEL (side chain) / Audition | 0.0 dB / Off | Unity |
+| STEREO LINK | 100% (scale mark) | Linked ducking |
+| Side-chain EQ | No active bands | Full-range trigger |
+| Oversampling | 2x | Clean gain changes |
+| Input / Output | 0.0 dB / 0.0 dB, centre | Unity |
+| Mix | 100 | Full effect |
+
+**Dial it in (FX DELAY)**
+1. Solo FX DELAY while LEAD plays. You should hear dark ¼-note repeats.
+2. Check the L and R readouts under DELAY against section 5 for your BPM. If they don't match, turn Delay Sync off and type the ms value from section 5.
+3. Unsolo it. R8.2's meter should show **15–18 dB** of reduction while you rap or yell, so the echoes appear only on line endings.
+
+---
+
+## 5. Delay and pre-delay times
+
+The synced delay follows your tempo automatically. Use this table to check the readouts, or to type ms values if you ever turn sync off. The room's pre-delay is a fixed 8 ms, so it doesn't change with tempo.
+
+| BPM | ¼, R8.1 delay (ms) |
+|---|---|
+| 130 | 461.5 |
+| 135 | 444.4 |
+| 140 | 428.6 |
+| 145 | 413.8 |
+| 150 | 400.0 |
+| 155 | 387.1 |
+| 160 | 375.0 |
+| 165 | 363.6 |
+| 170 | 352.9 |
+
+For tempos between rows: ¼ = 60000 ÷ BPM.
+
+---
+
+## 6. Final balance
+
+### 6.1 Place the lead (target: level with the beat, 0.0 LU)
+
+1. Load the **Pro-L 2 meter** (settings from 1.5, but time scale **Short Term**) as the last slot on BEAT and as the last slot on LEAD.
+2. Play the loudest 8 bars. Read **Beat ST** and **Lead ST**. These readings are pre-fader.
+3. Set the **LEAD fader = (Beat ST + BEAT fader + 0.0) − Lead ST**.
+   - Example: Beat ST −9.0, BEAT fader −6.0 dB, Lead ST −16.5 → (−9.0 − 6.0 + 0.0) − (−16.5) = **+1.5 dB**.
+4. Remove both Pro-L 2 meters.
+
+### 6.2 Doubles and returns
+
+| Fader | Setting | Why |
+|---|---|---|
+| DBL L / DBL R | 0.0 / 0.0 dB | Set in 3.2 |
+| DBL BUS | **LEAD fader − 7.0 dB** (e.g., +1.5 → −5.5 dB) | A present but tucked dirty halo |
+| FX CRUNCH | −3.0 dB | Set in 4.1 |
+| FX ROOM / FX DELAY | 0.0 dB / 0.0 dB | Amounts come from the sends (−13.0 and −12.0 dB) |
+
+### 6.3 Final listen
+
+- This is the most forward of the four chains: the vocal leads the beat, and yells are big without jumping out.
+- The crunch is obvious, the lows stay tight, and there's no fizz on top.
+- Echoes appear only on line endings.
+- Mute DBL BUS. The vocal should lose its dirty halo and get narrower. Unmute.
+
+---
+
+## 7. Optional: carve the beat
+
+Skip this section if the lead already sits clearly. It dips the beat slightly in the vocal's presence range, only while you sing.
+
+1. Load **Pro-Q 4** on BEAT (insert 1).
+2. Select LEAD → right-click BEAT's send switch → **"Sidechain to this track"**.
+3. In the BEAT Pro-Q 4: gear icon → "Plugin Wrapper Settings" → "Processing" → "Connections". Map its sidechain input to insert 2 (or click "Auto map inputs").
+
+| Band | Shape | Frequency | Gain | Q | Slope | Dynamic range | Threshold / A / R | Triggering | External side chain | Why |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Bell | 2.5 kHz | 0.0 dB | 1.0 | 12 dB/oct | **−4.0 dB** | A / 50% / 50% | Band | **On** (click "expand >>" to see the button) | Deeper carve: this chain is the most forward |
+| 2 | Bell | 4.5 kHz | 0.0 dB | 1.4 | 12 dB/oct | **−3.0 dB** | A / 50% / 50% | Band | **On** | Clears room for the bite |
+
+Globals: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Auto Gain off · Gain Scale 100% · Phase Invert off. Spectral off on both bands.
+
+**Dial it in:** The beat's 2.5 and 4.5 kHz regions should dip up to 4 and 3 dB **only while you sing**, and stay flat in the gaps.
+
+---
+
+## 8. Troubleshooting
+
+| If it sounds… | Do this |
+|---|---|
+| Not crunchy enough | L6 DRIVE 22% → **30%**, or FX CRUNCH fader −3.0 → **−1.0 dB** |
+| Fuzzy or fizzy on top | R6.3 High Cut 5.0 → **4.0 kHz**; L7 band 3 −2.5 → **−4.0 dB** |
+| The lows get flabby when the crunch is in | R6.1 Low Cut 300 → **400 Hz** |
+| Yells explode or jump out | L5 THRESHOLD −24 → **−27 dB**, or RATIO 6.0 → **8.0:1** |
+| Sung parts lose their crunch | L6 DRIVE 22% → **28%** (sung lines hit the drive less hard than yells) |
+| Yells warble or glitch in the tuning | L4 FLEX-TUNE 15 → **25** |
+| Sung notes don't sound hard enough | L4 RETUNE SPEED 2 → **0 ms** |
+| Echoes step on your words | R8.2 RANGE 18 → **22 dB** |
+| You can't hear the echoes even at line ends | R8.2 RANGE 18 → **12 dB**, or LEAD → FX DELAY send −12 → **−9 dB** |
+| The room makes it muddy or boxy | R7.1 Post EQ Low Cut 250 → **350 Hz**, or LEAD → FX ROOM send −13 → **−16 dB** |
+| The doubles smear the words | DBL BUS fader to **LEAD − 9 dB** |
+| Esses spit through the distortion | L3 THRESHOLD −26 → **−30 dB** |
