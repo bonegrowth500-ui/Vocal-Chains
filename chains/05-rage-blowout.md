@@ -49,7 +49,7 @@ Every insert's stereo separation knob stays at centre (off). Faders: BEAT is set
 ### 1.3 Build the session
 
 1. Open the Mixer menu → "Plugin delay compensation" → make sure **"Automatic"** is ticked. It keeps every insert in time, including sends and sidechains.
-2. Put the beat on its own playlist track. In its channel settings, set **TRACK** to **1**. Put your lead take on another playlist track, with TRACK set to **2**. Then set FL's project tempo to the beat's BPM: every synced delay and pre-delay in this file follows it.
+2. Put the beat on its own playlist track. In its channel settings, set **TRACK** to **1**. Put your lead take on another playlist track, with TRACK set to **2**. Then set FL's project tempo to the beat's BPM: every synced delay in this file follows it.
 3. Name inserts 1–8 as in the map. Right-click each insert → "Rename, color & icon..." (F2).
 4. **Beat headroom.** Load Pro-L 2 in BEAT's first slot with the meter settings from 1.5 (TP metering on), and play the beat's loudest part. Read the maximum true peak shown above its output meter. Set the BEAT fader to **−6.0 dB minus that reading** (a peak of −0.4 dB gives −5.6 dB), so the beat peaks at about −6.0 dBFS. Then remove the meter.
 5. Run the L2a **Test** now. If you hear room tone, do L2a Part 1 (Edison) now, **before** you make the doubles, so every copy is clean. Part 2 (Pro-G) goes in later with the lead chain.
@@ -165,7 +165,7 @@ There's no second de-esser in this chain. L7 cuts the top instead of boosting it
 
 **Test:** Solo LEAD (right-click its mute switch) and play a gap between phrases at your normal listening level. If you hear booth hiss, hum, or room tone, do both parts below. If not, skip L2a. If you already ran this Test in 1.3, keep that answer: don't re-test after Edison. Distortion brings up quiet noise, so take this test seriously in this chain.
 
-**Part 1: Edison (offline, before you copy the doubles).** If you've already made the doubles, delete them now and make them again in 3.1 afterwards. Open the lead clip's menu (top-left corner of the clip) → **"Edit sample"** (E). Edison opens with your take.
+**Part 1: Edison (offline, before you copy the doubles).** Skip this part if you already did it in 1.3. If you made the doubles without doing it first, delete them now and make them again in 3.1 afterwards. Open the lead clip's menu (top-left corner of the clip) → **"Edit sample"** (E). Edison opens with your take.
 1. Drag across a few hundred milliseconds where you're not singing (the longest noise-only stretch you can find). Choose Tools > Spectral > **"Aquire noise profile"** (Alt+U; that's FL's own spelling).
 2. Press the **Up arrow** (Select > "Deselect") so nothing is selected. With no selection, the cleanup processes the whole take.
 3. Open **"Clean up (denoise)"** (Ctrl+U) and make sure its **Denoiser** button is on.
@@ -391,13 +391,13 @@ Globals on both D2s: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan c
 **Dial it in (D1 and D2)**
 1. Alt-solo each double in turn (it plays through DBL BUS). It should follow your delivery, tuned like the lead, and yells should pass without warbling.
 2. Compare them. DBL L and DBL R should sound like two slightly different, band-limited singers (THROAT and the D2 cuts), each a few cents off the lead (DETUNE).
-3. Check each D1's DETUNE readout against the table (+6 c, −7 c).
+3. Check each D1's DETUNE readout against the table (+6 c, −7 c). When you're done, unsolo (Ctrl+right-click any mute switch).
 
 ### 3.5 DBL BUS (insert 5)
 
 | Order | Slot | Plugin | Settings |
 |---|---|---|---|
-| 1 | B1 | Pro-Q 4 trim | As L1, but Output Gain = **T − 1.5 dB**. Cancels the extra level of the two doubles summing, so B4 and B5 see the same level as L5 and L6. It's a starting point: Dial it in step 1 checks it |
+| 1 | B1 | Pro-Q 4 trim | As L1, but Output Gain = **T − 1.5 dB**. Cancels the extra level of the two doubles summing, so B4 and B5 see the same level as L5 and L6. It's a starting point: do Dial it in step 1 right after loading B1, before B2 |
 | 2 | B2 | Pro-Q 4 cleanup | L2's bands 2 and 3 only (Bell 320 Hz −2.5 dB Q 1.2; dynamic Bell 4.2 kHz, Range −4.0 dB, Threshold A, A/R 50%), with L2's globals. No Low Cut: each D2 already cuts higher |
 | (only if L2a used) | B2a | Pro-G | Identical to L2a's Pro-G |
 | 3 | B3 | Pro-DS | Identical to L3 |
@@ -424,10 +424,10 @@ Globals on both D2s: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan c
 Globals: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Auto Gain off · Gain Scale 100% · Phase Invert off.
 
 **Dial it in (DBL BUS)**
-1. **Check the bus level right after you load B1**, before B2 and the rest: put the Pro-L 2 meter (settings from 1.5) in the next slot, click its loudness reset button, and play the whole take. Integrated should read **−20.0 LUFS (±0.5)**, the same level LEAD has after L1. If it doesn't, add (−20.0 − reading) to B1's Output Gain: a reading of −21.5 means +1.5 dB. Then remove the meter.
+1. **Check the bus level right after you load B1**, before B2 and the rest, with nothing soloed: put the Pro-L 2 meter (settings from 1.5) in the next slot, click its loudness reset button, and play the whole take. Integrated should read **−20.0 LUFS (±0.5)**, the same level LEAD has after L1. If it doesn't, add (−20.0 − reading) to B1's Output Gain: a reading of −21.5 means +1.5 dB. Then remove the meter.
 2. Alt-solo DBL BUS. You should hear two gritty, narrowed copies, darker and dirtier than the lead.
 3. B4 should show the same readings as L5 (**3–6 dB** sung, **8–14 dB** yelled).
-4. The DBL BUS fader is set in section 6.
+4. Unsolo (Ctrl+right-click any mute switch). The DBL BUS fader is set in section 6.
 
 ---
 

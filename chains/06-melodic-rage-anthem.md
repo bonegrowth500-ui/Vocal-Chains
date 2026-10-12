@@ -164,7 +164,7 @@ Load **Pro-L 2** temporarily in LEAD's first slot, above everything else, with t
 
 **Test:** Solo LEAD (right-click its mute switch) and play a gap between phrases at your normal listening level. If you hear booth hiss, hum, or room tone, do both parts below. If not, skip L2a. If you already ran this Test in 1.3, keep that answer: don't re-test after Edison. Four doubles add up any room tone in your take, so check carefully.
 
-**Part 1: Edison (offline, before you copy the doubles).** If you've already made the doubles, delete them now and make them again in 3.1 afterwards. Open the lead clip's menu (top-left corner of the clip) → **"Edit sample"** (E). Edison opens with your take.
+**Part 1: Edison (offline, before you copy the doubles).** Skip this part if you already did it in 1.3. If you made the doubles without doing it first, delete them now and make them again in 3.1 afterwards. Open the lead clip's menu (top-left corner of the clip) → **"Edit sample"** (E). Edison opens with your take.
 1. Drag across a few hundred milliseconds where you're not singing (the longest noise-only stretch you can find). Choose Tools > Spectral > **"Aquire noise profile"** (Alt+U; that's FL's own spelling).
 2. Press the **Up arrow** (Select > "Deselect") so nothing is selected. With no selection, the cleanup processes the whole take.
 3. Open **"Clean up (denoise)"** (Ctrl+U) and make sure its **Denoiser** button is on.
@@ -423,13 +423,13 @@ Globals on all four D2s: Zero Latency · Clean · Output Gain 0.0 dB · Output P
 **Dial it in (D1 and D2)**
 1. Alt-solo each double in turn (it plays through DBL BUS). It should follow your melody, tuned to the same notes as the lead.
 2. Compare them. All four should sound like slightly different singers (THROAT), each a few cents off the lead (DETUNE). Pair B should sound a little lighter and quieter than Pair A.
-3. Check each D1's DETUNE readout against the table (+8 c, −9 c, +5 c, −4 c).
+3. Check each D1's DETUNE readout against the table (+8 c, −9 c, +5 c, −4 c). When you're done, unsolo (Ctrl+right-click any mute switch).
 
 ### 3.5 DBL BUS (insert 7)
 
 | Order | Slot | Plugin | Settings |
 |---|---|---|---|
-| 1 | B1 | Pro-Q 4 trim | As L1, but Output Gain = **T − 3.0 dB**. Cancels the extra level of four doubles summing, so B4 sees the same level as L5. It's a starting point: Dial it in step 1 checks it |
+| 1 | B1 | Pro-Q 4 trim | As L1, but Output Gain = **T − 3.0 dB**. Cancels the extra level of four doubles summing, so B4 sees the same level as L5. It's a starting point: do Dial it in step 1 right after loading B1, before B2 |
 | 2 | B2 | Pro-Q 4 cleanup | L2's bands 2 and 3 only (Bell 320 Hz −2.5 dB Q 1.2; dynamic Bell 4.2 kHz, Range −4.0 dB, Threshold A, A/R 50%), with L2's globals. No Low Cut: each D2 already cuts higher |
 | (only if L2a used) | B2a | Pro-G | Identical to L2a's Pro-G |
 | 3 | B3 | Pro-DS | Identical to L3 |
@@ -470,10 +470,10 @@ Globals: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Aut
 **DBL BUS send:** → FX HALL **−14.0 dB** (set in 1.4).
 
 **Dial it in (DBL BUS)**
-1. **Check the bus level right after you load B1**, before B2 and the rest: put the Pro-L 2 meter (settings from 1.5) in the next slot, click its loudness reset button, and play the whole take. Integrated should read **−20.0 LUFS (±0.5)**, the same level LEAD has after L1. If it doesn't, add (−20.0 − reading) to B1's Output Gain: a reading of −21.5 means +1.5 dB. Then remove the meter.
+1. **Check the bus level right after you load B1**, before B2 and the rest, with nothing soloed: put the Pro-L 2 meter (settings from 1.5) in the next slot, click its loudness reset button, and play the whole take. Integrated should read **−20.0 LUFS (±0.5)**, the same level LEAD has after L1. If it doesn't, add (−20.0 − reading) to B1's Output Gain: a reading of −21.5 means +1.5 dB. Then remove the meter.
 2. Alt-solo DBL BUS. You should hear a wide, smooth wall of four voices, slightly darker than the lead.
 3. B4's gain-reduction meter should show **5–7 dB** on loud lines: a little more than L5, because B4's threshold is 2 dB lower.
-4. The DBL BUS fader is set in section 6.
+4. Unsolo (Ctrl+right-click any mute switch). The DBL BUS fader is set in section 6.
 
 ---
 
