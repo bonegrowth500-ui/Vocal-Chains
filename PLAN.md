@@ -1,6 +1,6 @@
 # Build Plan: The 4 Vocal Chain Files
 
-> **Status:** Steps 1–5 done: boundaries locked (Appendices A–D), toolkit verified (Appendix E), all four chains designed (Appendix F), all four chain files written in `chains/`, and every QA gate passed (Appendix G), with judgement calls J23–J70. **Waiting for your cue to run Step 6.**
+> **Status:** ✅ Delivered. All six steps are done: boundaries locked (Appendices A–D), toolkit verified (Appendix E), all four chains designed (Appendix F), all four chain files written in `chains/`, every QA gate passed (Appendix G), and the files pushed and handed off (Step 6), with judgement calls J23–J70. **No changes after delivery unless you ask.**
 > **Governing document:** `SPEC.md` (frozen). This plan only decides *how* the spec gets delivered, never *what* the spec is.
 > **Last updated:** 2026-10-12
 
@@ -229,6 +229,15 @@
 
 **Exit gate:** the files are on GitHub and delivered in chat.
 
+**Result:** ✅ Met on 2026-10-12. The final file set is exactly the four files in spec §1, unchanged since every gate passed in Step 5 (the per-file checks were re-run and still pass), and `SPEC.md` still matches its freeze hash (Appendix A). The files are on `origin/master`, last changed in `5d180bf`, and were handed off in chat with a summary of each and the judgement calls worth knowing. The Judgement log is closed at J70.
+
+| File | Style | Lines | SHA-256 |
+|---|---|---|---|
+| `chains/04-alien-transmission.md` | #4 Alien Transmission | 651 | `8df2e59e09bf3975b90fb9ba5c1a25cb3f3e633c9401d157ace03e0f1b3a8255` |
+| `chains/05-rage-blowout.md` | #5 Rage Blowout | 656 | `4bbb5fbf4769294c8b70a9822d0ef7b61239eb448c751c56bb98afd964501e14` |
+| `chains/06-melodic-rage-anthem.md` | #6 Melodic Rage Anthem | 668 | `451995a2adefd49d4897b5341ec59108dacd213c646cc2d8590f06fd60d21c6f` |
+| `chains/09-plugg-cloud.md` | #9 Plugg Cloud | 620 | `6368ff757d56c70d5a8fd016321efa2032a5bbd154d6b2f484c3411ac6056265` |
+
 ---
 
 ## Risks and where they're handled
@@ -256,7 +265,7 @@
 | 3. Design blueprints | ✅ Done: Appendix F, J43–J56 |
 | 4. Write the files | ✅ Done: `chains/` (4 files), J57–J58 |
 | 5. QA gates | ✅ Done: Appendix G, J59–J70 |
-| 6. Deliver | ⏸ Waiting for cue |
+| 6. Deliver | ✅ Done: 4 files on `origin/master`, handed off in chat |
 
 ---
 
@@ -1189,7 +1198,7 @@ The second focused re-check passed the noisy-booth path (found in 1.3) and the q
 
 ## Judgement log
 
-New delivery calls made during creation are added here, starting at J23.
+Every delivery call made during creation, J23–J70. J1–J22 are the pre-resolved calls in Step 1. The log closed at delivery; the note after the table lists the later calls that refine earlier ones.
 
 | ID | File | Gap | Decision | Why it stays inside the spec |
 |---|---|---|---|---|
@@ -1241,3 +1250,14 @@ New delivery calls made during creation are added here, starting at J23.
 | J68 | All | The placement formula can ask for more than the LEAD fader can reach, and the loudest 8 bars may have no vocal | Read bars where you sing all the way through (a hook, for example). If LEAD can't reach the result, lower BEAT another 3.0 dB and redo the formula | Same targets (J6, J49); just measurable in every case |
 | J69 | 04, 06 | Timeless 3 documents a left or right start for ping-pong but not how to choose it | Each file states the start side, says to confirm it from the icon's hover hint, and says to just switch ping-pong on if no start choice is offered | J33: unpublished UI is confirmed on the plugin's own readout |
 | J70 | All | FL's own readouts: Image-Line's manual says hovering a mixer meter shows the scale value, not the signal; "Type in value" offers context-aware or normalized units, and the default isn't documented | Beat headroom is read from Pro-L 2's max true peak (BEAT fader = −6.0 dB minus the reading). Every typed FL value uses the context-aware unit (dB for faders and sends, % for pan), stated in 1.1 | J7 (beat headroom) and §4 (exact values), with readouts that actually exist |
+
+**Later calls that refine earlier ones.** The log only grows, so where a later call changed how an earlier one is delivered, the later call governs:
+
+| Earlier call | Refined by | What the files do now |
+|---|---|---|
+| J35 → | J64, J70 | Placement reads Pro-L 2's Max S, a stable value, instead of a live Short Term number. Beat headroom comes from Pro-L 2's max true peak instead of FL's meter hint |
+| J43 → | J57 | Knobs whose own unit is % take a bare number. Typed travel ("NN%") is only for knobs with unpublished units |
+| J45, J50 → | J61, J70 | The per-style DBL BUS trim offset is only the starting point: Dial it in measures B1's output to −20.0 LUFS Integrated. The beat's −6.0 dB peak target is read as Pro-L 2's max true peak |
+| J49 → | J64, J68 | The placement formula uses Max S over bars where you sing all the way through. If LEAD can't reach the result, BEAT drops another 3.0 dB and the formula is redone |
+
+**Closed at delivery (2026-10-12).** 70 calls in total: J1–J22 pre-resolved in Step 1, J23–J70 made during creation. Step 6 made no new calls.
