@@ -6,7 +6,7 @@
 - Makes your lead crunchy: obvious distortion that stays controlled. It's built for a mix of melodic and yelled delivery.
 - Clamps your level with fast compression **before** the distortion, so yells don't explode and sung parts still get crunch.
 - Blends clean and dirty: a light crunch on the lead itself, plus a heavier parallel crunch bus that only distorts the mids. The lows stay tight and the highs don't fizz.
-- Sits on top and cutting, the most forward of the four chains. It's mid-forward and aggressive, with the top end controlled (no airy shine).
+- Sits on top and cutting: a forward placement, level with the beat. It's mid-forward and aggressive, with the top end controlled (no airy shine).
 - Tunes hard, with Flex-Tune nudged so yells and unpitched shouts don't warble.
 - Adds a short dark room plus a ducked delay that blooms on line endings, and a tight, dirty pair of doubles that forms a "halo" around the lead for the whole song.
 
@@ -28,7 +28,7 @@
 | FabFilter knobs with no published unit | Type a percentage with the % sign, like "22%". That puts the knob exactly 22% of the way through its travel. This file only does this where it says "typed travel". |
 | FabFilter EQ bands and filters | Double-click the band's dot, then type Frequency, press Tab, type Gain, press Tab, type Q. Cut bands have no Gain: type Frequency, then Tab to Q. Ctrl+Alt-click a dot to change its shape. Alt+Shift-click a dot to change its slope. |
 | Auto-Tune Artist | Drag each control until its readout shows the value. |
-| FL mixer (fader, pan, send level) | Right-click → "Type in value". |
+| FL mixer (fader, pan, send level) | Right-click → "Type in value". In the entry box, pick the context-aware unit (dB for faders and send knobs, % for pan), not the normalized one, then type the value. |
 | On a Mac | Use Cmd where this file says Ctrl, and Option where it says Alt. |
 
 ### 1.2 Mixer map
@@ -51,7 +51,7 @@ Every insert's stereo separation knob stays at centre (off). Faders: BEAT is set
 1. Open the Mixer menu → "Plugin delay compensation" → make sure **"Automatic"** is ticked. It keeps every insert in time, including sends and sidechains.
 2. Put the beat on its own playlist track. In its channel settings, set **TRACK** to **1**. Put your lead take on another playlist track, with TRACK set to **2**. Then set FL's project tempo to the beat's BPM: every synced delay and pre-delay in this file follows it.
 3. Name inserts 1–8 as in the map. Right-click each insert → "Rename, color & icon..." (F2).
-4. **Beat headroom.** Play only the beat's loudest part. Hover over the Master meter and read the hint bar. Set the BEAT fader so the beat peaks at **−6.0 dBFS** (pull it down, or raise it if the beat peaks lower). Right-click the fader → "Type in value" to fine-tune it.
+4. **Beat headroom.** Load Pro-L 2 in BEAT's first slot with the meter settings from 1.5 (TP metering on), and play the beat's loudest part. Read the maximum true peak shown above its output meter. Set the BEAT fader to **−6.0 dB minus that reading** (a peak of −0.4 dB gives −5.6 dB), so the beat peaks at about −6.0 dBFS. Then remove the meter.
 5. Run the L2a **Test** now. If you hear room tone, do L2a Part 1 (Edison) now, **before** you make the doubles, so every copy is clean. Part 2 (Pro-G) goes in later with the lead chain.
 6. Make the doubles (section 3.1).
 7. Do the routing in 1.4, then calibrate in 1.5.
@@ -60,7 +60,7 @@ Every insert's stereo separation knob stays at centre (off). Faders: BEAT is set
 
 1. **Doubles go to DBL BUS only.** Select insert 3 (DBL L). Left-click the send switch (the arrow at the bottom) of insert 5 (DBL BUS). Then left-click the **Master** track's send switch to turn that route off. Repeat for insert 4.
 2. **LEAD sends.** Select insert 2 (LEAD) and left-click the send switches of inserts 6, 7, and 8. With LEAD still selected, right-click each new send knob (it sits on the destination's send switch) → "Type in value": insert 6 = **0.0 dB**, insert 7 = **−13.0 dB**, insert 8 = **−12.0 dB**. LEAD keeps its Master route. FL sends are post-fader, so the effects follow your LEAD fader.
-3. **The delay ducking needs no extra link.** In FL, every send also carries a sidechain feed, so the LEAD send to insert 8 from step 2 already lets its ducker hear your voice. Don't use "Sidechain to this track" on that send: that option makes a silent link with the send level at 0, and the delay needs to hear the lead. The crunch bus and the room are **not** ducked.
+3. **The delay ducking needs no extra link.** In FL, every send also carries a sidechain feed, so the LEAD send to insert 8 from step 2 already lets its ducker hear your voice. Don't use "Sidechain to this track" on that send: that option turns a send into a sidechain-only link (its level drops to 0): the ducker could still hear your voice, but no audio would reach the delay. The crunch bus and the room are **not** ducked.
 4. **Pans and Track delays.** Right-click each pan knob → "Type in value": insert 3 = −45%, insert 4 = +45%. On each double's insert, click the clock icon (**Track delay**) → "Set in ms (milliseconds)": insert 3 = **12**, insert 4 = **19**.
 5. **Feed the ducker.** When you load Pro-C 3 on insert 8 (R8.2), open its gear icon → **"Plugin Wrapper Settings"** → **"Processing"** → **"Connections"**. Right-click the plugin's sidechain input number and choose insert 2 (LEAD), or click **"Auto map inputs"**. Then, in Pro-C 3, set **Side Chain Input** to **External**.
 6. DBL BUS and all three returns stay routed to Master (the default).
@@ -165,7 +165,7 @@ There's no second de-esser in this chain. L7 cuts the top instead of boosting it
 
 **Test:** Solo LEAD (right-click its mute switch) and play a gap between phrases at your normal listening level. If you hear booth hiss, hum, or room tone, do both parts below. If not, skip L2a. If you already ran this Test in 1.3, keep that answer: don't re-test after Edison. Distortion brings up quiet noise, so take this test seriously in this chain.
 
-**Part 1: Edison (offline, before you copy the doubles).** Open the lead clip's menu (top-left corner of the clip) → **"Edit sample"** (E). Edison opens with your take.
+**Part 1: Edison (offline, before you copy the doubles).** If you've already made the doubles, delete them now and make them again in 3.1 afterwards. Open the lead clip's menu (top-left corner of the clip) → **"Edit sample"** (E). Edison opens with your take.
 1. Drag across a few hundred milliseconds where you're not singing (the longest noise-only stretch you can find). Choose Tools > Spectral > **"Aquire noise profile"** (Alt+U; that's FL's own spelling).
 2. Press the **Up arrow** (Select > "Deselect") so nothing is selected. With no selection, the cleanup processes the whole take.
 3. Open **"Clean up (denoise)"** (Ctrl+U) and make sure its **Denoiser** button is on.
@@ -178,6 +178,7 @@ There's no second de-esser in this chain. L7 cuts the top instead of boosting it
 | Output noise only | Turn on to check, then off | Lets you hear exactly what's being removed. It should be hiss, not words |
 
 4. Click **Preview**, check, then click **Accept**.
+5. Play a gap in the lead clip: the hiss should be gone. If it isn't, select the lead's Audio Clip channel in the Channel rack and right-click Edison's **Send sample to Playlist** button. That replaces the selected Audio Clip with the cleaned take.
 
 **Part 2: Pro-G**, placed between L2 and L3.
 
@@ -423,7 +424,7 @@ Globals on both D2s: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan c
 Globals: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Auto Gain off · Gain Scale 100% · Phase Invert off.
 
 **Dial it in (DBL BUS)**
-1. **Check the bus level.** Put the Pro-L 2 meter (settings from 1.5) right after B1 and play the whole take. Integrated should read **−20.0 LUFS (±0.5)**, the same level LEAD has after L1. If it doesn't, change B1's Output Gain by the difference. Then remove the meter.
+1. **Check the bus level right after you load B1**, before B2 and the rest: put the Pro-L 2 meter (settings from 1.5) in the next slot, click its loudness reset button, and play the whole take. Integrated should read **−20.0 LUFS (±0.5)**, the same level LEAD has after L1. If it doesn't, add (−20.0 − reading) to B1's Output Gain: a reading of −21.5 means +1.5 dB. Then remove the meter.
 2. Alt-solo DBL BUS. You should hear two gritty, narrowed copies, darker and dirtier than the lead.
 3. B4 should show the same readings as L5 (**3–6 dB** sung, **8–14 dB** yelled).
 4. The DBL BUS fader is set in section 6.
@@ -450,7 +451,7 @@ Globals: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Aut
 | Parameter | Setting | Why |
 |---|---|---|
 | Style | **Crunchy Amp** (in the **Amp** section of the Style menu) | Heavy, aggressive amp crunch |
-| DRIVE | **60%** (typed travel) | The heavier crunch the spec asks for |
+| DRIVE | **60%** (typed travel) | The heavier crunch, on the mids only |
 | LEVEL | **−6.0 dB** | Offsets the loudness the heavy drive adds |
 | All other parameters | As L6 (1 band, MIX 100%, FEEDBACK 0%, FREQ 1k, DYNAMICS centre, TONE flat, pans centre, High Quality Good, Linear Phase off, Stereo, FB off, no modulation) | Same setup, heavier style and drive |
 
@@ -466,7 +467,7 @@ Globals: as R6.1.
 **FX CRUNCH fader:** **−3.0 dB**.
 
 **Dial it in (FX CRUNCH)**
-1. Alt-solo FX CRUNCH. Next to the lead you should hear a distorted, telephone-like layer: all mids, no lows, no fizz.
+1. Hear FX CRUNCH on its own: select LEAD and left-click Master's send switch to turn LEAD's direct route off (its sends keep feeding the returns), then Alt-solo FX CRUNCH. It should sound like a distorted telephone: all mids, no lows, no fizz. Turn LEAD's route to Master back on afterwards.
 2. Unsolo it. The lead should sound clearly dirtier and more aggressive, with lows still tight.
 3. Mute FX CRUNCH for a moment. The lead should sound cleaner and smaller. Unmute.
 
@@ -493,7 +494,7 @@ Globals: as R6.1.
 | Post EQ band 2 | High Cut 5.0 kHz, Q 1.0, 12 dB/oct, Stereo | Dark: keeps the room behind the crunch |
 | Input / Output | 0.0 dB / 0.0 dB, centre | Unity |
 
-To make the Post EQ bands (the yellow curve): double-click the far left of the display for the low cut, and the far right for the high cut. Then double-click each dot to type its values (Tab steps through Frequency, Gain, and Q).
+To make the Post EQ bands (the yellow curve): double-click the far left of the display for the low cut, and the far right for the high cut. Then double-click each dot to type its values (Tab steps through the fields; cut bands have no Gain).
 
 **Dial it in:** Alt-solo FX ROOM. Around the lead you should hear a small, dark, gritty space. Unsoloed, it's felt rather than heard.
 
@@ -530,7 +531,7 @@ To make the Post EQ bands (the yellow curve): double-click the far left of the d
 | Auto Mute Self-Osc (bottom bar) | On | Silences any filter ringing once the input goes quiet. The Clean filters here shouldn't ring, so it's only a safety net |
 | Modulation | None | Steady repeats |
 
-To make the filters: double-click the far left of the filter display for the low cut and the far right for the high cut. Then double-click each dot to type Frequency and Q, and choose the **Clean** style in its value display. The five effect knobs (DRIVE, LO-FI, DIFFUSE, DYNAMICS, PITCH) switch on or off when you click the power icon at the knob's centre; dragging sets the amount.
+To make the filters: double-click the far left of the filter display for the low cut and the far right for the high cut. Then double-click each dot to type Frequency and Q, and choose the **Clean** style in the filter's value display (the settings panel for the selected filter). The five effect knobs (DRIVE, LO-FI, DIFFUSE, DYNAMICS, PITCH) switch on or off when you click the power icon at the knob's centre; dragging sets the amount.
 
 **R8.2 · Pro-C 3 · ducker**
 
@@ -561,7 +562,7 @@ To make the filters: double-click the far left of the filter display for the low
 **Dial it in (FX DELAY)**
 1. Alt-solo FX DELAY and play. You should hear the lead with dark ¼-note repeats at the ends of lines.
 2. Check the L and R readouts under DELAY against section 5 for your project tempo. If they don't match, turn Delay Sync off and type the ms value from section 5.
-3. Unsolo it. R8.2's meter should show about **13–18 dB** of reduction while you sing or yell (the most on yells), so the echoes appear only on line endings.
+3. Unsolo it. R8.2's meter should show about **13–18 dB** of reduction while you sing or yell (the most on yells), so the echoes appear only on line endings. If it shows no reduction at all, recheck the side-chain mapping (1.4 step 5).
 
 ---
 
@@ -593,9 +594,9 @@ For any other tempo: ¼ = 60000 ÷ BPM.
 2. Play the loudest 8 bars where you sing all the way through (a hook, for example) once. Read **Max S** on each meter: that's **Beat ST** on BEAT and **Lead ST** on LEAD. These readings are pre-fader.
 3. Set the **LEAD fader = (Beat ST + BEAT fader + 0.0) − Lead ST**. BEAT fader is the value you set in 1.3, not the −6.0 dBFS peak target.
    - Example: Beat ST −9.0, BEAT fader −4.5 dB, Lead ST −15.0 → (−9.0 − 4.5 + 0.0) − (−15.0) = **+1.5 dB**.
-4. If the result is more than the LEAD fader can reach, pull the BEAT fader down by another 3.0 dB and redo the formula with the new BEAT fader value.
+4. If the result is more than the LEAD fader can reach, pull the BEAT fader down by another 3.0 dB and redo the formula with the new BEAT fader value. Repeat if needed.
 5. Remove both Pro-L 2 meters.
-6. Re-check the ducker readings from section 4: the duckers hear LEAD after its fader, so they can shift a little.
+6. Re-check R8.2 against its section 4 readings: it hears LEAD after its fader. If the LEAD fader ended up below 0 dB and a ducker now shows less reduction than its target, lower that ducker's THRESHOLD by the same number of dB.
 
 ### 6.2 Doubles and returns
 
@@ -608,7 +609,7 @@ For any other tempo: ¼ = 60000 ÷ BPM.
 
 ### 6.3 Final listen
 
-- This is the most forward of the four chains: the vocal leads the beat, and yells are big without jumping out.
+- The vocal sits level with the beat and leads it, and yells are big without jumping out.
 - The crunch is obvious, the lows stay tight, and there's no fizz on top.
 - Echoes appear only on line endings.
 - Mute DBL BUS. The vocal should lose its dirty halo and get narrower. Unmute.
@@ -623,10 +624,10 @@ Skip this section if the lead already sits clearly. It dips the beat slightly in
 2. Select LEAD → right-click BEAT's send switch → **"Sidechain to this track"**.
 3. In the BEAT Pro-Q 4: gear icon → "Plugin Wrapper Settings" → "Processing" → "Connections". Map its sidechain input to insert 2 (or click "Auto map inputs").
 
-| Band | Shape | Frequency | Gain | Q | Slope | Dynamic range | Threshold / A / R | Triggering | External side chain | Why |
+| Band | Shape | Frequency | Gain | Q | Slope | Dynamic range | Threshold / attack (A) / release (R) | Triggering | External side chain | Why |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Bell | 2.5 kHz | 0.0 dB | 1.0 | 12 dB/oct | **−4.0 dB** | A / 50% / 50% | Band | **On** (click "expand >>" to see the button) | Deeper carve: this chain is the most forward |
-| 2 | Bell | 4.5 kHz | 0.0 dB | 1.4 | 12 dB/oct | **−3.0 dB** | A / 50% / 50% | Band | **On** | Clears room for the bite |
+| 1 | Bell | 2.5 kHz | 0.0 dB | 1.0 | 12 dB/oct | **−4.0 dB** | Auto (A) / 50% / 50% | Band | **On** (click "expand >>" to see the button) | A deeper carve, because the vocal sits level with the beat |
+| 2 | Bell | 4.5 kHz | 0.0 dB | 1.4 | 12 dB/oct | **−3.0 dB** | Auto (A) / 50% / 50% | Band | **On** | Clears room for the bite |
 
 Globals: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Auto Gain off · Gain Scale 100% · Phase Invert off. Spectral off on both bands.
 
@@ -635,6 +636,8 @@ Globals: Zero Latency · Clean · Output Gain 0.0 dB · Output Pan centre · Aut
 ---
 
 ## 8. Troubleshooting
+
+Each fix changes only the slots it names. "or" means pick one; ";" means do both.
 
 | If it sounds… | Do this |
 |---|---|
