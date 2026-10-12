@@ -24,7 +24,7 @@
 |---|---|
 | FabFilter knobs | Double-click the knob, type the number, press Enter. A plain number sets the value in the knob's own unit: "35" on a % knob is 35%, "-22" on a dB knob is −22 dB. "1k" = 1000 Hz. Ctrl-click resets a knob. |
 | FabFilter knobs with no published unit | Type a percentage with the % sign, like "65%". That puts the knob exactly 65% of the way through its travel. This file only does this where it says "typed travel". |
-| FabFilter EQ bands and filters | Double-click the band's dot, then type Frequency, press Tab, type Gain, press Tab, type Q. Cut bands have no Gain: type Frequency, then Tab to Q. Ctrl+Alt-click a dot to change its shape. Alt+Shift-click a dot to change its slope. |
+| FabFilter EQ bands and filters | To add a band, double-click the display background where you want it (a single click only deselects while a band is selected). Double-click at the far left or far right for a Low Cut or High Cut; drag the curve at either end for a shelf. Double-click the band's dot, then type Frequency, press Tab, type Gain, press Tab, type Q. Cut bands have no Gain: type Frequency, then Tab to Q. Ctrl+Alt-click a dot to change its shape. Alt+Shift-click a dot to change its slope. |
 | Auto-Tune Artist | Drag each control until its readout shows the value. |
 | FL mixer (fader, pan, send level) | Right-click → "Type in value". In the entry box, pick the context-aware unit (dB for faders and send knobs, % for pan), not the normalized one, then type the value. |
 | On a Mac | Use Cmd where this file says Ctrl, and Option where it says Alt. |
@@ -156,13 +156,13 @@ Load **Pro-L 2** temporarily in LEAD's first slot, above everything else, with t
 
 **Dial it in**
 1. Double-click the far left of the display to create a Low Cut. Double-click its dot, type 85, Tab to Q and type 1, then set the slope to 18 dB/oct (Alt+Shift-click the dot to step through slopes).
-2. Click the display around 300 Hz to add a bell. Double-click its dot and type 320, Tab, −2.5, Tab, 1.2.
-3. Click the display around 4 kHz to add another bell. Double-click its dot and type 4.2k, Tab, 0, Tab, 2. Drag the dynamic range ring around its GAIN knob down to **−4.0 dB**. Click **expand >>** to open the band's dynamics panel. Click the threshold's **A** (auto) button, then type 50 into the attack (A) and release (R) fields (50% = automatic).
+2. Double-click the display background around 300 Hz to add a bell. Double-click its dot and type 320, Tab, −2.5, Tab, 1.2.
+3. Double-click the display background around 4 kHz to add another bell. Double-click its dot and type 4.2k, Tab, 0, Tab, 2. Drag the dynamic range ring around its GAIN knob down to **−4.0 dB**. Click **expand >>** to open the band's dynamics panel. Click the threshold's **A** (auto) button, then type 50 into the attack (A) and release (R) fields (50% = automatic).
 4. Play the loudest, brightest lines. Band 3 should dip **0–3 dB on harsh notes only** and stay still on soft lines.
 
 ### L2a · only if room tone is audible
 
-**Test:** Solo LEAD (right-click its mute switch) and play a gap between phrases at your normal listening level. If you hear booth hiss, hum, or room tone, do both parts below. If not, skip L2a. If you already ran this Test in 1.3, keep that answer: don't re-test after Edison. Four doubles add up any room tone in your take, so check carefully.
+**Test:** Solo LEAD (right-click its mute switch) and play a gap between phrases at your normal listening level. If you hear booth hiss, hum, or room tone, do both parts below. If not, skip L2a. If you ran this Test in 1.3, keep that answer: if it was yes, Part 1 is already done, so go straight to Part 2. Four doubles add up any room tone in your take, so check carefully.
 
 **Part 1: Edison (offline, before you copy the doubles).** Skip this part if you already did it in 1.3. If you made the doubles without doing it first, delete them now and make them again in 3.1 afterwards. Open the lead clip's menu (top-left corner of the clip) → **"Edit sample"** (E). Edison opens with your take.
 1. Drag across a few hundred milliseconds where you're not singing (the longest noise-only stretch you can find). Choose Tools > Spectral > **"Aquire noise profile"** (Alt+U; that's FL's own spelling).
@@ -346,7 +346,7 @@ All three bands are static. Globals as in L2: Zero Latency · Clean · Output Ga
 
 ### 3.1 Make the copies
 
-If you already made the copies in 1.3, skip to 3.2.
+If the copies from 1.3 still exist, skip to 3.2.
 
 1. Hold Shift and drag the lead clip straight down onto an empty playlist track. Drop it at exactly the same start position. The playlist snaps to the grid, so drop it in the same grid spot. All timing offsets come from Track delay, never from clip position.
 2. Open the copy's clip menu (top-left corner of the clip) → **"Make unique"**. Don't use "Make unique as sample".
