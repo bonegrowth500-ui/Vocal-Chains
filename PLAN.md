@@ -1,6 +1,6 @@
 # Build Plan: The 4 Vocal Chain Files
 
-> **Status:** Steps 1–2 done: boundaries locked (Appendices A–D) and toolkit verified (Appendix E), with judgement calls J23–J42. **Waiting for your cue to run Step 3.** Nothing in `chains/` has been written yet.
+> **Status:** Steps 1–3 done: boundaries locked (Appendices A–D), toolkit verified (Appendix E), and all four chains designed (Appendix F), with judgement calls J23–J56. **Waiting for your cue to run Step 4.** Nothing in `chains/` has been written yet.
 > **Governing document:** `SPEC.md` (frozen). This plan only decides *how* the spec gets delivered, never *what* the spec is.
 > **Last updated:** 2026-10-12
 
@@ -147,6 +147,7 @@
 | #9 Plugg Cloud | Gentle opto Pro-C 3 → warm body + breathy air EQ; no saturation (J9) | Dbl L + Dbl R, chorused, tucked low | **Delay:** Timeless 3 ¼-note, highs rolled off, tape-style wobble. **Plate:** Pro-R 2 soft and dark, about 2 s |
 
 **Exit gate:** four complete blueprints, and a traceability matrix with no empty rows.
+**Result:** ✅ Met on 2026-10-12. Appendix F: shared conventions (F1), four blueprints (F2–F5), traceability matrix (F6), every gray-area item settled (F7), and the distinctness check (F8); calls J43–J56.
 
 ---
 
@@ -248,8 +249,8 @@
 |---|---|
 | 1. Lock boundaries and pre-resolve ambiguities | ✅ Done: Appendices A–D, J23–J30 |
 | 2. Verify the toolkit | ✅ Done: Appendix E, J31–J42 |
-| 3. Design blueprints | ⏸ Waiting for cue |
-| 4. Write the files | ⏸ |
+| 3. Design blueprints | ✅ Done: Appendix F, J43–J56 |
+| 4. Write the files | ⏸ Waiting for cue |
 | 5. QA gates | ⏸ |
 | 6. Deliver | ⏸ |
 
@@ -805,6 +806,293 @@ C1 now lists the mixer Track delay among FL built-ins. The C3 "open for Step 3" 
 
 ---
 
+## Appendix F: Chain blueprints (Step 3)
+
+Every value is decided here; Step 4 turns these into full per-parameter tables and prose.
+
+**Slot IDs:**
+- **L** = a slot on the LEAD insert
+- **D** = a slot on a double's insert
+- **B** = a slot on DBL BUS
+- **R7.1** etc. = insert 7, slot 1 (a return)
+
+**T** = your calibration trim (F1). "Typed %" means FabFilter's documented text entry, where a typed percentage sets the knob's position in its travel (J43).
+
+### F1. Shared conventions (all four files)
+
+**Session and routing**
+- Insert 1 is always **BEAT** (fader trim + the optional carve only). Insert 2 is always **LEAD**. The doubles come next, then **DBL BUS**, then the FX returns.
+- LEAD → Master, plus post-fader sends to its returns. Every ducked return also gets "Sidechain to this track" from LEAD; the key is the Lead insert's output (J29).
+- Each double routes **only** to DBL BUS. DBL BUS → Master. Returns → Master, faders at 0.0 dB.
+- Return feeds (J46): in #4 and #5 the returns are fed by LEAD only. In #6 the hall, and in #9 the plate, are also fed by DBL BUS.
+- If you need Edison denoise (L2a), do it **before** copying the doubles, so every copy is clean.
+
+**Gain structure (J49, J50)**
+
+| Item | Value |
+|---|---|
+| Calibration | Pro-L 2 used as a meter (J35), Integrated, played over the whole raw take, placed on LEAD before L1. **T = −20.0 − reading** (e.g., −24.3 LUFS → T = +4.3 dB). The same T goes in every TRIM slot |
+| DBL BUS trim | T + offset: #4 −0.5 dB, #5 −1.5 dB, #6 −3.0 dB, #9 −1.0 dB. This cancels the extra level of several doubles summing on the bus, so its compressor sees the same level as the lead's |
+| Beat headroom | Pull the BEAT fader down until the beat alone peaks at **−6.0 dBFS** on the Master meter (hint bar) |
+| Level matching | Each compressor's GAIN ≈ 60% of its loud-line gain reduction; each Saturn 2 LEVEL offsets its drive. Bypass check: loudness within about 1 dB |
+| Placement | Pro-L 2 Short Term, last slot on BEAT and on LEAD, over the loudest 8 bars. Inserts are pre-fader, so: **LEAD fader = (Beat ST + BEAT fader + Δ) − Lead ST**. Δ: #5 **0.0 LU**, #4 **−1.5 LU**, #6 **−1.5 LU**, #9 **−3.5 LU**. Then remove both meters |
+| Doubles level | Each double's fader as listed per style; **DBL BUS fader = LEAD fader − D**: #4 9 dB, #5 7 dB, #6 10 dB, #9 11 dB |
+
+**Lead front end, identical in all four (GX03)**
+
+| Slot | Plugin | Settings | Expect |
+|---|---|---|---|
+| L1 TRIM | Pro-Q 4 | No bands · Processing Mode Zero Latency · Character Clean · Output Gain **T** · Output Pan centre (L/R mode) · Auto Gain off · Gain Scale 100% · Phase Invert off | Raw take sits at −20 LUFS Integrated |
+| L2 CLEANUP | Pro-Q 4 | Band 1: Low Cut 85 Hz, 18 dB/oct, Q 1.0, Stereo. Band 2: Bell 320 Hz, −2.5 dB, Q 1.2, Stereo. Band 3: Bell 4.2 kHz, 0.0 dB, Q 2.0, Stereo, dynamic with Range −4.0 dB, Threshold A (auto), A 50% / R 50% (auto), Triggering Band, external side chain off, Spectral off. Globals as L1, with Output Gain 0.0 dB | Band 3 dips 0–3 dB on bright/harsh notes only |
+| L2a (only if room tone is audible) | Edison, then Pro-G | **Edison** (on the raw clip, before copying the doubles): noise profile from a gap → Clean up (denoise), Threshold 0 dB, Amount 60% (hint bar), check with "Output noise only", Accept. **Pro-G:** Style Vocal · THRESHOLD −50 dB · RATIO 2.0:1 · RANGE 10 dB · ATTACK 1 ms · HOLD 60 ms · RELEASE 180 ms · KNEE 6 dB · LOOKAHEAD on, 2 ms · Expert off · Oversampling 2x · In/Out 0.0 dB, centre | Test: solo LEAD; if booth hiss or hum is audible in the gaps at normal volume, use it (and add the same Pro-G as B2a) |
+| L3 DE-ESS | Pro-DS | MODE Single Vocal · WIDE BAND · THRESHOLD −26.0 dB · RANGE 6.0 dB · HP 5.5 kHz / LP 11.0 kHz · LOOKAHEAD on, 10 ms · STEREO LINK 100% (the "100%" scale mark) · SIDE CHAIN In · Audition Triggering off · Audition off · Oversampling 2x · In/Out 0.0 dB, centre | 3–6 dB GR on s / sh / t; about 0 elsewhere |
+
+**Auto-Tune Artist settings shared by every instance:**
+- INPUT TYPE Alto/Tenor
+- KEY / SCALE = the song's key (Chromatic if unknown)
+- CLASSIC off · TRACKING 50 · NATURAL VIBRATO 0.0
+- Vibrato: SHAPE No Vibrato (RATE 5.0 Hz, ONSET DELAY 0 ms, ONSET RATE 0 ms, VARIATION 0, PITCH.AMT. 0, AMPLITUDE AMT. 0, FORMANT AMT. 0) · TARGETING IGNORES VIBRATO off
+- No notes removed or bypassed · Use Low Latency off
+
+The per-instance values are listed with each style: RETUNE SPEED, HUMANIZE, FLEX-TUNE, FORMANT, THROAT, TRANSPOSE, DETUNE.
+
+**Doubles recipe (J45).**
+- Each double's insert: D1 Auto-Tune Artist (FORMANT on; its own RETUNE, HUMANIZE, THROAT, DETUNE) → D2 Pro-Q 4 (its own EQ; Zero Latency, Clean). On the mixer: its own pan, fader, and Track delay ("Set in ms").
+- DBL BUS: B1 TRIM (Pro-Q 4, Output Gain = T + offset) → B2 CLEANUP (Pro-Q 4 = L2 bands 2 and 3, no Low Cut) → B2a (same Pro-G as L2a, only if used) → B3 Pro-DS (= L3) → B4 Pro-C 3 → B5 and on: style processing.
+
+**Return building blocks**
+
+| Block | Settings |
+|---|---|
+| Ducking Pro-C 3 (last slot of every ducked return) | Style Clean · AUTO threshold off · KNEE 6 dB · AUTO release off · bottom-bar Lookahead: Off, LOOKAHEAD slider 0 ms · GAIN 0.0 dB, AUTO gain off, gain pan centre · DRY fully off (−∞) · Character Off · Side Chain Input **External** (fed from LEAD through the wrapper's Connections) · LEVEL 0.0 dB · Audition off · STEREO LINK 100% · no side-chain EQ bands · Oversampling 2x · Input / Output 0.0 dB, centre · Mix 100%. THRESHOLD, RATIO, RANGE, ATTACK, RELEASE, and HOLD are set per return |
+| Timeless 3 base | Delay Sync on, quarter-note entry (J37) · Delay Time Pan centre · Freeze off · Feedback Pan centre · both ± invert off · WET 50% typed (the 12 o'clock unity position) · MIX 100% · Lock Mix off · Filter Routing Serial · Auto Mute Self-Osc on · DRIVE 0% · LO-FI 0% · DYNAMICS 50% typed (centre = off) · PITCH off · Input / Output 0.0 dB, centre · Channel Mode Left/Right · no modulation unless listed · every filter in Clean style, Q 0.7 |
+| Pro-R 2 base | Decay Rate 100% (Ctrl-click; SPACE then shows one time only) · THICKNESS 0% typed · DUCKING 0% typed · MIX 100% · Lock Mix off · Auto Gate off · Freeze off · Input / Output 0.0 dB, centre |
+| Oversampling (J27) | Pro-C 3 / Pro-DS / Pro-G: 2x. Saturn 2: High Quality Good |
+
+### F2. #4 Alien Transmission
+
+**Mixer:** 1 BEAT · 2 LEAD · 3 DBL L · 4 DBL R · 5 DBL ALIEN · 6 DBL BUS · 7 FX DELAY · 8 FX SHIMMER
+
+| Slot | Plugin | Settings | Expect |
+|---|---|---|---|
+| L4 | Auto-Tune Artist | RETUNE SPEED 10 ms · HUMANIZE 15 · FLEX-TUNE 0 · FORMANT off (THROAT 100, inactive) · TRANSPOSE 0 · DETUNE 0 c | Clearly tuned; held notes stay natural |
+| L5 | Pro-C 3 | Clean · THRESHOLD −22 dB · RATIO 3.0:1 · KNEE 12 dB · RANGE 24 dB · ATTACK 5 ms · RELEASE 80 ms · HOLD 0 ms · GAIN +3.0 dB · DRY off · Character Off · Side Chain Internal (LEVEL 0 dB, link 100%, no EQ) · Lookahead Off · Oversampling 2x · In/Out 0 dB · Mix 100% | 4–6 dB GR on loud lines, 1–2 dB on soft |
+| L6 | Pro-Q 4 TONE | Bell 200 Hz −1.5 dB Q 0.8 · Bell 2.8 kHz +1.5 dB Q 1.0 · High Shelf 10 kHz +2.0 dB, 12 dB/oct, Q 1.0 · Zero Latency, Clean | Crisp, glossy top |
+| L7 | (none) | The style lives in the returns and doubles; no saturation (J9) | — |
+| L8 | Pro-DS #2 | As L3, except THRESHOLD −30 dB · RANGE 4 dB · HP 6.0 kHz / LP 14.0 kHz | 2–4 dB GR on the esses the shelf brought up |
+| Sends | LEAD | → FX DELAY −8.0 dB · → FX SHIMMER −16.0 dB · sidechain → FX DELAY and FX SHIMMER | — |
+
+**Doubles**
+
+| | DBL L (3) | DBL R (4) | DBL ALIEN (5) |
+|---|---|---|---|
+| Pan / fader / Track delay | −85% / 0.0 dB / 15 ms | +85% / 0.0 dB / 23 ms | 0% / −7.0 dB / 31 ms |
+| D1 Auto-Tune | RETUNE 14 ms · HUMANIZE 20 · FLEX 0 · THROAT 104 · DETUNE +7 c | RETUNE 18 ms · HUMANIZE 25 · FLEX 0 · THROAT 96 · DETUNE −8 c | RETUNE 12 ms · HUMANIZE 10 · FLEX 0 · THROAT 111 · DETUNE −4 c |
+| D2 Pro-Q 4 | Low Cut 140 Hz, 18 dB/oct · Bell 1.2 kHz +1.0 dB Q 1.0 · High Shelf 8 kHz −1.5 dB | Low Cut 160 Hz, 18 dB/oct · Bell 2.4 kHz −1.0 dB Q 1.0 · High Shelf 8 kHz −0.5 dB | Band-pass: Low Cut 500 Hz, 24 dB/oct + High Cut 5.0 kHz, 24 dB/oct · Bell 1.6 kHz +2.0 dB Q 1.4 |
+
+**DBL BUS (6):**
+- B1 trim T − 0.5 dB · B2 / B3 shared
+- B4 Pro-C 3 Smooth: THRESHOLD −24 dB, RATIO 3.0:1, KNEE 18 dB, RANGE 24 dB, ATTACK 10 ms, RELEASE 150 ms, GAIN +3.0 dB (everything else as L5)
+- B5 Fruity Chorus: DELAY 8.0 ms, DEPTH 2.0 ms, STEREO 90°, LFO 1/2/3 FREQ. 0.35 / 0.80 / 1.70 Hz, LFO WAVE sin ×3, CROSS TYPE Process HF, CROSS CUTOFF 250 Hz, WET ONLY no
+- Fader: LEAD − 9 dB · no sends
+
+**Returns**
+
+| Slot | Plugin | Settings | Expect |
+|---|---|---|---|
+| R7.1 | Timeless 3 | Base + Delay Offset **75%** (dotted ⅛) · Delay Read Mode Stretch · Ping Pong on, start Left · FEEDBACK 38% · CROSS 100% · WIDTH 100% · Filter 1 High Pass 350 Hz, 12 dB/oct · Filter 2 Low Pass 6.5 kHz, 12 dB/oct · DIFFUSE 12% | 2–3 bouncing repeats; the readouts under DELAY match the 1/8. column |
+| R7.2 | Fruity Phaser | SWEEP FREQ. 0.10 Hz · FREQ. RANGE small · MIN DEPTH 0.20 · MAX DEPTH 0.75 · STEREO 90° · NR. STAGES 6 · FEEDBACK 0.30 · DRY-WET 40% wet · OUT GAIN 0.0 dB | A slow swirl on the echoes (one sweep every 10 s) |
+| R7.3 | Pro-C 3 duck | THRESHOLD −30 dB · RATIO 4.0:1 · RANGE 8 dB · ATTACK 5 ms · RELEASE 250 ms · HOLD 40 ms | 6–8 dB GR while you sing, 0 in the gaps |
+| R8.1 | Auto-Tune Artist | RETUNE 20 ms · HUMANIZE 0 · FLEX 0 · FORMANT on · THROAT 100 · TRANSPOSE **+12** · DETUNE 0 c | The send comes out an octave up |
+| R8.2 | Pro-R 2 | Base + Style Modern · SPACE 3.5 s · PREDELAY sync 32th Note, Offset 100% · CHARACTER 55% · DISTANCE 40% · BRIGHTNESS 60% typed · WIDTH 100% · Decay Rate EQ: Low Shelf 300 Hz, 50%, Q 1.0 · Post EQ: Low Cut 400 Hz, 24 dB/oct; High Cut 12 kHz, 12 dB/oct | A quiet, airy octave-up glow behind the words |
+| R8.3 | Pro-C 3 duck | THRESHOLD −30 dB · RATIO 3.0:1 · RANGE 4 dB · ATTACK 10 ms · RELEASE 400 ms · HOLD 40 ms | About 4 dB GR while you sing |
+
+**Placement:** Δ −1.5 LU. **Optional carve:** Bell 2.5 kHz, Q 1.0, Range −3.0 dB + Bell 4.5 kHz, Q 1.4, Range −2.0 dB.
+
+### F3. #5 Rage Blowout
+
+**Mixer:** 1 BEAT · 2 LEAD · 3 DBL L · 4 DBL R · 5 DBL BUS · 6 FX CRUNCH · 7 FX ROOM · 8 FX DELAY
+
+| Slot | Plugin | Settings | Expect |
+|---|---|---|---|
+| L4 | Auto-Tune Artist | RETUNE SPEED **2 ms** · HUMANIZE 0 · FLEX-TUNE **15** · FORMANT off (THROAT 100, inactive) · TRANSPOSE 0 · DETUNE 0 c | Hard tune on sung notes; yells pass without warbling |
+| L5 | Pro-C 3 | Punch · THRESHOLD −24 dB · RATIO 6.0:1 · KNEE 6 dB · RANGE 30 dB · ATTACK 1.0 ms · RELEASE 60 ms · HOLD 0 ms · GAIN +5.0 dB · DRY off · Character Off · Side Chain Internal · Lookahead Off (J52) · Oversampling 2x · In/Out 0 dB · Mix 100% | Sung lines 3–6 dB GR, yelled lines 8–14 dB |
+| L6 | Saturn 2 (in-line crunch) | 1 band · Style **British Rock** (Amp) · DRIVE 22% · DRIVE pan centre · MIX 100% · FEEDBACK 0% · FREQ 1.0 kHz (inactive at 0 feedback) · DYNAMICS 50% typed (centre) · TONE: all four sliders 50% typed (centre) · LEVEL −3.0 dB, pan centre · band on. Global: Input / Output 0.0 dB · Mix 100% · High Quality Good · Linear Phase off · Channel Mode Stereo · FB off · no modulation | Obvious but controlled grit; bypass level within 1 dB |
+| L7 | Pro-Q 4 TONE (after the dirt, J48) | Bell 180 Hz −1.5 dB Q 0.9 · Bell 1.3 kHz +2.5 dB Q 0.8 · High Shelf 9.0 kHz −2.5 dB, 12 dB/oct · High Cut 16 kHz, 12 dB/oct · Zero Latency, Clean | Mid-forward bite; no airy shine; no fizz |
+| Sends | LEAD | → FX CRUNCH 0.0 dB · → FX ROOM −13.0 dB · → FX DELAY −12.0 dB · sidechain → FX DELAY | — |
+
+**Doubles**
+
+| | DBL L (3) | DBL R (4) |
+|---|---|---|
+| Pan / fader / Track delay | −45% / 0.0 dB / 12 ms | +45% / 0.0 dB / 19 ms |
+| D1 Auto-Tune | RETUNE 4 ms · HUMANIZE 0 · FLEX 15 · THROAT 103 · DETUNE +6 c | RETUNE 6 ms · HUMANIZE 5 · FLEX 15 · THROAT 97 · DETUNE −7 c |
+| D2 Pro-Q 4 | Low Cut 220 Hz, 24 dB/oct · High Cut 6.0 kHz, 24 dB/oct · Bell 1.1 kHz +1.5 dB Q 1.0 | Low Cut 250 Hz, 24 dB/oct · High Cut 5.5 kHz, 24 dB/oct · Bell 1.6 kHz +1.5 dB Q 1.0 |
+
+**DBL BUS (5):**
+- B1 trim T − 1.5 dB · B2 / B3 shared
+- B4 Pro-C 3 = L5 (Punch, −24 dB, 6:1, 1 ms / 60 ms, +5 dB)
+- B5 Saturn 2: Style **Crunchy Amp** (Amp), DRIVE 45%, LEVEL −5.0 dB (everything else as L6)
+- B6 Pro-Q 4: Low Cut 250 Hz, 12 dB/oct · High Cut 5.0 kHz, 24 dB/oct
+- Fader: LEAD − 7 dB · no sends
+
+**Returns**
+
+| Slot | Plugin | Settings | Expect |
+|---|---|---|---|
+| R6.1 | Pro-Q 4 (pre) | Low Cut 300 Hz, 24 dB/oct · High Cut 4.0 kHz, 24 dB/oct · Zero Latency, Clean | Only the mids reach the dirt |
+| R6.2 | Saturn 2 | Style **Crunchy Amp** (Amp) · DRIVE 60% · LEVEL −6.0 dB (everything else as L6) | Heavy crunch |
+| R6.3 | Pro-Q 4 (post) | Low Cut 250 Hz, 12 dB/oct · High Cut 5.0 kHz, 24 dB/oct | Lows stay tight; highs don't fizz |
+| R6 fader | — | −3.0 dB · **never ducked** (it's part of the lead's sound) | Soloed it sounds like a distorted telephone; blended, the lead is clearly dirtier |
+| R7.1 | Pro-R 2 | Base + Style Modern · SPACE 0.6 s · PREDELAY 8 ms (sync Off) · CHARACTER 0% · DISTANCE 15% · BRIGHTNESS 25% typed · WIDTH 80% · Post EQ: Low Cut 250 Hz, 24 dB/oct; High Cut 5.0 kHz, 12 dB/oct · not ducked | Short, dark, gritty space |
+| R8.1 | Timeless 3 | Base + Delay Offset **100%** (¼) · Delay Read Mode Stretch · Ping Pong off · FEEDBACK 30% · CROSS 0% · WIDTH 50% · Filter 1 High Pass 400 Hz, 12 dB/oct · Filter 2 Low Pass 3.5 kHz, 12 dB/oct · DIFFUSE 0% | Dark ¼ repeats |
+| R8.2 | Pro-C 3 duck | THRESHOLD −32 dB · RATIO 8.0:1 · RANGE 18 dB · ATTACK 2 ms · RELEASE 180 ms · HOLD 30 ms | 15–18 dB GR while you rap or yell, so echoes appear only on line endings |
+
+**Placement:** Δ 0.0 LU (the most forward of the four). **Optional carve:** Bell 2.5 kHz, Q 1.0, Range −4.0 dB + Bell 4.5 kHz, Q 1.4, Range −3.0 dB.
+
+### F4. #6 Melodic Rage Anthem
+
+**Mixer:** 1 BEAT · 2 LEAD · 3 DBL A-L · 4 DBL A-R · 5 DBL B-L · 6 DBL B-R · 7 DBL BUS · 8 FX HALL · 9 FX DELAY
+
+| Slot | Plugin | Settings | Expect |
+|---|---|---|---|
+| L4 | Auto-Tune Artist | RETUNE SPEED 8 ms · HUMANIZE 18 · FLEX-TUNE 0 · FORMANT off (THROAT 100, inactive) · TRANSPOSE 0 · DETUNE 0 c | Hard but smooth; long notes don't sound frozen |
+| L5 | Pro-C 3 | Versatile · THRESHOLD −22 dB · RATIO 3.5:1 · KNEE 12 dB · RANGE 24 dB · ATTACK 8 ms · RELEASE 100 ms · HOLD 0 ms · GAIN +3.5 dB · DRY off · Character Off · Side Chain Internal · Lookahead Off · Oversampling 2x · In/Out 0 dB · Mix 100% | 4–6 dB GR on loud lines |
+| L6 | Pro-Q 4 TONE | Bell 250 Hz −1.0 dB Q 1.0 · Bell 3.0 kHz +1.5 dB Q 1.0 · High Shelf 11 kHz +3.0 dB, 12 dB/oct, Q 1.0 · Zero Latency, Clean | Bright, airy arena shine |
+| L7 | Saturn 2 (light warmth) | 1 band · Style **Warm Tape** (Tape) · DRIVE 15% · LEVEL −1.0 dB (everything else as #5 L6) | Thicker, but no audible grit |
+| L8 | Pro-DS #2 | As L3, except THRESHOLD −30 dB · RANGE 4 dB · HP 6.5 kHz / LP 14.0 kHz | 2–4 dB GR on esses |
+| Sends | LEAD | → FX HALL −10.0 dB · → FX DELAY −11.0 dB · sidechain → FX HALL and FX DELAY | — |
+
+**Doubles (4-double wall)**
+
+| | DBL A-L (3) | DBL A-R (4) | DBL B-L (5) | DBL B-R (6) |
+|---|---|---|---|---|
+| Pan / fader / Track delay | −100% / 0.0 dB / 17 ms | +100% / 0.0 dB / 23 ms | −50% / −3.0 dB / 11 ms | +50% / −3.0 dB / 29 ms |
+| D1 Auto-Tune | RETUNE 10 · HUM 20 · THROAT 104 · DETUNE +8 c | RETUNE 12 · HUM 22 · THROAT 96 · DETUNE −9 c | RETUNE 14 · HUM 24 · THROAT 107 · DETUNE +5 c | RETUNE 16 · HUM 26 · THROAT 94 · DETUNE −4 c |
+| D2 Pro-Q 4 | Low Cut 180 Hz, 18 dB/oct · High Shelf 10 kHz −2.0 dB | Low Cut 190 Hz, 18 dB/oct · High Shelf 9 kHz −2.0 dB · Bell 1.5 kHz +0.5 dB Q 1.0 | Low Cut 220 Hz, 18 dB/oct · Bell 2.0 kHz −1.5 dB Q 1.0 | Low Cut 240 Hz, 18 dB/oct · Bell 2.6 kHz −1.5 dB Q 1.0 |
+
+FLEX-TUNE is 0 on every double.
+
+**DBL BUS (7):**
+- B1 trim T − 3.0 dB · B2 / B3 shared
+- B4 Pro-C 3 Smooth: THRESHOLD −24 dB, RATIO 3.0:1, KNEE 18 dB, RANGE 24 dB, ATTACK 10 ms, RELEASE 150 ms, GAIN +3.0 dB
+- B5 Saturn 2 Warm Tape: DRIVE 12%, LEVEL −1.0 dB (the wall shares the light warmth)
+- B6 Pro-Q 4: High Shelf 9 kHz −1.5 dB (the lead stays the brightest thing)
+- Fader: LEAD − 10 dB · send → FX HALL −14.0 dB
+
+**Returns**
+
+| Slot | Plugin | Settings | Expect |
+|---|---|---|---|
+| R8.1 | Pro-R 2 | Base + Style Modern · SPACE 3.4 s · PREDELAY sync 16th Note, Offset 100% · CHARACTER 40% · DISTANCE 55% · BRIGHTNESS 65% typed · WIDTH 100% · Decay Rate EQ: Low Shelf 250 Hz, 70%, Q 1.0 · Post EQ: Low Cut 220 Hz, 24 dB/oct; High Shelf 9 kHz −2.0 dB; High Cut 15 kHz, 12 dB/oct | Arena-sized tail |
+| R8.2 | Pro-C 3 duck | THRESHOLD −30 dB · RATIO 6.0:1 · RANGE 10 dB · ATTACK 10 ms · RELEASE 300 ms · HOLD 50 ms | About 10 dB GR while you sing; the hall blooms in the gaps |
+| R9.1 | Timeless 3 | Base + Delay Offset **100%** (¼) · Delay Read Mode Stretch · Ping Pong on, start Right · FEEDBACK 35% · CROSS 100% · WIDTH 100% · Filter 1 High Pass 300 Hz, 12 dB/oct · Filter 2 Low Pass 7.0 kHz, 12 dB/oct · DIFFUSE 20% | Wide ¼ ping-pong |
+| R9.2 | Pro-C 3 duck | THRESHOLD −30 dB · RATIO 6.0:1 · RANGE 12 dB · ATTACK 5 ms · RELEASE 250 ms · HOLD 40 ms | About 12 dB GR while you sing |
+
+**Placement:** Δ −1.5 LU. **Optional carve:** Bell 2.5 kHz, Q 1.0, Range −3.0 dB + Bell 4.5 kHz, Q 1.4, Range −2.0 dB.
+
+### F5. #9 Plugg Cloud
+
+**Mixer:** 1 BEAT · 2 LEAD · 3 DBL L · 4 DBL R · 5 DBL BUS · 6 FX DELAY · 7 FX PLATE
+
+| Slot | Plugin | Settings | Expect |
+|---|---|---|---|
+| L4 | Auto-Tune Artist | RETUNE SPEED 6 ms · HUMANIZE **35** · FLEX-TUNE 0 · FORMANT off (THROAT 100, inactive) · TRANSPOSE 0 · DETUNE 0 c | Smooth hard tune with soft, natural holds |
+| L5 | Pro-C 3 | **Opto** · THRESHOLD −20 dB · RATIO 2.5:1 · KNEE 18 dB · RANGE 18 dB · ATTACK 15 ms · RELEASE 200 ms · HOLD 0 ms · GAIN +2.5 dB · DRY off · Character Off · Side Chain Internal · Lookahead Off · Oversampling 2x · In/Out 0 dB · Mix 100% | 3–4 dB GR on loud lines, gentle |
+| L6 | Pro-Q 4 TONE | Low Shelf 180 Hz +1.5 dB, 12 dB/oct, Q 1.0 · Bell 3.8 kHz −1.5 dB Q 1.5 · High Shelf 12 kHz +2.5 dB, 12 dB/oct, Q 1.0 · Zero Latency, Clean | Warm, buttery body; breathy top |
+| L7 | (none) | No saturation (J9) | — |
+| L8 | Pro-DS #2 | As L3, except THRESHOLD −32 dB · RANGE 6 dB · HP 5.5 kHz / LP 12.0 kHz | De-essed shimmer: 3–6 dB GR on esses |
+| Sends | LEAD | → FX DELAY −9.0 dB · → FX PLATE −12.0 dB · sidechain → FX DELAY | — |
+
+**Doubles**
+
+| | DBL L (3) | DBL R (4) |
+|---|---|---|
+| Pan / fader / Track delay | −60% / 0.0 dB / 14 ms | +60% / 0.0 dB / 21 ms |
+| D1 Auto-Tune | RETUNE 8 ms · HUMANIZE 40 · FLEX 0 · THROAT 102 · DETUNE +6 c | RETUNE 10 ms · HUMANIZE 45 · FLEX 0 · THROAT 98 · DETUNE −5 c |
+| D2 Pro-Q 4 | Low Cut 160 Hz, 18 dB/oct · High Shelf 9 kHz −1.0 dB | Low Cut 180 Hz, 18 dB/oct · Bell 2.2 kHz −1.0 dB Q 1.0 |
+
+**DBL BUS (5):**
+- B1 trim T − 1.0 dB · B2 / B3 shared
+- B4 Pro-C 3 Opto: THRESHOLD −22 dB, RATIO 2.5:1, KNEE 18 dB, RANGE 18 dB, ATTACK 15 ms, RELEASE 220 ms, GAIN +2.5 dB
+- B5 Fruity Chorus: DELAY 10.0 ms, DEPTH 2.5 ms, STEREO 120°, LFO 1/2/3 FREQ. 0.30 / 0.70 / 1.30 Hz, LFO WAVE sin ×3, CROSS TYPE Process HF, CROSS CUTOFF 250 Hz, WET ONLY no
+- Fader: LEAD − 11 dB · send → FX PLATE −16.0 dB
+
+**Returns**
+
+| Slot | Plugin | Settings | Expect |
+|---|---|---|---|
+| R6.1 | Timeless 3 | Base + Delay Offset **100%** (¼) · Delay Read Mode **Tape** · Ping Pong off · FEEDBACK 45% · CROSS 0% · WIDTH 70% · Filter 1 High Pass 250 Hz, 12 dB/oct · Filter 2 Low Pass 3.2 kHz, 12 dB/oct · DIFFUSE 15% · Modulation: + → New XLFO (2-step sine, Free, 0.50 Hz) → drag onto DELAY → slot Level **+3%** to start (J44) | Long, dark repeats with a cassette-style pitch drift, never vibrato |
+| R6.2 | Pro-C 3 duck | THRESHOLD −30 dB · RATIO 3.0:1 · RANGE 5 dB · ATTACK 10 ms · RELEASE 350 ms · HOLD 40 ms | About 5 dB GR while you sing; the echoes stay present |
+| R7.1 | Pro-R 2 | Base + Style **Plate** · SPACE 2.0 s · PREDELAY sync 32th Note, Offset 100% · CHARACTER 35% · DISTANCE 30% · BRIGHTNESS 30% typed · WIDTH 100% · Post EQ: Low Cut 200 Hz, 24 dB/oct; High Cut 6.0 kHz, 12 dB/oct · not ducked | A soft, dark plate the delays melt into |
+
+**Placement:** Δ −3.5 LU (melted in). **Optional carve:** Bell 2.5 kHz, Q 1.0, Range −1.5 dB + Bell 4.5 kHz, Q 1.4, Range −1.0 dB.
+
+### F6. Traceability matrix (sub-step 3.1)
+
+Every Appendix B requirement maps to the slots that carry it out; no row is empty.
+
+| Req | #4 | #5 | #6 | #9 |
+|---|---|---|---|---|
+| R11 / §6.1 layout | LEAD 2; DBL 3–5 → 6; returns 7, 8 | LEAD 2; DBL 3–4 → 5; returns 6, 7, 8 | LEAD 2; DBL 3–6 → 7; returns 8, 9 | LEAD 2; DBL 3–4 → 5; returns 6, 7 |
+| R12 / §6.1 ducking | R7.3, R8.3 | R8.2 | R8.2, R9.2 | R6.2 |
+| R13–R14 / §6.2 cleanup | L1–L3 (+L2a) | same | same | same |
+| R15 / §6.3 skeleton | L1–L8 | L1–L7 (L6 dirt before L7 EQ, J48) | L1–L8 | L1–L8 |
+| R16 / §6.4 doubles | D1, D2, pan, Track delay ×3 | ×2 | ×4 | ×2 |
+| R17 / §6.5 delays ducked | R7.3 | R8.2 | R9.2 | R6.2 |
+| R10 / §6.6 timing | R7.1 + E8 | R8.1 + E8 | R9.1 + E8 | R6.1 + E8 |
+| R07 / §6.7 carve | BEAT Pro-Q 4 | same | same | same |
+| R18–R21 | L2, L3, L8; oversampling; L1; placement | same | same | same |
+| R22–R24 | L4 + shared Auto-Tune values; FL 2024+; R8.1 Transpose | L4 | L4 | L4 |
+
+| Style rows | Slots |
+|---|---|
+| AT00–AT10 | AT00 map · AT01 R7.1 / R7.3 / sends · AT02 Δ −1.5 + ducks · AT03 L6, L2 band 3, L8 · AT04 L4 · AT05 D1 DETUNE + B5 · AT06 R7.2 · AT07 R7.1 / R7.3 · AT08 R8.1 / R8.2 · AT09 DBL ALIEN D1 / D2 / −7 dB · AT10 ±85% + B5 |
+| RB00–RB11 | RB00 map · RB01 L6 + R6 · RB02 L5 readings + L4 FLEX-TUNE · RB03 L6 · RB04 R6.1–R6.3 · RB05 L5 before L6 · RB06 Δ 0.0 · RB07 L7 · RB08 L4 · RB09 R7.1 · RB10 R8.1 / R8.2 · RB11 ±45% + D2 + B5 / B6 |
+| MA00–MA09 | MA00 map · MA01 L7 + B5 · MA02 Δ −1.5 + ducks · MA03 L6 / L8 / L2 band 3 · MA04 L4 · MA05 R8.1 · MA06 R9.1 · MA07 R8.2 / R9.2 · MA08 pans · MA09 D1 / D2 / Track delay + bus −10 dB, Pair B −3 dB |
+| PC00–PC08 | PC00 map · PC01 Δ −3.5 · PC02 L6 / L8, no saturation · PC03 L4 · PC04 L5 Opto · PC05 R6.1 · PC06 R7.1 · PC07 LEAD centred + ±60% + B5 · PC08 bus −11 dB |
+
+### F7. Gray-area register: settled
+
+| IDs | Settled as |
+|---|---|
+| GU01 | J1 / J21 / J22 / J32 / J43 table rules (applied in Step 4) |
+| GU02, GU06 | −20 LUFS Integrated calibration; trim-only Pro-Q 4 (F1); thresholds and readings per slot |
+| GU03, GU16 | Wording only (Step 4) |
+| GU04, GU05 | Pro-L 2 Short Term + the F1 formula; beat peaks at −6.0 dBFS |
+| GU07, GU08 | Track delay and per-double values in F2–F5 |
+| GU09 | J46 feeds; send levels in F2–F5 |
+| GU10 | L2a: Edison first, then Pro-G between L2 and L3 (and B2a) |
+| GU11 | J51: a second Pro-DS in #4, #6, #9; none in #5 |
+| GU12 | Alto/Tenor (J39) |
+| GU13 | 2x on Pro-C 3 / Pro-DS / Pro-G; Saturn 2 Good; Pro-L 2 off (meter) |
+| GU14 | E8 |
+| GU15 | Carve values per style (F2–F5) |
+| GU17, GU18 | Settled in Step 1 |
+| GA01–GA10 | F2 (shimmer ducked lightly, J47; chorus on the bus, J54; band-pass with Pro-Q 4, J55; Throat 111, J56; pans ±85%) |
+| GR01–GR12 | F3 (British Rock in-line, Crunchy Amp on the bus and doubles, J53; room not ducked, J47; delay ¼; pans ±45%) |
+| GM01–GM10 | F4 (Warm Tape on lead and wall; hall 3.4 s Modern; ducks 10 / 12 dB; Pair B ±50%; Pair B −3 dB) |
+| GP01–GP08 | F5 (Opto; Plate 2.0 s, not ducked; XLFO wobble, J44; pans ±60%; bus −11 dB) |
+| GX01 | Δ: #5 0.0 > #4 / #6 −1.5 > #9 −3.5 LU |
+| GX02 | RETUNE / HUMANIZE: #5 2 ms / 0 (+FLEX 15) · #6 8 ms / 18 · #4 10 ms / 15 · #9 6 ms / 35 |
+| GX03 | L1–L3 identical in all four |
+
+### F8. Distinctness check (sub-step 3.8)
+
+| | #4 Alien | #5 Rage | #6 Anthem | #9 Plugg |
+|---|---|---|---|---|
+| Placement Δ | −1.5 LU | **0.0 LU** | −1.5 LU | **−3.5 LU** |
+| Compressor | Clean 3:1 | Punch 6:1, 1 ms | Versatile 3.5:1 | Opto 2.5:1 |
+| Tone move | +2.8 kHz, +10 kHz shelf | +1.3 kHz, −9 kHz shelf, cut at 16 kHz | +3 kHz, +11 kHz shelf | warm low shelf, −3.8 kHz, +12 kHz shelf |
+| Grit | none | British Rock + Crunchy Amp | Warm Tape (light) | none |
+| Space | dotted-⅛ ping-pong + octave shimmer | 0.6 s dark room + heavily ducked ¼ | 3.4 s hall + ¼ ping-pong, both ducked | ¼ tape-wobble delay + 2.0 s plate |
+| Doubles | 2 wide (±85%) + alien layer, chorused | 2 tight (±45%), dirty and band-limited | 4-double wall (±100 / ±50) | 2 (±60%), chorused, tucked |
+| Shared parts | L1–L3, Auto-Tune base, return bases, carve method | same | same | same |
+
+Every §7 difference shows up as a different value; every §6 convention is identical across the four.
+
+---
+
 ## Judgement log
 
 New delivery calls made during creation are added here, starting at J23.
@@ -831,3 +1119,17 @@ New delivery calls made during creation are added here, starting at J23.
 | J40 | 04, 09 | Fruity Chorus and Fruity Phaser (named by the spec) have mostly unpublished ranges, and typed units aren't confirmed for them | Values are anchored to the documented ranges and the manual's own screenshot readouts, set by dragging while reading FL's hint bar. Labels are as printed on the current panel (e.g., NR. STAGES, CROSS TYPE "Process HF") | §5 names these plugins; §4 exact values |
 | J41 | All | Pro-Q 4's spectral dynamics add about 100 ms of linear-phase latency, and its processing-mode default is unpublished | Harshness bands use standard (non-spectral) dynamics, and every Pro-Q 4 is set to Zero Latency explicitly | Delivers §6.2's dynamic band without extra latency |
 | J42 | All | Several plugins have built-in ducking or saturation the spec doesn't call for (Pro-R 2 DUCKING and THICKNESS; Timeless 3 DRIVE, FEEDBACK above 100%, non-Clean filter styles; Saturn 2's inherent input color) | Built-in ducking is set to zero everywhere (Pro-C 3 does the ducking, J19). Where no saturation is allowed (#4, #9): Timeless 3 DRIVE 0%, FEEDBACK ≤ 100%, filters in Clean style; Pro-R 2 THICKNESS at minimum; Saturn 2 not used | §6.1, J9, J19 |
+| J43 | All | Several FabFilter knobs have unpublished units (Pro-R 2 BRIGHTNESS, THICKNESS, DUCKING; Timeless 3 WET, DYNAMICS; Saturn 2 TONE, DYNAMICS) | They're set by typed percentage of knob travel ("50%" = the exact middle), FabFilter's documented text-entry shortcut. For knobs whose own unit is %, only values where position and value agree are typed; Pro-R 2 Decay Rate 100% is confirmed by SPACE showing a single time, and STEREO LINK 100% by its scale mark | Keeps every value exact (§4) without guessing units |
+| J44 | 09 | Timeless 3's modulation-slot Level has no published units or typed entry | Start at +3% (Shift-drag for fine moves), with an audible target: a hair of cassette-style pitch drift, never vibrato | Delivers §7 #9's "slight tape-style wobble" inside Timeless 3 |
+| J45 | All | §6.4 gives each double its own detune, offset, throat, EQ, and pan, but doesn't say where the rest of the doubles' processing lives | Each double's insert carries only what must differ (Auto-Tune, its own EQ, pan, Track delay). Cleanup, compression, and style processing live once on the Doubles bus, whose trim gets a per-style offset for the summed doubles | §6.1 Doubles bus; §6.4 recipe |
+| J46 | All | J10: which tracks feed the returns | #4 and #5: LEAD only, so the FX surround a dry, forward lead. #6's hall and #9's plate are also fed by DBL BUS: the wall lives in the arena, and the doubles melt into the plate | Follows each style's §7 space and placement rows |
+| J47 | 04, 05, 09 | J19: whether the non-delay reverbs duck | #4's shimmer ducks lightly (4 dB) so the words stay clear. #5's room and #9's plate don't duck: the room is part of the grit, and the plate is the cloud | §7 #4 "words always clear"; §7 #5 and #9 space rows |
+| J48 | 05 | §6.3 puts tone shaping before style processing, but Rage's "top end controlled" must also tame the fizz the crunch creates | The Saturn 2 crunch (L6) comes before the tone EQ (L7) | J11 allows spec-required order changes |
+| J49 | All | FL inserts are pre-fader, so a meter on an insert can't read the post-fader balance | Placement is computed: LEAD fader = (Beat ST + BEAT fader + Δ) − Lead ST | Delivers J6 exactly |
+| J50 | All | J2 and J7 needed concrete targets | Calibration −20.0 LUFS Integrated (a light trim for takes peaking at −12 to −6 dBFS); DBL BUS trim offsets per style; the beat peaks at −6.0 dBFS | §2 "light trim"; J2; J7 |
+| J51 | 04, 06, 09 | J11: whether a second Pro-DS follows the tone EQ | Yes where the tone EQ boosts the top (#4, #6, #9); no in #5, whose top is cut | §2 de-esser; §7 tone rows |
+| J52 | All | Pro-C 3's lookahead option values between Off and 20 ms are unpublished | Lookahead stays Off; fast attack settings handle transients | J33 |
+| J53 | 05, 06 | Most Saturn 2 style names are unofficial | Rage in-line: British Rock (named in FabFilter's release notes). Rage crunch bus and doubles: Crunchy Amp (a corroborated name that matches the manual's "crunchy" amps). Anthem warmth: Warm Tape (official screenshot). Each file also names the menu section | J33 option-label clause |
+| J54 | 04, 09 | Where the chorus sits (C3) | On the Doubles bus. FL's pan collapses a per-double chorus's stereo spread on panned doubles, while a bus chorus keeps L and R moving differently | Delivers the §7 width / chorus rows |
+| J55 | 04 | The Alien layer's band-pass tool (C3) | Pro-Q 4 cuts (500 Hz–5 kHz) in the double's own EQ slot; Volcano 3 isn't needed | J8; fewer plugins, all clean |
+| J56 | All | Auto-Tune Artist's Throat range is unpublished | Values stay between 94 and 111 (Antares' screenshots show 100 and 111): small variations around 100 for the doubles, 111 for the alien layer's bigger shift | J33; §6.4; §7 #4 |
