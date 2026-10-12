@@ -561,7 +561,7 @@ For any other tempo: ¼ = 60000 ÷ BPM; 1/32 = 7500 ÷ BPM.
    - Example: Beat ST −9.0, BEAT fader −4.5 dB, Lead ST −17.5 → (−9.0 − 4.5 − 3.5) − (−17.5) = **+0.5 dB**.
 4. If the result is more than the LEAD fader can reach, pull the BEAT fader down by another 3.0 dB and redo the formula with the new BEAT fader value. Repeat if needed.
 5. Remove both Pro-L 2 meters.
-6. Re-check R6.2 against its section 4 readings: it hears LEAD after its fader. If the LEAD fader ended up below 0 dB and a ducker now shows less reduction than its target, lower that ducker's THRESHOLD by the same number of dB.
+6. Re-check R6.2 against its section 4 readings: it hears LEAD after its fader. If the LEAD fader ended up below 0 dB and R6.2 now shows less than about 5 dB, lower R6.2's THRESHOLD by the same number of dB.
 
 ### 6.2 Doubles and returns
 
