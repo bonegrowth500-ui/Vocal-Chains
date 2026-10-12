@@ -162,7 +162,7 @@ Load **Pro-L 2** temporarily in LEAD's first slot, above everything else, with t
 
 ### L2a · only if room tone is audible
 
-**Test:** Solo LEAD (right-click its mute switch), play a gap between phrases at your normal listening level, then Ctrl+right-click any mute switch to unsolo. If you hear booth hiss, hum, or room tone, do both parts below. If not, skip L2a. If you ran this Test in 1.3, keep that answer: if it was yes, Part 1 is already done, so go straight to Part 2. Four doubles add up any room tone in your take, so check carefully.
+**Test:** If you already ran this Test in 1.3, don't repeat it: if it was yes, Part 1 is done, so go straight to Part 2; if it was no, skip L2a. Otherwise, solo LEAD (right-click its mute switch), play a gap between phrases at your normal listening level, then Ctrl+right-click any mute switch to unsolo. If you hear booth hiss, hum, or room tone, do both parts below. If not, skip L2a. Four doubles add up any room tone in your take, so check carefully.
 
 **Part 1: Edison (offline, before you copy the doubles).** Skip this part if you already did it in 1.3, unless 3.1 step 6 sent you here to clean the doubles: then do every step on each double's clip and channel instead of the lead's. If you made the doubles without doing this part first, delete them now and make them again in 3.1 afterwards. Open the lead clip's menu (top-left corner of the clip) → **"Edit sample"** (E). Edison opens with your take.
 1. Drag across a few hundred milliseconds where you're not singing (the longest noise-only stretch you can find). Choose Tools > Spectral > **"Aquire noise profile"** (Alt+U; that's FL's own spelling).
@@ -177,7 +177,7 @@ Load **Pro-L 2** temporarily in LEAD's first slot, above everything else, with t
 | Output noise only | Turn on to check, then off | Lets you hear exactly what's being removed. It should be hiss, not words |
 
 4. Click **Preview**, check, then click **Accept**.
-5. Alt+left-click the cleaned track's mute switch (this solos it with its routing) and play a gap: the hiss should be gone. Then Ctrl+right-click any mute switch to unsolo. If the hiss is still there, select that clip's Audio Clip channel in the Channel rack and right-click Edison's **Send sample to Playlist** button. That replaces the selected Audio Clip with the cleaned take; play the gap again to confirm.
+5. Solo the cleaned track and play a gap: the hiss should be gone. For LEAD, use a plain solo (right-click its mute switch); for a double, Alt+left-click its mute switch so DBL BUS still passes it. If the hiss is still there, select that clip's Audio Clip channel in the Channel rack and right-click Edison's **Send sample to Playlist** button (it replaces the selected Audio Clip with the cleaned take), then play the gap again. Then Ctrl+right-click any mute switch to unsolo.
 
 **Part 2: Pro-G**, placed between L2 and L3.
 
@@ -346,7 +346,7 @@ All three bands are static. Globals as in L2: Zero Latency · Clean · Output Ga
 
 ### 3.1 Make the copies
 
-If the copies from 1.3 still exist, skip to 3.2.
+If the copies already exist, skip to 3.2.
 
 1. Hold Shift and drag the lead clip straight down onto an empty playlist track. Drop it at exactly the same start position. The playlist snaps to the grid, so drop it in the same grid spot. All timing offsets come from Track delay, never from clip position.
 2. Open the copy's clip menu (top-left corner of the clip) → **"Make unique"**. Don't use "Make unique as sample".
@@ -423,7 +423,7 @@ Globals on all four D2s: Zero Latency · Clean · Output Gain 0.0 dB · Output P
 
 **Dial it in (D1 and D2)**
 1. Alt-solo each double in turn (it plays through DBL BUS). It should follow your melody, tuned to the same notes as the lead.
-2. Compare them. All four should sound like slightly different singers (THROAT), each a few cents off the lead (DETUNE). Pair B should sound a little lighter and quieter than Pair A.
+2. Compare them. All four should sound like slightly different singers (THROAT), and Pair B a little lighter and quieter than Pair A. DETUNE's few cents are too small to judge here; step 3 checks them on the readout.
 3. Check each D1's DETUNE readout against the table (+8 c, −9 c, +5 c, −4 c). When you're done, unsolo (Ctrl+right-click any mute switch).
 
 ### 3.5 DBL BUS (insert 7)
