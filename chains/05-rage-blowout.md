@@ -163,7 +163,7 @@ There's no second de-esser in this chain. L7 cuts the top instead of boosting it
 
 ### L2a · only if room tone is audible
 
-**Test:** Solo LEAD (right-click its mute switch) and play a gap between phrases at your normal listening level. If you hear booth hiss, hum, or room tone, do both parts below. If not, skip L2a. If you ran this Test in 1.3, keep that answer: if it was yes, Part 1 is already done, so go straight to Part 2. Distortion brings up quiet noise, so take this test seriously in this chain.
+**Test:** Solo LEAD (right-click its mute switch), play a gap between phrases at your normal listening level, then right-click the mute switch again to unsolo. If you hear booth hiss, hum, or room tone, do both parts below. If not, skip L2a. If you ran this Test in 1.3, keep that answer: if it was yes, Part 1 is already done, so go straight to Part 2. Distortion brings up quiet noise, so take this test seriously in this chain.
 
 **Part 1: Edison (offline, before you copy the doubles).** Skip this part if you already did it in 1.3. If you made the doubles without doing it first, delete them now and make them again in 3.1 afterwards. Open the lead clip's menu (top-left corner of the clip) → **"Edit sample"** (E). Edison opens with your take.
 1. Drag across a few hundred milliseconds where you're not singing (the longest noise-only stretch you can find). Choose Tools > Spectral > **"Aquire noise profile"** (Alt+U; that's FL's own spelling).
@@ -338,7 +338,7 @@ If the copies from 1.3 still exist, skip to 3.2.
 3. In the new channel's settings, set **TRACK** to the double's insert (3 or 4).
 4. Repeat until you have two copies: DBL L (3) and DBL R (4).
 5. Zoom in on the starts: all three clips (lead + 2 doubles) must begin at the same point. If one doesn't, turn snapping off (the magnet icon in the playlist toolbar) and drag it into line.
-6. If you did L2a Part 1, play a gap in one double: it should be as clean as the lead. If the hiss is back, run L2a Part 1 on each double's clip too.
+6. If you did L2a Part 1, Alt+left-click one double's mute switch (this solos it together with what it's routed to) and play a gap: it should be as clean as the lead. Then Ctrl+right-click any mute switch to unsolo. If the hiss was back, run L2a Part 1 on each double's clip too.
 
 ### 3.2 Mixer settings
 
